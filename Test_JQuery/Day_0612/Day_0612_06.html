@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        th:nth-child(1){
+            background-color: rgb(192, 243, 255);
+        }
+    </style>
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function() { // 마치 함수처럼 사용 가능
+            // 1,3,5,7열.. 적용
+            $('td:nth-child(2n+1)').css('background-color', 'pink');
+            // 2,4,6,8행.. 적용
+            $('tr:nth-child(2n)').css('background-color', 'orange');
+            $('tr:nth-child(2n+1)').css({'background-color' : 'black', 'color' : 'white'});
+        });
+
+
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>전화번호</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>10</td>
+            <td>010-1234-5678</td>
+            <td>서울시 강남구 삼성동 코엑스 4층</td>
+        </tr>
+        <tr>
+            <td>임꺽정</td>
+            <td>20</td>
+            <td>010-1111-2222</td>
+            <td>제주시 한림읍</td>
+        </tr>
+        <tr>
+            <td>손오공</td>
+            <td>30</td>
+            <td>010-3333-4444</td>
+            <td>부산시 해운대구</td>
+        </tr>
+        <tr>
+            <td>사오정</td>
+            <td>40</td>
+            <td>010-5555-6666</td>
+            <td>미국 워싱턴</td>
+        </tr>
+        <tr>
+            <td>저팔계</td>
+            <td>50</td>
+            <td>010-7777-8888</td>
+            <td>일본 도쿄</td>
+        </tr>
+    </table>
+    
+</body>
+</html>

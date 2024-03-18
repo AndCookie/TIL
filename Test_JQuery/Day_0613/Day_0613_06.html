@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ Traversing 관련 메소드 ]</title>
+
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        // 메소드 체이닝
+        $(function(){
+            $("li").find("b").css({'font-size':'1.5em', 'color':'red'});
+            $("ul").children("#item").text("둘이 아니고 Two에요");
+            $("b").parent().css("background-color", "yellow");
+            $("li > i").parents("ul").css("background-color", "lightpink");
+            $("li").eq(0).next().css("background-color", "skyblue");
+        }); // text는 String 문자열을 반환하므로 chaining 불가능
+
+    </script>
+</head>
+
+<body>
+    <h2>[ Traversing 관련 메소드 ]</h2>
+    <ul>
+        <li><b>하나</b></li>
+        <li id="item"><b>둘</b></li>
+        <li><i>셋</i></li>
+        <li>넷</li>
+        <li>다섯</li>
+    </ul>
+</body>
+
+</html>

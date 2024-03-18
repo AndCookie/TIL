@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ text() / html() / attr() ]</title>
+    
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function(){
+            let src = $('img').attr('src');
+            $('#target').text(src);
+            $('#myChange').on('click', function() {
+                $('img').attr('src', '../images/pic2.png');
+                $('img').attr('alt', '이것도 그림이지');
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <h2>[ text() / html() / attr() ]</h2>
+    <p id="myText"><b>나리나리 개나리, 입에 따다 물고요</b></p>
+    <p id="target"></p>
+    <p><img src="../images/pic1.png" alt="이것은 그림이야"></p>
+    <input type="button" id="myChange" value="변경하기">
+</body>
+
+</html>

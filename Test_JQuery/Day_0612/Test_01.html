@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width:900px;
+        }
+    </style>
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function() {
+            // 체크한 것 삭제하기
+            $("#delete").on('click', function () {
+                let allCheckbox = $('div.table2 table tbody tr td input[type="checkbox"]');
+                allCheckbox.each(function () {
+                    if ($(this).is(':checked') == true) {
+                        $(this).parents("tr").remove();
+                    }
+                });
+
+                $("#allSelect").prop('checked', false);
+            });
+
+            // 체크 상자의 상태를 확인하여 나머지 체크 상자의 상태 변환
+            $("#allSelect").on('change', function () { // 체크를 푼 경우
+                let allCheckbox = $('div.table2 table tbody tr td input[type="checkbox"]');
+                if ($(this).is(':checked') == true) {
+                    allCheckbox.each(function () {
+                        allCheckbox.prop('checked', true);
+                    });
+                } else {
+                    allCheckbox.each(function () {
+                        allCheckbox.prop('checked', false);
+                    });
+                }
+            });
+
+            // 입력된 내용을 테이블로 추가
+            $("#add").on('click', function () { // jQuery용 on은 JS에서의 addEventListener의 역할을 함
+                let username = $('#username').val(); // jQuery용 val은 JS에서의 value의 역할을 함
+                let phone = $('#phone').val();
+                let address = $('#address').val();
+                
+                let myTag = createTag(username, phone, address);
+                $("div.table2 table tbody").append(myTag);
+                cleanUp();
+            });
+
+        });
+
+        function createTag(username, phone, address) {
+            let tag = `<tr>
+                <td><input type="checkbox"></td>
+                <td>${username}</td>
+                <td>${phone}</td>
+                <td>${address}</td>
+            </tr>`
+            return tag;
+        };
+
+        function cleanUp(){
+            $('#username').val(''); // jQuery용 val은 JS에서의 value의 역할을 함
+            $('#phone').val('');
+            $('#address').val('');
+        }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div>
+            <label>이름 : <input type="text" id="username"></label>
+            <label>전화번호 : <input type="text" id="phone"></label>
+            <label>주소 : <input type="text" id="address"></label>
+            <input type="button" id="add" value="추가">
+        </div>
+        <hr>
+        <p><input type="button" id="delete" value="전체삭제"></p>
+
+        <div class="table2">
+            <table border="1">
+                <tr>
+                    <th><input id="allSelect" type="checkbox"></th>
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th style="width:400px;">주소</th>
+                </tr>
+            </table>
+        </div><!-- table2-->
+
+    </div><!-- wrapper-->
+</body>
+</html>

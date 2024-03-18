@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.item1, div.item2, div.item3 {
+            width: 50px;
+            height :50px;
+            border : 1px solid black;
+            margin : 5px;
+            float : left;
+        }
+        div.first, div.second, div.third{
+            clear : both; /* float에서 벗어나기 위한 장치 */
+        }
+    </style>
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function() {
+            let len = $('div').length // 21개
+            $('div.item1').eq(2).css({'background-color':'orange', 'border':'2px dotted red'});
+            // 1) eq : 선택된 제이쿼리 객체들 중 n번째 값에 css를 지정
+            $('div.item2:nth-child(2n)').css({ 'background-color': 'gold'});
+            $('div.item2').not(':nth-child(2n)').css({'background-color': 'silver'});
+            // 2) not : 선택된 제이쿼리 객체들 중 n번째를 제외한 모든 값에 css를 지정
+            $('div.item3').each(function(idx, item){
+                // console.log(idx + " : " + item);
+                if($(this).is('.choice')) {
+                    $(this).css('background-color', 'green');
+                }
+            });
+            // 3) each : 하나씩 가져와서 function(){} : 콜백 함수 callback function를 반복하여 처리
+            // 4) is : 
+        });
+    </script>
+</head>
+<body>
+    <h2>[ eq(), not(), is() ]</h2>
+    <div class="first">
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+    </div>
+    <div class="second">
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+    </div>
+    <div class="third">
+        <div class="item3"></div>
+        <div class="item3 choice"></div>
+        <div class="item3"></div>
+        <div class="item3"></div>
+        <div class="item3 choice"></div>
+        <div class="item3 choice"></div>
+    </div>
+    
+</body>
+</html>

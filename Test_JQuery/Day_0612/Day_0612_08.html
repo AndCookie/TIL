@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function() {
+            $("ul")
+                .find(".foo")
+                    .css("background-color", "rgb(246, 192, 255)") // 처리한 jQuery 객체가 반환되므로
+                    .css("color", "cyan") // 자기 자신에게 파란색이 적용됨
+                .end() // .end() 생략 후 .find(".bar") 사용시 원하는대로 적용 불가
+                .find(".bar")
+                    .css("background-color", "rgb(192, 243, 255)");
+
+        });
+    </script>
+</head>
+<body>
+    <ul class="first">
+        <li class="foo">list item 1</li>
+        <li>list item 2</li>
+        <li class="bar">list item 3</li>
+    </ul>
+    <ul class="second">
+        <li class="foo">list item 1</li>
+        <li>list item 2</li>
+        <li class="bar">list item 3</li>
+    </ul>
+    
+</body>
+</html>

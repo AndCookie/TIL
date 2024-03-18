@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트-->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        // 돔에 접근하는 방식
+        
+        // 1) JS : getElements- 함수 사용
+        // window.onload = function() {
+        //     document.getElementsByTagName("li")[1].style.backgroundColor='red';
+        // };
+
+        // 2) JS : css 선택자 사용
+        window.onload = function() {
+            document.querySelectorAll("li")[1].style.backgroundColor = 'yellow';
+        }
+
+        // 3) JQuery : css 선택자 사용
+        // $(function(){
+        //     $('li:nth-child(2)').css('background-color', 'blue');
+        //     // 선택 : $('') =====> 선택자의 종류가 다양
+        //     // 적용 : .css('')
+        // });
+    </script>
+</head>
+<body>
+    <h2>Javascript로 DOM에 접근하여 jQuery 처리하기</h2>
+    <p>첫 번째 문장</p>
+    <div id="main">
+        <p>두 번째 문장</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+
+    
+</body>
+</html>

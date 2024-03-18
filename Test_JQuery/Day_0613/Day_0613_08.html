@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ 간단한 Effect ]</title>
+
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function () {
+            $("#show").on('click', function() {
+                $("img").show(1500, 'easeOutBounce');
+                // show(duration, easing, complete);
+                // duration : 등장 시간 (default 400)
+                // easing   : 등장 효과 (default는 swing) // linear, easeOutBounce, easeinCircle 등..
+                //
+            });
+            $("#hide").on('click', function () {
+                $("img").hide(1500, 'easeOutBounce');
+            });
+            $("#fadein").on('click', function () {
+                $("img").fadeIn(1500, 'easeOutBounce');
+            });
+            $("#fadeout").on('click', function () {
+                $("img").fadeOut(1500, 'easeOutBounce');
+            });
+            $("#slideup").on('click', function () {
+                $("img").slideUp(1500, 'easeOutBounce');
+            });
+            $("#slidedown").on('click', function () {
+                $("img").slideDown(1500, 'easeOutBounce');
+            });
+        })
+        
+    </script>
+</head>
+
+<body>
+    <h2>[ 간단한 Effect ]</h2>
+    <p>
+        <input type="button" id="hide" value="감추기">
+        <input type="button" id="show" value="보이기">
+        <input type="button" id="fadein" value="FadeIn">
+        <input type="button" id="fadeout" value="FadeOut">
+        <input type="button" id="slideup" value="SlideUp">
+        <input type="button" id="slidedown" value="SlideDown">
+    </p>
+    <p>
+        <img src="../images/dog1.png" alt="" widht="200px">
+    </p>
+
+</body>
+
+</html>

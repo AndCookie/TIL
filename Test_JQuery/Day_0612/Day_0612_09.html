@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width:30px
+        }
+    </style>
+    
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function() {
+            $("#btn")
+                .on('click', function() { // jQuery용 on은 JS에서의 addEventListener의 역할을 함
+                    let data = `<div style="color:red">무궁화 꽃이 피었습니다.</div>`;
+                    // $('#result').text(data); // jQuery용 text는 JS에서의 innerText의 역할을 함
+                    // // 문자 그대로 넣어버림
+                    // $('#result').html(data); // jQuery용 html는 JS에서의 innerHTML의 역할을 함
+                    // // 태그로 해석하여 넣어줌
+                });
+
+            // 1) 클릭시 랜덤 이미지
+            $("#btn2")
+                .on('click', fetchImg);
+            
+            // 2) 0.5초마다 랜덤 이미지
+            setInterval(fetchImg, 500);
+
+            // 3) append
+            $("#btn3")
+                .on('click', fetchImg3);
+
+            // 3_1) 복사
+            $("#btn3_1")
+                .on('click', fetchImg3_1);
+
+            // 4) prepend
+            $("#btn4")
+                .on('click', fetchImg4);
+        });
+
+        function fetchImg(){
+            let n = Math.ceil(Math.random() * 7); // 1,2,3,4,5,6,7
+            let filename = `<img src="../images/pic${n}.png" alt="">`;
+            $("#target").html(filename);
+        }
+
+        function fetchImg3() {
+            let n = Math.ceil(Math.random() * 7); // 1,2,3,4,5,6,7
+            let filename = `<img src="../images/pic${n}.png" alt="">`;
+            $("#target3").append(filename);   // 타겟 내부의 앞에 추가
+            $(filename).appendTo("#target3"); // 타겟 내부의 앞에 추가
+        }
+        function fetchImg3_1() {
+            let data = $("#target3").html(); // target3의 모든 요소를 가지고 오기
+            // $("#target3").after(data);  // after : 복사하여 타겟 외부의 뒤에 동등한 자격으로 붙이기
+            $("#target3").before(data);   // before : 복사하여 타겟 외부의 앞에 동등한 자격으로 붙이기
+        }
+
+        function fetchImg4() {
+            let n = Math.ceil(Math.random() * 7); // 1,2,3,4,5,6,7
+            let filename = `<img src="../images/pic${n}.png" alt="">`;
+            $("#target4").prepend(filename); // 타겟 내부의 뒤에 추가
+        }
+
+    </script>
+</head>
+<body>
+    <h2>[ 이벤트 ]</h2>
+    <input type="button" id="btn" value="클릭하시오"><br>
+    <p id="result">여기에 문자열이 들어올 것 -> 클릭시 오버라이트 되어 사리져버릴 텍스트!</p>
+    
+    <input type="button" id="btn2" value="클릭하시오"><br>
+    <p id="target">
+        <img src="../images/pic1.png" alt="">
+    </p>
+
+    <input type="button" id="btn3" value="클릭(append)">
+    <input type="button" id="btn3_1" value="클릭(복사)">
+    <br>
+    <p id="target3">
+        <img src="../images/pic1.png" alt="">
+    </p>
+
+    <input type="button" id="btn4" value="클릭(prepend)"><br>
+    <p id="target4">
+        <img src="../images/pic1.png" alt="">
+    </p>
+</body>
+</html>

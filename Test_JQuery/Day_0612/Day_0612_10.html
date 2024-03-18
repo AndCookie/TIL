@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function() {
+            $("#btn").on('click', function () { // jQuery용 on은 JS에서의 addEventListener의 역할을 함
+                let usrid = $('#usrid').val(); // jQuery용 val은 JS에서의 value의 역할을 함
+                let usrpwd = $('#usrpwd').val();
+                
+                let data = `<p>입력한 아이디 : ${usrid}, 패스워드 : ${usrpwd} </p>`;
+                console.log(data);
+                $("#target").append(data);
+                clear();
+            });
+        });
+
+        function clear() {
+            $('#usrid').val('');
+            $('#usrpwd').val('');
+            $('#usrid').focus();
+            clear();
+        }
+    </script>
+</head>
+<body>
+    <label>
+        아이디 : <input type="text" id="usrid">
+    </label><br>
+    <label>
+        비밀번호 : <input type="password" id="usrpwd">
+    </label><br>
+    <input type="button" id="btn" value="click"><br>
+
+    <p id="target"></p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트-->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        // 1번 방법
+        // jQuery('document').ready(function() { // 문서가 준비되면~
+        //     // 클라이언트에서 서버로 준비가 되면~ => defer같은 역할
+        //     alert('jQuery 실행됨');
+        // });
+
+        // 2번 방법
+        // jQuery(function () { // ('document').ready 생략
+        //     alert('jQuery 실행됨');
+        // });
+
+        // 3번 방법
+        // $('document').ready(function() { // jQuery == $
+        //     alert('jQuery 실행됨');
+        // });
+
+        // 4번 방법
+        $(function () { // jQuery == $
+            alert('jQuery 실행됨-2');
+        });
+    </script>
+</head>
+<body>
+    <h2>jQuery 처리하기</h2>
+    
+</body>
+</html>

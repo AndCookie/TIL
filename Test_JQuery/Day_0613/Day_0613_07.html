@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ attr() / is() / prop()의 비교 ]</title>
+
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function() {
+            $("input").on('change', function() { // 체크를 푼 경우
+                let input = $(this);
+                $("p").html(
+                    ".attr('checked'): <b>" + input.attr('checked') + "</b><br>"
+                    // attr : 속성값을 읽어옴  // 실시간으로 정보 업데이트 불가 (checked)
+                    + ".is(':checked'): <b>" + input.is(':checked') + "</b><br>"
+                    // is : 상태 정보를 읽어옴 // 실시간으로 정보 업데이트 가능 (false/true)
+                    + ".prop('checked'): <b>" + input.prop('checked') + "</b><br>"
+                    // prop : 속성값을 읽어옴 // 실시간으로 정보 업데이트 가능 (false/true)
+                    // property // check가 되어있으면 true, check가 풀리면 false
+                );
+                
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h2>[ attr() / is() / prop()의 비교 ]</h2>
+    <label><input id="check1" type="checkbox" checked>Check Me</label>
+    <p></p>
+</body>
+
+</html>

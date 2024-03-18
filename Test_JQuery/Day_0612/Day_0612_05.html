@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트-->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function() {
+            $('#wrap a[href]').css('border', '3px solid red');
+            // 속성값 // 띄어쓰기 : id=wrap인 것의 후손인 a태그
+            $('#wrap a[href$=net]').css('color', 'orange');
+            // $= : 특정 단어로 끝나는 경우
+            $('#wrap a[href*=google]').css('color', '#f0f');
+            // $= : 특정 단어를 포함하는 경우
+            $('#wrap a[href^=https]').css('color', '#0ff');
+            // ^= : 특정 단어로 시작하는 경우
+
+            $('#member :text').css('background-color', '#ff0');
+            // id가 member인 것의 후손 중에 속성값이 text인 경우
+            $('#member :password').css('background-color', '#f0f');
+            // id가 member인 것의 후손 중에 속성값이 password인 경우
+        });
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <p><a href="http://daum.net">다음</a></p>
+        <p><a href="https://naver.com">네이버</a></p>
+        <p><a href="http://nate.com">네이트</a></p>
+        <p><a href="http://google.com">구글</a></p>
+    </div>
+    <form action="#" id="member">
+        <p>
+            <label for="userid">아이디 : </label>
+            <input type="text" name="userid" id="userid">
+        </p>
+        <p>
+            <label for="userpwd">비밀번호 : </label>
+            <input type="password" name="userpwd" id="userpwd">
+        </p>
+    </form>
+    
+</body>
+</html>

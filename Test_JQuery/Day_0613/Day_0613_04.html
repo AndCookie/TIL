@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ addClass() / removeClass() ]</title>
+    <style>
+        img {
+            padding:5px;
+            background-color: #888;
+        }
+        img.type1 {
+            background-color: rgb(241, 169, 169);
+        }
+        img.type2 {
+            background-color: rgb(247, 215, 156);
+        }
+        img.type3 {
+            background-color: rgb(239, 239, 156);
+        }
+        img.type4 {
+            background-color: rgb(166, 240, 166);
+        }
+        img.type5 {
+            background-color: rgb(158, 194, 252);
+        }
+        img.type6 {
+            background-color: rgb(199, 145, 250);
+        }
+
+    </style>
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function(){
+            $('img').click(function() {
+                let n = Math.ceil(Math.random() * 6);
+                let existClass=$(this).attr('class');
+                $(this).removeClass(existClass).addClass("type"+n);
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <h2>[ addClass() / removeClass() ]</h2>
+    <ul>
+        <li>스타일에 클래스 적용 및 삭제</li>
+        <li>addClass()     : 스타일(클래스) 적용</li>
+        <li>removeClass()  : 스타일(클래스) 삭제</li>
+    </ul>
+
+    <div class="container">
+        <img src="../images/dog1.png" alt="">
+        <img src="../images/dog2.png" alt="">
+        <img src="../images/dog3.png" alt="">
+        <img src="../images/dog4.png" alt="">
+        <img src="../images/dog5.png" alt="">
+        <img src="../images/dog6.png" alt="">
+    </div>
+</body>
+
+</html>

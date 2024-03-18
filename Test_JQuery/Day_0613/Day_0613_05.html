@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ filter() / not() ]</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            margin : 5px;
+            float : left;
+            border : 2px solid tomato;
+        }
+    </style>
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        // 메소드 체이닝
+        $(function(){
+            let lengs = $('div').css("background-color", "lightblue")
+                        .filter(".item").css("border", "3px solid black").end()
+                        .not(".item").css("background-color", "gold");
+                        // css는 처리가 끝난 결과물인 객체를 반환하기 때문
+        });
+    </script>
+</head>
+
+<body>
+    <h2>[ filter() / not() ]</h2>
+    <div></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div></div>
+</body>
+
+</html>

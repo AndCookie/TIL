@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 가입시 유효성 검사</title>
+    <style>
+        table {
+            width: 600px;
+        }
+        td {
+            width: 450px;
+        }
+        span {
+            color:red;
+            font-size:0.5em;
+        }
+    </style>
+    <!-- 순서 : 제이쿼리 스크립트 => 사용자정의 스크립트 -->
+    <script src="../script/jquery-3.7.0.min.js"></script>
+    <script>
+        let sendStatus = false; // true일 때만 데이터가 전송된다고 가정
+        $(function() {
+            check(); // 아이디와 비번 체크
+            $("#send").on('click', function() {
+                let gender = $("input[type=radio]:checked").val(); // 필터 사용
+                let hobby = $("input[type=checkbox]:checked").val(); // 필터 사용
+                let hobbyList= ""; // 비어있는 공백 문자열
+
+                $("input[type=checkbox]:checked").each(function() {
+                    hobbyList += $(this).val();
+                    hobbyList += ' ';
+                });
+                console.log(hobbyList);
+
+                let location = $("select > option:selected").val();
+                console.log(location);
+
+                if (sendStatus) {
+                    alert("데이터 전송 완료");
+                } else {
+                    alert("데이터 전송 실패!");
+                }
+            });
+            
+        });
+        
+        // 아이디 비번체크하는 함수
+        function check() {
+            $("#userid").on('keyup', function(){
+                let userid = $("#userid").val();
+                if (userid.length < 3 || userid.length > 5) {
+                    $("#idCheck").text('아이디는 3~5자 이내로 입력해주세요');
+                    sendStatus = false;
+                } else {
+                    $("#idCheck").text('');
+                    sendStatus = true;
+                } 
+            });
+            $("#userpwd").on('keyup', function () {
+                let userpwd = $("#userpwd").val();
+                if (userpwd.length < 3 || userpwd.length > 5) {
+                    $("#pwdCheck").text('비밀번호는 3~5자 이내로 입력해주세요');
+                    sendStatus = false;
+                } else {
+                    $("#pwdCheck").text('');
+                    sendStatus = true;
+                }
+            });
+            
+        };
+    </script>
+</head>
+
+<body>
+    <h2>[ 회원가입 ]</h2>
+    <form>
+        <table border="1">
+            <tr>
+                <th><label>아이디</label></th>
+                <td>
+                    <input type="text" id="userid" placeholder="아이디는 3~5자">
+                    <span id="idCheck"></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label>비밀번호</label></th>
+                <td>
+                    <input type="password" id="userpwd" placeholder="비밀번호는 3~5자">
+                    <span id="pwdCheck"></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label>성별</label></th>
+                <td>
+                    <input type="radio" name="gender" value="남자" checked>남자 &nbsp;
+                    <input type="radio" name="gender" value="여자">여자
+                </td>
+            </tr>
+            <tr>
+                <th><label>취미</label></th>
+                <td>
+                    <input type="checkbox" name="hobby" value="독서">독서 &nbsp;
+                    <input type="checkbox" name="hobby" value="수영">수영 &nbsp;
+                    <input type="checkbox" name="hobby" value="등산">등산 &nbsp;
+                    <input type="checkbox" name="hobby" value="달리기">달리기 &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th><label>거주지</label></th>
+                <td>
+                    <select name="location">
+                        <option>서울시</option>
+                        <option>경기도</option>
+                        <option>강원도</option>
+                        <option>충청도</option>
+                        <option>경상도</option>
+                        <option>전라도</option>
+                    </select>   
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2"><input type="button" id="send" value="가입하기"></th> 
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
