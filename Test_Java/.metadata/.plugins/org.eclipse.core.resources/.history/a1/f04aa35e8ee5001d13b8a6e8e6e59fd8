@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner keyin = new Scanner(System.in);
+		Point[] p = new Point[100];
+		
+		String choice;
+		double radius = 0;
+		int width, height = 0;
+		
+		while (true) {
+			System.out.println("1. 원 2. 사각형 3. 전체보기 4. 종료 : ");
+			
+			choice = keyin.next();
+			
+			System.out.println("x : ");
+			int x = keyin.nextInt();
+			System.out.println("y : ");
+			int y = keyin.nextInt();
+			
+			double radius = 0;
+			int width, height = 0;
+			
+			switch(choice) {
+			case "1" : arr[i] = new Circle(x,y, radius); calArea(); break;
+			case "2" : arr[i] = new Rectangle(x,y, width, height); calArea(); break;
+			case "3" : print(); break;
+			case "4" : 
+				System.out.println("**프로그램을 종료합니다.");
+				keyin.close();
+				return;
+			default :
+				System.out.println("err> 메뉴를 다시 선택해주세요");
+			}
+		}
+
+	}
+
+	public static double calArea(Point point) {
+		Point p = arr;
+		
+		if (p instanceof Circle) {
+			double result = ((Circle)p).area(); // 쓰려는 시점에서는 다운캐스팅해야한다
+		} else {
+			double result =  ((Rectangle)p).area();
+		}
+		return;
+	}
+
+	public static void print(Point[] point) {
+		System.out.println("1) 원 ");
+		System.out.println("2) 원 ");
+		System.out.println("3) 원 ");
+	}
+
+}

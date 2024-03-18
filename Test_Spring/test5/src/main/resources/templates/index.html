@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>가계부</title>
+<!-- 부트스트랩 -->
+<!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 글꼴1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap"
+    rel="stylesheet">
+<!-- 글꼴2 -->    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+
+<!-- 외부JS -->
+<script defer th:src="@{/script/myscript.js}"></script>
+</head>
+<body>
+	<div class="logo">
+			<a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="로고"></a>
+	</div>
+	<h2>[ 일일 가계부 ]</h2>
+	<div>
+		<!-- 로그인 안한 사람 -->
+		<div sec:authorize="not isAuthenticated()">
+			<p><a th:href="@{/member/signup}">회원가입</a></p>
+			<p><a th:href="@{/member/signin}">로그인</a></p>
+		</div>
+		
+		<!-- 로그인 한 사람 -->
+		<div sec:authorize="isAuthenticated()">
+			<p><a th:href="@{/logout}">로그아웃</a></p>
+			<p><a th:href="@{/cash/cashbook}">가계부</a></p>
+			<p><a th:href="@{/cash/statistics}">연도별 통계</a></p>
+		</div>
+	</div>
+
+</body>
+</html>

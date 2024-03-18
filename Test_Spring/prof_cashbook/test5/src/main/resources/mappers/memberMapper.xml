@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.kdigital.test5.mapper.MemberMapper">
+	<!-- 회원 가입 -->
+	<insert id="insertMember" parameterType="Member">
+	INSERT INTO cashbook_member
+		(memberid
+		, memberpw
+		, membername
+	)
+	VALUES
+		(#{memberid}
+		, #{memberpw}
+		, #{membername}
+	)
+	</insert>	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+
+<!-- mapperXML 파일에서 insert, update, delete 태그는 resultType을 쓰지 않는다!! 사용시 오류 발생!! -->
+<mapper namespace="net.kdigital.test5.mapper.MemberMapper">
+<!-- namespace란에는 연동할 인터페이스의 전체 이름을 기재 (~Mapper.java의 경로)-->
+	
+	<!-- 회원가입 -->
+	<insert id="insertMember" parameterType="Member">
+		INSERT INTO cashbook_member
+			(memberid, memberpw, membername)
+		VALUES
+			(#{memberid}, #{memberpw}, #{membername})
+	</insert>
+	
+	
+</mapper>

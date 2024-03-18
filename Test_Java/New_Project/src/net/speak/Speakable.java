@@ -1,0 +1,9 @@
+package net.speak;
+
+public interface Speakable {
+	public String speak();
+	////////////////////////////////////////////////
+	// abstract 클래스를 상속받은 자식들은 무조건 abstract메소드를 override 해야함
+	///////////////////////////////////////////////
+
+}

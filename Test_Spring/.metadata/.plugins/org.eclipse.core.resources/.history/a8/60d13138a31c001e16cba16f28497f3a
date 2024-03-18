@@ -1,0 +1,14 @@
+document.addEventListener('DOMContentLoaded', function(event) {
+    let waveEffect = document.querySelector('.hi');
+    let text = waveEffect.textContent.trim();
+
+    function animateText(text) {
+        let result = '';
+        for (let i = 0; i < text.length; i++) {
+            result += `<span style="animation-delay: ${i * 0.2}s">${text[i]}</span>`;
+        }
+        waveEffect.innerHTML = result;
+    }
+
+    animateText(text);
+});

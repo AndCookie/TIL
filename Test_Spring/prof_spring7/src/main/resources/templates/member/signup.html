@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
+    <script defer th:src="@{/script/member.js}"></script>
+</head>
+
+<body>
+    <div class="container">
+    <form id="memberForm" th:action="@{/member/signup}" method="POST">
+        <h2>회원가입_회원정보 입력</h2>
+        <div><span class="important">*</span> 표시된 항목은 <span class="important">필수입력</span> 항목입니다.</div>
+        <table border="1">
+                 <tr>
+                <th><span class="important">*</span>아이디</th>
+                <td>
+                    <input type="text" id="memberid" name="memberid">
+                    <input type="button" value="중복확인"><br>
+                    <span>영문소문자, 숫자 3~5자</span>
+                </td>
+            </tr>
+            <tr>
+                <th><span class="important">*</span>비밀번호</th>
+                <td>
+                    <input type="password" id="memberpwd" name="memberpwd"><br>
+                    <span>영문, 숫자, 특수문자 중 2가지 이상 혼합하여 3~5자로 입력하세요.<br>
+                        ※ 특수문자는 "~!@#()_|.만 사용가능합니다.
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th><span class="important">*</span>이름</th>
+                <td><input type="text" id="membername" name="membername"></td>
+            </tr>
+            <tr>
+                <th><span class="important">*</span>이메일</th>
+                <td>
+                    <input type="text" id="m1">@
+                    <input type="text" id="m2" placeholder="직접입력">
+                    <select id="m3">
+                        <optgroup label="선택">
+                            <option>naver.com</option>
+                            <option>gmail.com</option>
+                            <option>daum.net</option>
+                        </optgroup>
+                    </select>
+                    <input type="hidden" name="email" id="email" value="">
+                </td>
+            </tr>            
+            <tr>
+                <th><span class="important">*</span>연락처(휴대전화)</th>
+                <td>
+                    <span>※ 휴대전화번호를 입력하여 주시기 바랍니다.</span><br>
+                    <span>
+                        <select id="p1">
+                            <option>010</option>
+                            <option>017</option>
+                            <option>019</option>
+                        </select>-
+                        <input type="text" id="p2">-<input type="text" id="p3">
+                        <input type="hidden" id="phone" name="phone" value="">
+                    </span><br>
+                </td>
+            </tr>
+
+            <tr>
+                <th><span class="important">*</span>주소</th>
+                <td>
+                    <input type="text" name="address" placeholder="주소 입력" style="width:500px;">
+                </td>
+            </tr>
+        </table>
+        <div class="btns">
+            <input id="submitBtn" type="submit" value="가입하기">
+            <input type="button" value="취소">
+        </div>
+    </form>
+    </div> <!-- end .container -->
+</body>
+
+</html>

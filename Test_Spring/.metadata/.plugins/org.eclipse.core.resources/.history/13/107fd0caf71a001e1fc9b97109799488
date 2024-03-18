@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+div.contents {
+}
+
+div.category {
+	border : 2px solid rgb(154, 180, 254);
+	float:left;
+}
+ul{
+	list-style-type: none;
+	width: 300px;
+	padding:0px;
+	margin : 0px;
+}
+ul > li > a {
+	display : inline-block;
+	width : 300px;
+	height : 70px;
+	background-color:#ECF2FF;
+}
+ul > li> a {
+	width : 300px;
+	padding : 15px 0 15px 20px;
+    align-items: center;
+}
+ul > li.c > a {
+	padding-left : 50px;
+}
+ul > li > a {
+	display : inline-block;
+	text-decoration: none; /* 밑줄 제거 */
+	color : black;
+}
+ul > li > a > img {
+	width : 40px;
+	align-items: center;
+	margin-right : 20px;
+}
+
+
+ul > li > a.c:hover { /* 마우스를 올렸을 때*/
+	background-color:rgb(154, 180, 254);
+}
+
+ul > li > a.c:hover { /* 마우스를 올렸을 때*/
+	color:#ECF2FF;;
+}
+
+ul > li > a:link , ul > li > a:visited { /* 방문 전/후 링크 상태 */
+    text-decoration: none;
+}
+
+ul > li > a:active { /* 클릭했을 때*/
+	font-weight:bolder;
+}
+
+div.carousel {
+	width : 950px;
+	flex-wrap: nowrap;
+	margin-left: 320px;
+}
+
+div.carousel-item > img {
+  height: 630px;
+  width : 950px;
+}

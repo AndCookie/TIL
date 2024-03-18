@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- $달러 표시는 db properties의 값을 읽어내어 그것으로 치환하겠다는 의미 -->
+<configuration>
+	<!-- 접속에 관한 속성 정보파일을 설정 -->
+	<properties resource="db.properties" />
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- Mapper file(=DML =JAVA와 ORACLE을 연결해주는 SQL문)을 include함 -->
+	<mappers>
+		<mapper resource="userMapper.xml" />
+	</mappers>
+</configuration>

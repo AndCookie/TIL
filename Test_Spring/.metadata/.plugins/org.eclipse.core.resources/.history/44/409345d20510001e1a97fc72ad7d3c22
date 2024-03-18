@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+body {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size : 20px;
+}
+
+div.container {
+	float:left;
+	padding:0px 0px;
+}
+
+div.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:0px 150px;
+}
+div.logo, div.search, div.member {
+    display: flex;
+    align-items: center;
+}
+
+div.logo {
+	width:300px;
+}
+div.logo > a > img {
+	width:200px;
+}
+
+div.search {
+	font-size:15px;
+	padding : 50px 10px;
+}
+div.search input[type="text"] {
+    margin-right: 0.5em;
+    width:400px;
+}
+
+div.member > * {
+    margin-left: 0.5em;
+    width:80px;
+    font-size:15px;
+}
+
+div.contents{
+    float: middle;
+    width: 1500px;
+    padding: 20px;
+    margin: 0 300px;
+}
+div.category > ul{
+	list-style-type: none;
+    padding:10px;
+    background-color:#2D3C72;
+    width:200px;
+    color: white;
+    height: 100%;
+}
+div.advertise {
+	width:1200px;
+	padding:10px;
+}
+
+div.category > a:hover, div.menu > a.btn:hover { /* 마우스를 올렸을 때*/
+	background-color: rgba(128, 128, 128, 0.4);
+}
+
+div.category > a:hover > li, div.menu > a.btn:hover > li { /* 마우스를 올렸을 때*/
+	color:#F2A50A;
+}
+
+div.category > a:link > li, div.menu > a:visited > li { /* 방문 전/후 링크 상태 */
+    text-decoration: none;
+}
+
+div.category > a:active > li { /* 클릭했을 때*/
+	font-weight:bolder;
+	color:#F2A50A;
+}
+

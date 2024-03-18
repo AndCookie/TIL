@@ -1,0 +1,25 @@
+
+public class RealEstate {
+	private String address;
+	private String houseType; // 전세월세
+	private int size;
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getHouseType() {
+		return houseType;
+	}
+	public void setHouseType(String houseType) {
+		this.houseType = houseType;
+	}
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+}

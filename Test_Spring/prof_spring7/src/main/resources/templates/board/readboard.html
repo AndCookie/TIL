@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시글 보기</title>
+</head>
+<body>
+<div class="wrapper">
+	<div class="logo">
+		<a th:href="@{/}">
+			<img th:src="@{/images/logo.png}" alt="Logo">
+		</a>
+	</div>
+	<h2> [게시글 보기]</h2>
+	<table border="1">
+		<tr>
+			<th>작성자</th>
+			<td th:text="${board.memberid}">Hong</td>
+		</tr>
+		<tr>
+			<th>글제목</th>
+			<td th:text="${board.title}">글제목</td>
+		</tr>
+		<tr>
+			<th>작성일</th>
+			<td th:text="${board.regdate}">2023-05-23</td>
+		</tr>		
+		<tr>
+			<th>글내용</th>
+			<td style="width:250px;">
+				<pre>[[ ${board.boardtext} ]]</pre>
+			</td>
+		</tr>	
+		<tr>
+			<th>첨부파일</th>
+			<td>
+				<th:block th:if="${board.originalfile != null}">
+					<a th:href="@{/board/download(boardseq=${board.boardseq})}" th:text="${board.originalfile}"> 첨부파일명</a>
+					<a th:href="@{/board/deleteFile(boardseq=${board.boardseq})}">
+						<img th:src="@{/images/trash.png}" width="15px;">
+					</a>
+				</th:block>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<a th:href="@{/board/updateboard(boardseq=${board.boardseq})}">글 수정</a>
+				<a th:href="@{/board/deleteboard(boardseq=${board.boardseq})}">글 삭제</a>
+				<a th:href="@{/board/listboard}" >목 록</a>
+			</th>
+		</tr>
+	</table>
+</div><!-- end .wrapper -->
+</body>
+</html>
+

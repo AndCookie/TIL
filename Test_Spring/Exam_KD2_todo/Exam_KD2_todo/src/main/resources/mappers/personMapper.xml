@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="net.kdigital.todolist.mapper.PersonMapper">
+	<!-- 아이디 중복체크 -->
+	
+
+	<!-- 회원가입 -->
+	<insert id="signup" parameterType="Person">
+		INSERT INTO person
+			(todoid, todopwd, todoname)
+		VALUES
+			(#{todoid}, #{todopwd}, #{todoname})
+	</insert>
+	
+	<!-- 회원 조회 / 아이디 체크-->
+	<select id="selectMember" parameterType="map" resultType="Person">
+		SELECT *
+		FROM person
+		WHERE
+			todoid = #{todoid}
+			<if test="todopwd != null">
+				and
+				todopwd = #{todopwd}
+			</if>
+	</select>
+	
+</mapper>

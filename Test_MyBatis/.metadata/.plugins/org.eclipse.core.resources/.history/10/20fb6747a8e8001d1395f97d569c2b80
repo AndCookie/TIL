@@ -1,0 +1,16 @@
+/*
+ * 1) 프로젝트 생성
+ * 2) 디팬던시 추가 : Build Path
+ * 3) 패키지 생성
+ * 	  : 통상적으로 url을 뒤집어서 패키지를 3~4단계로 만듦
+ * 		ex) www.naver.com이라는 url을 뒤집어서 com.naver.news.vo로 생성
+ * 		 -> net.kdigital.fitness.vo
+ * 		 -> net.kdigital.fitness.service
+ * 		 -> net.kdigital.fitness.main
+ * 		 -> net.kdigital.fitness.ui
+ * 		 -> net.kdigital.fitness.dao : 여기에 ConnectionManager 넣을 예정
+ * 4) 
+ */
+public class instruction {
+
+}

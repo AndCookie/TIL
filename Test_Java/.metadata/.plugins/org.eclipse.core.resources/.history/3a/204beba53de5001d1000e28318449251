@@ -1,0 +1,7 @@
+
+public class RealEstate {
+	private String address;
+	private String houseType; // 전세월세
+	private int size;
+
+}

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+/* 광고 */
+div.carousel {
+	border : 2px solid rgb(154, 180, 254);
+	border-left : none;
+	width : 970px;
+	flex-wrap: nowrap;
+	margin-left: 304px;
+}
+
+div.carousel-item > img {
+  height: 630px;
+  width : 970px;
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- 반드시 완성된 코드를 넣어야 함 -->
+<!-- namespace란에는 연동할 인터페이스의 전체 이름을 기재 --> 
+<!-- PLACE HOLDER : ? 대신 # 사용 + getUserid() 대신 {userid} 사용-->
+<!-- id는 FitnessMapper.java를 참고해서 적기 -->
+<!-- mapperXML 파일에서 insert, update, delete 태그는 resultType을 쓰지 않는다!! 사용시 오류 발생!! -->
+<mapper namespace="net.kdigital.fitness.dao.FitnessMapper">
+
+	<insert id = "insert" parameterType = "Fitness">
+	INSERT INTO fitness
+	(seqno, userid, username, height, weight)
+	VALUES
+	(fitness_seq.NEXTVAL, #{id}, #{name}, #{height}, #{weight})
+	</insert>
+
+	<select id = "selectOne" parameterType = "String" resultType="Fitness">
+	SELECT userid as id, username as name, height
+	FROM fitness
+	WHERE userid = #{id}
+	</select>
+	
+	<update id= "update" parameterType="Fitness">
+	UPDATE fitness
+	SET
+		height = #{height},
+		weight = #{weight}
+	WHERE userid = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+	DELETE fitness
+	WHERE userid = #{id}
+	</delete>
+	
+	<select id="selectAll" resultType="Fitness">
+	SELECT
+		userid as id,
+		username as name,
+		height,
+		weight
+	FROM fitness
+	ORDER BY username
+	</select>
+
+</mapper>

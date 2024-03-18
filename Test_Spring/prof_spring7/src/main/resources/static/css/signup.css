@@ -1,0 +1,52 @@
+div.container {
+    width: 900px;
+    margin: 0 auto;
+}
+
+div.container h2+div {
+    margin-bottom: 20px;
+}
+
+div.container h2 {
+    text-align: center;
+}
+
+span.important {
+    color: red;
+    font-weight: bold;
+}
+
+table {
+    width: 900px;
+}
+
+table,
+th,
+td {
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #eee;
+    text-align: left;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+}
+
+hr {
+    border: 1px solid lightgray;
+}
+
+b {
+    display: inline-block;
+    width: 150px;
+}
+
+div.btns {
+    padding-top: 15px;
+    text-align: center;
+}

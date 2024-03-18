@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>게시글</title>
+
+<!-- 글꼴1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap"
+    rel="stylesheet">
+<!-- 글꼴2 -->    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+
+<!-- 외부JS -->
+<script defer th:src="@{/script/myscript.js}"></script>
+
+<style>
+a{
+	text-decoration:none;
+}
+a:hover {font-weight: bolder; color:green;}
+
+</style>
+<script>
+function pageFormSubmit(currentPage) {
+		let form = document.getElementById("pagingForm"); // 46~55줄
+		let page = document.getElementById("currentPage"); // 47줄
+		page.value = currentPage; // value 값에 currentPage 보내기
+		
+		form.submit(); //데이터 날아가유~
+}
+
+</script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="logo">
+			<a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="로고"></a>
+		</div>
+		
+		<h2>[ 게시글 ]</h2>
+		<p>게시글 개수 : [[ ${totalRecordCount} ]]</p>
+		
+		<!-- 검색창 -->
+		<!-- localhost:8883/spring7/board/listboard?searchItem=title&searchWord=글 -->
+		<div class="search">
+			<form th:action="@{/board/listboard}" method="GET" id="pagingForm">
+				<input type="hidden" name="currentPage" id="currentPage" value="">
+					<select name="searchItem">
+						<option value="memberid" th:selected="${searchItem == 'memberid'}">글쓴이</option>
+						<option value="title" th:selected="${searchItem == 'title'}">제목</option>
+						<option value="boardtext" th:selected="${searchItem == 'boardtext'}">내용</option>
+					</select>
+				<input type="text" name="searchWord" th:value="${searchWord}">
+				<input type="submit" value="검색">
+			</form>
+		</div> <!-- end .search -->
+		
+		
+		<!-- 게시글 목록 -->
+		<div class="content">
+			<table border="1">
+				<tr>
+					<th>구분번호</th>
+					<th style="width:300px;">제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+					<th>작성일</th>
+				</tr>
+				<tr th:each="board, status : ${listboard}">
+					<td th:text="${status.index} + ${navi.startRecord}">1</td>
+					<!-- status.count는 1부터, status.index는 0부터 -->
+					<td>
+						<a th:href="@{/board/readboard(boardseq=${board.boardseq})}">[[ ${board.title} ]]</a>
+						<span th:if="${board.savedfile}!=null"><img th:src="@{/images/clip.png}"  width="12px;"></span>
+					</td>
+					<td th:text="${board.memberid}">Hong</td>
+					<td th:text="${board.hitcount}">0</td>
+					<td th:text="${board.regdate}">2023-05-30</td>
+				</tr>
+			</table>
+		</div> <!-- end .content -->
+		
+		
+		<!-- 글쓰기 버튼 -->
+		<div class="write" sec:authorize="isAuthenticated()" >
+			<a th:href="@{/board/writeboard}">글쓰기</a>
+		</div> <!-- end .wirte -->
+		
+		
+		<!-- 페이지 Navigation -->
+		<nav> <!-- navigation 역할을 하는 div 태그 -->
+		
+			<!-- 앞 그룹 -->
+			<th:block th:if="${(navi.startPageGroup)>=2}">
+				<a th:href="|javascript:pageFormSubmit(${navi.startPageGroup - navi.pagePerGroup})|" class="navi">&laquo;</a>
+			</th:block>
+			<th:block th:unless="${(navi.startPageGroup)>=2}">
+				<span class="navi">&laquo;</span>
+			</th:block>
+			
+			<!-- 앞 페이지 -->
+			<th:block th:if="${(navi.currentPage)>=2}">
+				<a th:href="|javascript:pageFormSubmit(${navi.currentPage -1})|" class="navi">&lsaquo;</a>
+			</th:block>
+			<th:block th:unless="${(navi.currentPage)>=2}">
+				<span class="navi">&lsaquo;</span>
+			</th:block>
+			
+			<!-- 페이지 번호 출력 -->
+			<!-- number.sequence(시작값, 끝값) : 일련번호 생성기 -->
+			<!-- ||를 쓰면 th가 $를 인식하면서도 javascript도 인식할 수 있도록 함 -->
+			<span th:each="count : ${#numbers.sequence(navi.startPageGroup, navi.endPageGroup)}">
+				<!-- 태그를 화면에 출력하고 싶지 않을 때 사용 -->
+				<th:block th:if="${count == navi.currentPage}">
+					<b th:text="${count}" style="color:red; font-size:1.2em;"></b>
+				</th:block>
+				
+				<th:block th:unless="${count == navi.currentPage}">
+				<a th:href="|javascript:pageFormSubmit(${count})|" th:text="${count}"></a>
+				</th:block>
+			</span>
+			
+			<!-- 뒤 페이지 -->
+	       <th:block th:if="${(navi.currentPage) < navi.totalPageCount}">
+	          <a th:href="|javascript:pageFormSubmit(${navi.currentPage+1})|" class="navi">&rsaquo;</a>       
+	       </th:block>
+	       
+	       <th:block th:unless="${(navi.currentPage < navi.totalPageCount)}">
+	          <span class="navi">&rsaquo;</span>
+	       </th:block>
+	       
+	       <!-- 뒷 그룹 -->
+	       <th:block th:if="${(navi.currentGroup < navi.totalGroupCount-1)}">
+	         <a th:href="|javascript:pageFormSubmit(${navi.endPageGroup + 1})|" class="navi">&raquo;</a>                 
+	      </th:block>
+	      
+	      <th:block th:unless="${(navi.currentGroup < navi.totalGroupCount-1)}">
+	          <span class="navi">&raquo;</span>
+	       </th:block>
+
+		</nav> <!-- end .navigation -->
+		
+	
+	</div> <!-- end .wapper -->
+</body>
+</html>

@@ -1,0 +1,8 @@
+package net.kdigital.spring3.domain;
+
+public class Member {
+	private String userid;
+	private String userpwd;
+	private String username;
+	private String gender;
+}

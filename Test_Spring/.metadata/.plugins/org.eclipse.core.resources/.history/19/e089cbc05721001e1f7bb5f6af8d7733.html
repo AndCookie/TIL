@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PENDING INQUIRY</title>
+</head>
+
+<body>
+   <div class="container">
+      <form id="pendingInqForm" th:action="@{/admin/admininq}" method="GET">
+         <table border="1">
+
+            <tr>
+               <th>inq_id</th>
+               <th>snd_id</th>
+               <th>rcv_id</th>
+               <th>input_date</th>
+               <th>product_id</th>
+               <th>message</th>
+               <th colspan="2">option</th>
+            </tr>
+
+            <tr>
+               <td>SAMPLE inq_id</td>
+               <td>SAMPLE snd_id</td>
+               <td>SAMPLE rcv_id</td>
+               <td>SAMPLE input_date</td>
+               <td>SAMPLE product_id</td>
+               <td>SAMPLE message</td>
+               <td><button type="button" id="deleteBtn">BLOCK</button></td>
+               <td><button type="button">ACCEPT</button></td>
+            </tr>
+            
+            <tr th:each="inquiry: ${pendingInq}">
+               <td th:text="${inquiry.inq_id}"></td>
+               <td th:text="${inquiry.snd_id}"></td>
+               <td th:text="${inquiry.rcv_id}"></td>
+               <td th:text="${inquiry.input_date}"></td>
+               <td th:text="${inquiry.product_id}"></td>
+               <td th:text="${inquiry.message}"></td>
+               <td>
+               <a class="btn btn-danger" th:href="@{/admin/inquiry/deleteinq(inq_id=${inquiry.inq_id})}">DELETE</a>
+               </td>
+               <td>
+               <a class="btn btn-primary" th:href="@{/admin/inquiry/updateinq(inq_id=${inquiry.inq_id})}">ACCEPT</a>
+               </td>
+            </tr>
+         </table>
+      </form>
+   </div>
+</body>
+
+</html>

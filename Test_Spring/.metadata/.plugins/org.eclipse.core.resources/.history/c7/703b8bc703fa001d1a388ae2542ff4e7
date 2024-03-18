@@ -1,0 +1,13 @@
+package net.kdigital.spring4.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+@RequestMapping("/display")
+public class ThymeleafOperController {
+	
+	@GetMapping("/operate")
+	public String Operate() {
+		return "operate";
+	}
+}

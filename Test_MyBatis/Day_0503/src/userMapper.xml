@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- 반드시 완성된 코드를 넣어야 함 -->
+<!-- namespace란에는 연동할 인터페이스의 전체 이름을 기재 --> 
+<!-- PLACE HOLDER : ? 대신 # 사용 및 getUserid() 대신 {userid} 사용-->
+<mapper namespace="dao.UserDAO">
+	<insert id = "insertUser" parameterType="vo.User">
+		INSERT INTO userinfo
+		(USERID, USERNAME, GENDER, PHONE, BIRTHDAY)
+		VALUES
+		(#{userid}, #{username}, #{gender}, #{phone}, #{birthday})
+	</insert>
+	
+	<!-- 한 명의 회원정보 조회 -->
+	<!--  (setBirthday를 찾기위해서는 AS 필수!!!) -->
+	<select id = "selectOne" parameterType="string" resultType="vo.User">
+		SELECT
+ 	    	USERID, USERNAME, GENDER, PHONE,
+  	    	to_char(BIRTHDAY, 'YYYY-MM-DD') AS BIRTHDAY
+ 		 FROM userinfo
+  		 WHERE userid = #{userid}
+	</select>
+	
+	<!-- 전체 회원정보 조회 -->
+	<!-- List 안의 generic한 타입을 명시해주면 알아서 list에 담아줌-->
+    <select id = "selectAll" resultType="vo.User">
+		SELECT
+ 	    	USERID, USERNAME, GENDER, PHONE,
+  	    	to_char(BIRTHDAY, 'YYYY-MM-DD') AS BIRTHDAY
+ 		 FROM userinfo
+  		 ORDER BY username
+	</select>
+</mapper>

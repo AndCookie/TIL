@@ -1,0 +1,22 @@
+package net.kdigital.spring4.controller;
+
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/display")
+public class ThymeleafOperController {
+	
+	@GetMapping("/operate")
+	public String Operate(Model model) {
+		int num = 25;
+	      
+	    model.addAttribute("num", num);
+		
+		return "operate";
+	}
+}

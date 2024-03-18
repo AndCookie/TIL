@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>객체 처리</title>
+</head>
+<body>
+	<h2>객체 처리(ArrayList)</h2>
+	<ul>
+		<li><span th:text="${list}" ></span></li>
+	</ul>
+	<hr>
+	<ul th:each="item : ${list}">
+		<li>[[ ${item} ]]</li>
+	</ul>
+	<hr>
+	<ul>
+		<li>ArrayList의 크기(1) : <span th:text="${list.size()}"></span></li>
+		<!-- #이 없는 것들은 일반적인 자바문법을 사용하는 것 -->
+		<li>ArrayList의 크기(2) : <span th:text="${#lists.size(list)}"></span></li>
+		<!-- #이 붙은 것들은 타임리프에서 제공해주는 기본 객체이며, 전달인자를 필요로 한다 -->
+		<!--  list는 모델에 저장한 이름 -->
+		<li>ArrayList의 isEmpty(1) : <span th:text="${list.isEmpty()}"></span></li>
+		<li>ArrayList의 isEmpty(2) : <span th:text="${#lists.isEmpty(list)}"></span></li>
+		<li>List를 문자열로 join : <span th:text="${#strings.arrayJoin(list, ',')}"></span></li>
+		<li>문자열을 List로 split : <span th:text="${#strings.listSplit(list, ',')}">></span></li>
+		<li>데이터 포함여부 확인 : <span th:text="${#lists.contains(list, '복숭아')}"></span></li>
+	</ul>
+	
+	<hr>
+	<ul>
+		<li>Map containsKey	(1) : <span th:text="${map.containsKey(1)}"></span></li>
+		<li>Map containsKey	(2) : <span th:text="${#maps.containsKey(map, 1)}"></span></li>
+		<li>Map isEmpty    	(1) : <span th:text="${map.isEmpty()}"></span></li>
+		<li>Map isEmpty	    (2) : <span th:text="${#maps.isEmpty(map)}"></span></li>
+		<li>Map의 크기		(1) : <span th:text="${map.size()}"></span></li>
+		<li>Map의 크기		(2) : <span th:text="${#maps.size(map)}"></span></li>
+		
+	</ul>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Thymeleaf 연습</title>
+</head>
+<body>
+	<h2>[ Thymeleaf 연습 ]</h2>
+	<ul>
+		<li><a href="./display/text.html" th:href="@{/display/text}">1. 문자 출력</a></li>
+		<!-- 개발자가 보는 화면과 디자이너가 보는 화면을 분리해서 보여준다
+		1. href="~.html"은 디자이너 쪽에서 해석
+			- 구동시킨 후 페이지 소스 확인하면 context path인 /spring4가 자동으로 붙음
+			- 따라서 마지막에 배포시 application.properties에서 context-path 삭제하기
+		2. th:href="@{}"은 spring에서 해석 (랜더링)
+			- ThymeleafController에서 요청 받아서 처리 예정
+		Thymeleaf를 쓰면 번역해서 href=뒤의 요청을 볼 수 있게 한다
+		두 번째 줄의 url에서 번역해줄 것 -->
+		<li><a href="./display/operate.html" th:href="@{/display/operate}">2. Thymeleaf의 연산</a></li>
+		<li><a href="./display/condition.html" th:href="@{/display/condition}">3. 조건문 출력</a></li>
+	</ul>
+</body>
+</html>

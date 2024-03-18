@@ -1,0 +1,252 @@
+/**
+ * 
+ */
+var areas = [
+    {
+        name : 'N1',
+        path : [
+            new kakao.maps.LatLng(35.07641667, 129.0333333),
+            new kakao.maps.LatLng(35.07641667, 129.0393056),
+            new kakao.maps.LatLng(35.06713889, 129.0530833),
+            new kakao.maps.LatLng(35.06713889, 129.0344167)
+        ]
+    }, {
+        name : 'N2',
+        path : [
+            new kakao.maps.LatLng(35.07644444, 129.0265278),
+            new kakao.maps.LatLng(35.07644444, 129.0315),
+            new kakao.maps.LatLng(35.053, 129.0312222),
+            new kakao.maps.LatLng(35.05294444, 129.0172778),
+            new kakao.maps.LatLng(35.06147222, 129.0249167),
+            new kakao.maps.LatLng(35.07413889, 129.0249167)
+        ]
+    }, {
+        name : 'N3',
+        path : [
+            new kakao.maps.LatLng(35.06713889, 129.0344167),
+            new kakao.maps.LatLng(35.06713889, 129.0530833),
+            new kakao.maps.LatLng(35.04886111, 129.0800556),
+            new kakao.maps.LatLng(35.04430556, 129.0370833)
+        ]
+    }, {
+        name : 'N4',
+        path : [
+            new kakao.maps.LatLng(35.04430556, 129.0370833),
+            new kakao.maps.LatLng(35.04886111, 129.0800556),
+            new kakao.maps.LatLng(35.036, 129.0899167),
+            new kakao.maps.LatLng(35.02686111, 129.0439167)
+        ]
+    }, {
+        name : 'N5',
+        path : [
+            new kakao.maps.LatLng(35.02686111, 129.0439167),
+            new kakao.maps.LatLng(35.036, 129.0899167),
+            new kakao.maps.LatLng(35.00313889, 129.0800278),
+            new kakao.maps.LatLng(35.00319444, 129.0439167)
+        ]
+    }
+];
+
+var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+var options = { //지도를 생성할 때 필요한 기본 옵션
+   center: new kakao.maps.LatLng(35.05711091368096, 129.05473104849895), //지도의 중심좌표.
+   level: 8 //지도의 레벨(확대, 축소 정도)
+};
+
+//지도 생성 및 객체 리턴
+var map = new kakao.maps.Map(container, options),
+   customOverlay = new kakao.maps.CustomOverlay({}),
+   infowindow = new kakao.maps.InfoWindow({removable: true}); 
+
+// 줌 컨트롤 생성
+var zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+// 폴리곤 표시
+var n1 = new kakao.maps.Polygon({
+    map: map,
+    path: areas[0].path,
+    strokeWeight: 2,
+    strokeColor: '#004c80',
+    strokeOpacity: 0.8,
+    fillColor: '#fff',
+    fillOpacity: 0.7 
+});
+
+var n2 = new kakao.maps.Polygon({
+    map: map,
+    path: areas[1].path,
+    strokeWeight: 2,
+    strokeColor: '#004c80',
+    strokeOpacity: 0.8,
+    fillColor: '#fff',
+    fillOpacity: 0.7 
+});
+
+var n3 = new kakao.maps.Polygon({
+    map: map,
+    path: areas[2].path,
+    strokeWeight: 2,
+    strokeColor: '#004c80',
+    strokeOpacity: 0.8,
+    fillColor: '#fff',
+    fillOpacity: 0.7 
+});
+
+var n4 = new kakao.maps.Polygon({
+    map: map,
+    path: areas[3].path,
+    strokeWeight: 2,
+    strokeColor: '#004c80',
+    strokeOpacity: 0.8,
+    fillColor: '#fff',
+    fillOpacity: 0.7 
+});
+
+var n5 = new kakao.maps.Polygon({
+    map: map,
+    path: areas[4].path,
+    strokeWeight: 2,
+    strokeColor: '#004c80',
+    strokeOpacity: 0.8,
+    fillColor: '#fff',
+    fillOpacity: 0.7 
+});
+
+//이벤트 등록
+kakao.maps.event.addListener(n1, 'click', function(mouseEvent) {
+   n1.setOptions({fillColor: '#09f'});
+   n2.setOptions({fillColor: '#fff'});
+   n3.setOptions({fillColor: '#fff'});
+   n4.setOptions({fillColor: '#fff'});
+   n5.setOptions({fillColor: '#fff'});
+   
+    var content = '<div class="info">' + 
+                '   <div class="title">' + areas[0].name + '</div>' +
+                '   <div class="size">총 면적 : 약 ' + Math.floor(n1.getArea()) + ' m<sup>2</sup></div>' +
+                '</div>';
+
+    infowindow.setContent(content); 
+    infowindow.setPosition(mouseEvent.latLng); 
+    infowindow.setMap(map);
+});
+
+kakao.maps.event.addListener(n2, 'click', function(mouseEvent) {
+   n1.setOptions({fillColor: '#fff'});
+   n2.setOptions({fillColor: '#09f'});
+   n3.setOptions({fillColor: '#fff'});
+   n4.setOptions({fillColor: '#fff'});
+   n5.setOptions({fillColor: '#fff'});
+   
+    var content = '<div class="info">' + 
+                '   <div class="title">' + areas[1].name + '</div>' +
+                '   <div class="size">총 면적 : 약 ' + Math.floor(n2.getArea()) + ' m<sup>2</sup></div>' +
+                '</div>';
+
+    infowindow.setContent(content); 
+    infowindow.setPosition(mouseEvent.latLng); 
+    infowindow.setMap(map);
+});
+
+kakao.maps.event.addListener(n3, 'click', function(mouseEvent) {
+   n1.setOptions({fillColor: '#fff'});
+   n2.setOptions({fillColor: '#fff'});
+   n3.setOptions({fillColor: '#09f'});
+   n4.setOptions({fillColor: '#fff'});
+   n5.setOptions({fillColor: '#fff'});
+    
+    var content = '<div class="info">' + 
+                '   <div class="title">' + areas[2].name + '</div>' +
+                '   <div class="size">총 면적 : 약 ' + Math.floor(n3.getArea()) + ' m<sup>2</sup></div>' +
+                '</div>';
+
+    infowindow.setContent(content); 
+    infowindow.setPosition(mouseEvent.latLng); 
+    infowindow.setMap(map);
+});
+
+kakao.maps.event.addListener(n4, 'click', function(mouseEvent) {
+   n1.setOptions({fillColor: '#fff'});
+   n2.setOptions({fillColor: '#fff'});
+   n3.setOptions({fillColor: '#fff'});
+   n4.setOptions({fillColor: '#09f'});
+   n5.setOptions({fillColor: '#fff'});
+   
+    var content = '<div class="info">' + 
+                '   <div class="title">' + areas[3].name + '</div>' +
+                '   <div class="size">총 면적 : 약 ' + Math.floor(n4.getArea()) + ' m<sup>2</sup></div>' +
+                '</div>';
+
+    infowindow.setContent(content); 
+    infowindow.setPosition(mouseEvent.latLng); 
+    infowindow.setMap(map);
+});
+
+kakao.maps.event.addListener(n5, 'click', function(mouseEvent) {
+   n1.setOptions({fillColor: '#fff'});
+   n2.setOptions({fillColor: '#fff'});
+   n3.setOptions({fillColor: '#fff'});
+   n4.setOptions({fillColor: '#fff'});
+   n5.setOptions({fillColor: '#09f'});
+   
+    var content = '<div class="info">' + 
+                '   <div class="title">' + areas[4].name + '</div>' +
+                '   <div class="size">총 면적 : 약 ' + Math.floor(n5.getArea()) + ' m<sup>2</sup></div>' +
+                '</div>';
+
+    infowindow.setContent(content); 
+    infowindow.setPosition(mouseEvent.latLng); 
+    infowindow.setMap(map);
+});            
+
+// 지도 범위 재설정
+var points = [
+    new kakao.maps.LatLng(35.1, 129.09),
+    new kakao.maps.LatLng(35.1, 129.02),
+    new kakao.maps.LatLng(35.0145, 129.09),
+    new kakao.maps.LatLng(35.0145, 129.02),
+    
+];
+
+var bounds = new kakao.maps.LatLngBounds();
+
+var i, marker;
+for (i = 0; i < points.length; i++) {
+
+    bounds.extend(points[i]);
+}
+
+
+// 영역 초기화 함수
+function setBounds() {
+    map.setBounds(bounds);
+}
+
+var imageSrc = '../images/ship.png', // 마커이미지의 주소입니다    
+    imageSize = new kakao.maps.Size(32, 32), // 마커이미지의 크기입니다
+    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+      
+// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+    markerPosition = new kakao.maps.LatLng(35.0044, 128.9983); // 마커가 표시될 위치입니다
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition, 
+    image: markerImage // 마커이미지 설정 
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+// marker.setMap(map);
+
+//----------------------
+
+// 마커 이미지 URL
+var markerImageUrl = '../images/ship.png';
+
+// 커스텀 오버레이 생성
+var markerOverlay = new kakao.maps.CustomOverlay({
+  position: new kakao.maps.LatLng(35.0044, 128.9983),
+  content: '<div class="blinking-overlay"><img src="' + markerImageUrl + '" style="width: 50px; height: 50px;"></div>',
+  map: map
+});

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 학생 성적 처리 SQL -->
+<mapper namespace="net.kd.school.dao.ScoreMapper">
+
+	<!-- 학생 정보 저장 -->
+	<insert id = "insertStudent" parameterType = "StudentVO">
+	INSERT INTO school_student
+	(stnum, stclass, stname)
+	VALUES
+	(#{stnum}, #{stclass}, #{stname})
+	</insert>
+	
+	<!-- 학생 성적 저장 -->
+	<insert id = "scoreInsert" parameterType = "ScoreVO">
+	INSERT INTO school_score
+	(stnum, java, sql, spring)
+	VALUES
+	(#{stnum}, #{java}, #{sql}, #{spring})
+	</insert>
+	
+	<!-- 전체 학생 목록 조회 -->
+	<select id="selectAll" resultType="StudentVO">
+	SELECT stnum, stclass, stname
+	FROM school_student
+	ORDER BY username
+	</select>
+	
+	<!-- 1명의 학생 정보 조회 -->
+	<select id = "findByNum" parameterType = "String" resultType="StudentVO">
+	SELECT stnum, stclass, stname
+	FROM school_student
+	WHERE stnum = #{stnum}
+	</select>
+	
+	<!-- 학생 정보 삭제 --> 	
+	<delete id="deleteStudent" parameterType="String">
+	DELETE school_student
+	WHERE stnum = #{stnum}
+	</delete>
+	
+	<!-- 전체 학생 성적 조회 -->
+	<select id="scoreList" resultType="Total">
+	SELECT *
+	FROM school_student st JOIN school_score sc
+	USING (stnum)
+	ORDER BY 1
+	</select>
+
+</mapper>

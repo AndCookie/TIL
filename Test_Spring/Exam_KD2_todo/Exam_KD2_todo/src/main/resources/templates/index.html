@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div.container {
+		width:800px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	ul, li {
+		list-style-type : none;
+		margin : 0px;
+		padding : 5px;
+	}
+</style>
+</head>
+<body>
+<div class="container">
+	<h2>[ TodoList ]</h2>
+		
+	<ul>
+		<!-- 로그인 안한 사람 -->
+		<li sec:authorize="not isAuthenticated()">
+			<a th:href="@{/person/signup}">회원가입</a>
+		</li>
+		<li sec:authorize="not isAuthenticated()">
+			<a th:href="@{/person/signin}">로그인</a>
+		</li>
+		
+		<!-- 로그인 한 사람 -->
+		<li sec:authorize="isAuthenticated()">
+			[[${#authentication.name}]]님, <a th:href="@{/person/signout}">로그아웃</a>
+		</li>
+		<li sec:authorize="isAuthenticated()">
+			<a th:href="@{/todo/todolist}">TodoList</a>
+		</li>
+	</ul>
+	</div>
+</body>
+</html>

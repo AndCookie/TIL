@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- mapperXML 파일에서 insert, update, delete 태그는 resultType을 쓰지 않는다!! 사용시 오류 발생!! -->
+<mapper namespace="net.kdigital.test3.mapper.GuestbookMapper">
+<!-- namespace란에는 연동할 인터페이스의 전체 이름을 기재 -->
+	<insert id="insertGuestbook"  >
+	<!-- id에는 mapper쪽의 메소드 이름  // parameterType에는 반환 타입 -->
+		INSERT INTO guestbook
+			(seq, usrname, usrpwd, text)
+		VALUES
+			(guestbook_seq.nextval, #{usrname}, #{usrpwd}, #{text})
+		<!-- ? 대신 # 사용 + getUserid() 대신 {userid} 사용 -->
+	</insert>
+	
+	<select id="selectAll" resultType="Guestbook">
+	<!-- resultType에는 list가 아닌 guestbook (generic type)이 와야함! -->
+		SELECT
+			seq
+			, usrname
+			, text
+			, to_char(regdate, 'YYYY-MM-DD') as regdate
+			<!-- to_char을 하게 되면 메소드명이 그 자체가 되므로 as regdate 필수!! -->
+		FROM guestbook
+		ORDER BY regdate DESC
+	</select>
+	
+	<delete id="deleteGuestbook" parameterType="map">
+		DELETE guestbook
+		WHERE
+			seq = #{seq}
+		AND
+			usrpwd =#{usrpwd}
+	</delete>
+</mapper>

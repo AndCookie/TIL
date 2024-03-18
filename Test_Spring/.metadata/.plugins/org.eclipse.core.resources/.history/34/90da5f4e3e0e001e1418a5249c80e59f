@@ -1,0 +1,71 @@
+package net.kdigital.hackathon.controller;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
+import lombok.extern.slf4j.Slf4j;
+import net.kdigital.hackathon.service.DragService;
+
+@Controller
+@RequestMapping("/drag")
+@Slf4j
+public class DragController {
+	@Autowired
+	DragService dragService;
+	
+	
+	@GetMapping("/drag")
+    public String drag(Model model) throws JsonMappingException, JsonProcessingException {
+		LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter nowFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        int minute = currentTime.getMinute();
+        
+        LocalDateTime timeStamp1, timeStamp2, timeStamp3, timeStamp4, timeStamp5;
+
+        // 30분 이전인 경우
+        if (minute < 30) {
+           timeStamp1 = currentTime.withMinute(0); // 분을 00으로 설정
+           timeStamp2 = currentTime.withMinute(30); // 분을 30으로 설정
+           timeStamp3 = currentTime.plusHours(1).withMinute(0); // 다음 시각의 00분으로 설정
+           timeStamp4 = currentTime.plusHours(1).withMinute(30); // 다음 시각의 30분으로 설정
+           timeStamp5 = currentTime.plusHours(2).withMinute(00); // 그 다음 시각의 00분으로 설정
+        }
+       
+        // 30분 이후인 경우
+        else {
+           timeStamp1 = currentTime.withMinute(30); // 분을 30으로 설정
+           timeStamp2 = currentTime.plusHours(1).withMinute(0); // 다음 시각의 00분으로 설정
+           timeStamp3 = currentTime.plusHours(1).withMinute(30); // 다음 시각의 30분으로 설정
+           timeStamp4 = currentTime.plusHours(2).withMinute(00); // 그 다음 시각의 00분으로 설정
+           timeStamp5 = currentTime.plusHours(2).withMinute(30); // 그 다음 시각의 30분으로 설정
+        }
+
+        String now = currentTime.format(nowFormatter);
+        
+        String formattedTimeStamp1 = timeStamp1.format(timeFormatter);
+        String formattedTimeStamp2 = timeStamp2.format(timeFormatter);
+        String formattedTimeStamp3 = timeStamp3.format(timeFormatter);
+        String formattedTimeStamp4 = timeStamp4.format(timeFormatter);
+        String formattedTimeStamp5 = timeStamp5.format(timeFormatter);
+        
+        model.addAttribute("now", now);
+        model.addAttribute("timeStamp1", formattedTimeStamp1);
+        model.addAttribute("timeStamp2", formattedTimeStamp2);
+        model.addAttribute("timeStamp3", formattedTimeStamp3);
+        model.addAttribute("timeStamp4", formattedTimeStamp4);
+        model.addAttribute("timeStamp5", formattedTimeStamp5);
+        
+        return "/drag/"
+	}
+}

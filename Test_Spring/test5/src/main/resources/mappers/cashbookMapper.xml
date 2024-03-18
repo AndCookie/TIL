@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+
+<!-- mapperXML 파일에서 insert, update, delete 태그는 resultType을 쓰지 않는다!! 사용시 오류 발생!! -->
+<mapper namespace="net.kdigital.test5.mapper.CashbookMapper">
+<!-- namespace란에는 연동할 인터페이스의 전체 이름을 기재 (~Mapper.java의 경로)-->
+	
+	<!-- 가계부 등록 -->
+	<insert id="insertCash" parameterType="Cashbook">
+	INSERT INTO cashbook_info
+		(infonum, memberid, type, memo, amount)
+	VALUES
+		(cashbook_seq.NEXTVAL, #{memberid}, #{type}, #{memo}, #{amount})
+	</insert>
+	
+	<!-- 특정 사용자의 가계부 목록 조회 -->
+	<select id="selectAll" parameterType="String" resultType="Cashbook">
+	SELECT
+		infonum, memberid, type, memo, amount, to_char(inputdate, 'YYYY-MM-DD') as inputdate
+	FROM cashbook_info
+	WHERE memberid = #{memberid}
+	</select>
+	
+	<select id="statistics" parameterType="String" resultType="map">
+	SELECT DISTINCT TO_CHAR(inputdate, 'YYYY') AS year,
+	    (SELECT SUM(amount) FROM cashbook_info
+	     	WHERE memberid=#{memberid}
+	     	AND type='지출'
+	     	AND TO_CHAR(inputdate, 'YYYY') = TO_CHAR(tb.inputdate, 'YYYY')) AS outtotal,
+	    (SELECT SUM(amount) FROM cashbook_info
+	    	WHERE memberid=#{memberid}
+	    	AND type='수입'
+	    	AND TO_CHAR(inputdate, 'YYYY') = TO_CHAR(tb.inputdate, 'YYYY')) AS intotal
+	FROM cashbook_info tb
+	where memberid=#{memberid}
+	ORDER BY year
+	</select>
+	
+	
+</mapper>

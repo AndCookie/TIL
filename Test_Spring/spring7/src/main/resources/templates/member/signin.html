@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<!-- 글꼴1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap"
+    rel="stylesheet">
+<!-- 글꼴2 -->    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+<link rel="stylesheet" th:href="@{/style/signup.css}">
+
+<!-- 외부 JS -->
+</head>
+
+<body>
+	<div class="container">
+		<div class="logo">
+				<a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="로고"></a>
+		</div>
+	<form th:action="@{/member/signin}" method="POST">
+    	<h2>로그인</h2>
+
+      	<table border="1">
+	        <tr>
+	            <th><span class="important">*</span>아이디</th>
+	            <td>
+	            	<input type="text" id="memberid" name="memberid">
+	            </td>
+	         </tr>
+	         
+	         <tr>
+	            <th><span class="important">*</span>비밀번호</th>
+	            <td>
+	            	<input type="password" id="memberpwd" name="memberpwd"><br>
+	           	</td>
+	         </tr>
+	        
+   		</table>
+	
+	    <div class="btns">
+	    	<input id="submitBtn" type="submit" value="로그인">
+	     	<input type="button" value="취소">
+	  	</div>
+	  	
+	</form>
+  	</div> <!-- end.container -->
+</body>
+</html>

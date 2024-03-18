@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>[ 친구 목록 ]</h2>
+		<table border="1">
+			<tr>
+				<th>번호</th>
+				<th>이름</th>
+				<th>나이</th>
+				<th>전화번호</th>
+				<th>성향</th>
+			</tr>
+			<tr th:each="l, status : ${list}">
+				<td th:text="${status.count}">번호</td>
+				<td th:text="${l.fname}">이름</td>
+				<td th:text="${l.age}">나이</td>
+				<td th:text="${l.phone}">전화번호</td>
+				<td th:text="${l.active}? '외향적' : '내향적'">성향</td>
+			</tr>
+		</table>
+</body>
+</html>

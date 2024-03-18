@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;myCollcetion.MapTest1&apos; to &apos;MyMap&apos;&#x0D;&#x0A;- Original project: &apos;Day_0418&apos;&#x0D;&#x0A;- Original element: &apos;myCollcetion.MapTest1&apos;&#x0D;&#x0A;- Renamed element: &apos;myCollcetion.MyMap&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MapTest1&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;myCollcetion{MapTest1.java[MapTest1" matchStrategy="1" name="MyMap" qualified="false" references="true" similarDeclarations="false" stamp="1681798750255" textual="false" version="1.0"/>
+</session>

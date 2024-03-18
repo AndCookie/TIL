@@ -1,0 +1,12 @@
+package net.kdigital.spring4.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class ThymeCollectController {
+	@GetMapping("/display/collection")
+	public String collection() {
+		
+	}
+	
+}

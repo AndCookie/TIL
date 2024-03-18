@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.kdigital.test5.mapper.CashbookMapper">
+	<insert id="insertCash" parameterType="Cashbook">
+	INSERT INTO cashbook_info
+		(infonum, memberid, type, memo, amount)
+	VALUES
+		(cashbook_seq.NEXTVAL, #{memberid}, #{type}, #{memo}, #{amount})
+	</insert>
+	
+	<select id="selectAll" parameterType="string" resultType="Cashbook">
+	SELECT 
+		infonum
+		, memberid
+		, type
+		, memo
+		, amount
+		, to_char(inputdate, 'YYYY-MM-DD' ) as inputdate
+	FROM
+		cashbook_info
+	WHERE
+		memberid = #{memberid}
+	</select>
+	
+	<select id="statistics" resultType="map" parameterType="string">
+	SELECT DISTINCT TO_CHAR(inputdate, 'YYYY') as year,
+		(SELECT SUM(amount) FROM cashbook_info  
+		        WHERE memberid =#{memberid} 
+		        AND type='지출' 
+		        AND TO_CHAR(inputdate, 'YYYY') = TO_CHAR(tb.inputdate, 'YYYY')) as outtotal,
+		(SELECT SUM(amount) FROM cashbook_info  
+		        WHERE memberid =#{memberid} 
+		        AND type='수입' 
+		        AND TO_CHAR(inputdate, 'YYYY')  = TO_CHAR(tb.inputdate, 'YYYY')) as intotal
+	FROM cashbook_info tb
+	where memberid = #{memberid}
+	ORDER BY year
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

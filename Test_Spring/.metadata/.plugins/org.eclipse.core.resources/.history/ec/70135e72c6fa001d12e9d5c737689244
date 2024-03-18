@@ -1,0 +1,20 @@
+package net.kdigital.spring4.controller;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class ThymeCollectController {
+	@GetMapping("/display/collection")
+	public String collection(Model model) {
+		List<String> list = Arrays.asList("사과", "배", "오렌지", "딸기");
+		
+		
+		return "collection";
+	}
+	
+}

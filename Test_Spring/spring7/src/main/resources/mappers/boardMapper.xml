@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+
+<!-- mapperXML 파일에서 insert, update, delete 태그는 resultType을 쓰지 않는다!! 사용시 오류 발생!! -->
+<mapper namespace="net.kdigital.spring7.mapper.BoardMapper">
+<!-- namespace란에는 연동할 인터페이스의 전체 이름을 기재 (~Mapper.java의 경로)-->
+	
+	<!-- 글 개수 조회 -->
+	<!-- id에는 메소드 이름  // resultType에는 반환 타입 -->
+	<!-- ${} : 변수라는 의미 // #{} : 값이라는 의미 -->
+	<!-- 다른 방법 ($달러 쓰는 것보다 복잡하지만 더욱 안전) :
+	      <if text= "searchItem" == 'title'">title LIKE '%' || #{searchWord} || '%'</if>
+	      <if text= "searchItem" == 'memberid'">memberid LIKE '%' || #{searchWord} || '%'</if>
+	      <if text= "searchItem" == 'boardtext'">boardtext LIKE '%' || #{searchWord} || '%'</if> -->
+	<select id="getBoardCount" parameterType="map" resultType="int">
+		SELECT COUNT(*)
+		FROM board
+		WHERE
+			${searchItem} LIKE '%' || #{searchWord} || '%'
+	</select>
+	
+	<!--  게시글 등록 -->
+	<insert id="insertBoard" parameterType="Board">
+		INSERT INTO board
+			(boardseq, memberid, title, boardtext
+			<if test="originalfile != null">, originalfile, savedfile</if>)
+			<!-- test=컬럼명 -->
+		VALUES
+			(board_seq.NEXTVAL, #{memberid}, #{title}, #{boardtext}
+			<if test="originalfile != null">, #{originalfile}, #{savedfile}</if>)
+	</insert>
+	
+	<!--  게시글 목록 요청 -->
+	<!-- parameterType : String, String이 아닌 Map으로 받기-->
+	<!-- ${} : 변수라는 의미 // #{} : 값이라는 의미 -->
+	<select id="selectBoardAll" parameterType="map" resultType="Board">
+		SELECT * FROM 
+			(SELECT ROWNUM rnum, b.* FROM 
+			    ( SELECT
+			        boardseq, memberid, title, to_char(regdate, 'YYYY-MM-DD') as regdate, hitcount, originalfile, savedfile
+			      FROM board
+			      WHERE ${searchItem} LIKE '%' || #{searchWord} || '%'
+			      ORDER BY boardseq DESC
+			    ) b
+			)
+		WHERE rnum BETWEEN #{srow} AND #{erow}
+	</select>
+	
+	<!--  게시글 1개 조회 -->
+	<select id="selectBoard" parameterType="int" resultType="Board">
+		SELECT
+			boardseq, memberid, title, boardtext, to_char(regdate, 'YYYY-MM-DD') as regdate, originalfile, savedfile
+		FROM board
+		WHERE boardseq = #{boardseq}
+	</select>
+	
+	<!--  게시글 1개 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+		DELETE board
+		WHERE boardseq = #{boardseq}
+	</delete>
+	
+	<!--  게시글 수정 요청 -->
+	<update id="updateBoard" parameterType="Board">
+		UPDATE board
+		SET
+			title = #{title}, boardtext = #{boardtext}, regdate = sysdate
+			<if test="originalfile != null">, originalfile=#{originalfile}, savedfile=#{savedfile}</if>
+		WHERE
+			boardseq = #{boardseq}
+	</update>
+	
+	<!--  게시글 조회수 증가 -->
+	<update id="updateHitcount" parameterType="int">
+		UPDATE board
+		SET
+			hitcount = hitcount+1
+		WHERE
+			boardseq = #{boardseq}
+	</update>
+	
+	<!--  파일 정보 삭제 -->
+	<update id="updateFile" parameterType="int">
+		UPDATE board
+		SET
+			originalfile = null, savedfile = null
+		WHERE
+			boardseq = #{boardseq}
+	</update>
+	
+</mapper>

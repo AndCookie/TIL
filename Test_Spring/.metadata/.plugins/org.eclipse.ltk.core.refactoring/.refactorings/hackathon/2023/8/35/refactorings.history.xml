@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ReferController.java&apos; to &apos;mz/src/main/java/net.kdigital.mz.controller&apos;&#x0D;&#x0A;- Original project: &apos;hackathon&apos;&#x0D;&#x0A;- Destination element: &apos;mz/src/main/java/net.kdigital.mz.controller&apos;&#x0D;&#x0A;- Original element: &apos;net.kdigital.hackathon.controller.ReferController.java&apos;" description="Copy compilation unit" destination="=mz/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;net.kdigital.mz.controller" element1="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;net.kdigital.hackathon.controller{ReferController.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1693155157943" units="1" version="1.0"/>
+</session>

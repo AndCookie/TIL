@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<!-- 글꼴1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap"
+    rel="stylesheet">
+<!-- 글꼴2 -->    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+<link rel="stylesheet" th:href="@{/style/signup.css}">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="logo">
+				<a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="로고"></a>
+		</div>
+	<form id="memberForm" th:action="@{/member/signin}" method="POST">
+    	<h2>로그인</h2>
+
+      	<table border="1">
+	        <tr>
+	            <th>아이디</th>
+	            <td>
+	            	<input type="text" id="memberid" name="memberid">
+	            </td>
+	         </tr>
+	         
+	         <tr>
+	            <th>비밀번호</th>
+	            <td>
+	            	<input type="password" id="memberpw" name="memberpw"><br>
+	           	</td>
+	         </tr>
+	         
+	         <tr>
+	         	<th>
+	    			<input id="submitBtn" type="submit" value="로그인">
+	     			<input type="reset" value="취소">
+	     		</th>
+	  		</tr>
+	        
+   		</table>
+	  	
+	</form>
+  	</div> <!-- end.container -->
+  	
+  	<!-- 내부 js 넣을 때는 body의 최하단에 위치시켜야 한다 -->
+  	<script>
+	  	document.getElementById("submitBtn").addEventListener('click', validation)
+	  	 
+	  	function validation(e) {
+	  		 e.preventDefault(); // 기능이 있는 태그의 "기본 기능"을 삭제
+	  		 // e: 이벤트 소스 그 자체
+	  		 // preventDefault : ex) a, submit, reset 태그 등의 하이퍼링크 기능을 없앤다
+	  		 console.log(e);
+	  		 
+	  		 let memberid = document.getElementById("memberid");
+	  		 if (memberid.value.length<3 || memberid.value.length>10){
+	  			 alert("아이디는 3~10자리로 입력해주세요");
+	  			 memberid.focus();
+	  			 memberid.select();
+	  			 return;
+	  		 }
+	  		 
+	  		 let memberpw = document.getElementById("memberpw");
+	  		 if (memberpw.value.length<3 || memberpw.value.length>10){
+	  			 alert("비밀번호는 3~10자리로 입력해주세요");
+	  			 memberpw.focus();
+	  			 memberpw.select();
+	  			 return;
+	  		 }
+	  		 
+	  		 let memberForm = document.getElementById("memberForm");
+	  		 memberForm.submit();
+	  		 
+	  		 // Security
+	  		 
+	  	}
+  	</script>
+</body>
+</html>

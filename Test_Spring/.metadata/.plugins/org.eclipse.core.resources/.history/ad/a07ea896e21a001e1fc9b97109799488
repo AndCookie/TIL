@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+
+ // 1. 배열에 그림명을 전부 집어 넣어놓는다.
+let imgName = ["/skyscrapper/images/bathroom1.jpg", "/skyscrapper/images/bathroom2.webp", "/skyscrapper/images/bathroom3.jpg"];
+
+
+// 2. 1초가 지날 때마다, setAttribute
+let num = 1;
+let image = document.getElementsByClassName("bathroom")[0];
+console.log(image);
+
+setInterval(function(){
+    image.setAttribute("src", imgName[num++]);
+    if (num >= imgName.length) {
+        num = 0;
+    }
+}, 2000);

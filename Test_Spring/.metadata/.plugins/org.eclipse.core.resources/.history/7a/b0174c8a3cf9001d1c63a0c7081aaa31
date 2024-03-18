@@ -1,0 +1,5 @@
+package net.kdigital.spring3.domain;
+
+public class Member {
+
+}

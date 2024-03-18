@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>방명록</title>
+<!-- script defer th:inline="javascript" th:src="@{/script/sendGet.js}"></script> -->
+<script defer th:inline="javascript" th:src="@{/script/sendPost.js}"></script>
+<!-- defer th:inline="javascript" : script를 외부로 빼고자 할 때 필수! -->
+</head>
+<body>
+<!-- POST 방식으로 삭제 요청 -->
+	<h2>[ 방명록 ]</h2>
+	<table border="1">
+		<tr>
+			<th>번  호</th>
+			<th>작성자</th>
+			<th>내  용</th>
+			<th>작성일</th>
+			<th>비  고</th>
+		</tr>
+		<tr th:each=" guestbook, status : ${list}">
+			<td th:text="${status.count}">1</td>
+			<td th:text="${guestbook.usrname}">홍길동</td>
+			<td th:text="${guestbook.text}">오늘은 원래 쉬는 날이에요</td>
+			<td th:text="${guestbook.regdate}">2023-05-29</td>
+			<td>
+				<a href="#" class="delete" th:data-no="${guestbook.seq}">삭제</a>
+				<!-- id로 하면 안됩니다 -->
+				<!-- # : 손가락 버튼으로 바뀌도록 함 -->
+				<!-- 사용자정의속성 : "data-"라는 prefix 필수 -->
+			</td>
+		</tr>
+	</table>
+	
+<!--  POST 방식으로 삭제 요청 -->
+<form id="form" th:action="@{/guestbookDelete}" method="POST">
+	<input type="hidden" id="seq" name="seq" value="">
+	<!-- type="hidden" : 단순하게 화면에 display가 안될 뿐, 페이지 소스보기에서는 보인다 -->
+	<input type="hidden" id="usrpwd" name="usrpwd" value="">
+</form>
+
+</body>
+</html>

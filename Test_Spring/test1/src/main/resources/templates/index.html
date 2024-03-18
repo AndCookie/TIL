@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>연산</title>
+</head>
+<body>
+	<h2>[ 더하기 연산 (1단계) ]</h2>
+	<form th:action="@{/calc}" method="GET" >
+	<!-- calc 그대로 쓰면 /test1이 사라짐-->
+		<label>
+			X : <input type="text" name="x" placeholder="정수 입력"></input> 		
+		</label><br>
+		<label>
+			Y : <input type="text" name="y" placeholder="정수 입력"></input> 		
+		</label><br>
+		<input type="submit" value="더하기">
+	</form>
+</body>
+</html>

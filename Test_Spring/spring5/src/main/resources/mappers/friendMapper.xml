@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- mapperXML 파일에서 insert, update, delete 태그는 resultType을 쓰지 않는다!! 사용시 오류 발생!! -->
+<mapper namespace="net.kdigital.spring5.dao.FriendMapper">
+<!-- namespace란에는 연동할 인터페이스의 전체 이름을 기재 -->
+	<insert id="insertFriend" parameterType="Friend">
+	<!-- id에는 메소드 이름  // parameterType에는 반환 타입 -->
+		INSERT INTO friend
+		VALUES
+		(#{fname}, #{age}, #{phone}, #{active})
+		<!-- ? 대신 # 사용 + getUserid() 대신 {userid} 사용 -->
+	</insert>
+	
+	<select id="selectAll" resultType="Friend">
+	<!-- 반환되는 값은 list가 아닌 friend 입니다 -->
+		SELECT * FROM friend
+		ORDER BY fname
+	</select>
+	
+	
+</mapper>

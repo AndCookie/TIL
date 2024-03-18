@@ -1,0 +1,10 @@
+
+public class JDBC_Test02 {
+
+	public static void main(String[] args) {
+		// 1. 디펜던시 두 개 추가하기
+		
+
+	}
+
+}

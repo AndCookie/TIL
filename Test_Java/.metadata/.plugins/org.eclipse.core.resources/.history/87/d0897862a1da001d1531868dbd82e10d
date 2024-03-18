@@ -1,0 +1,94 @@
+package main;
+
+import java.util.Scanner;
+
+import service.Speakable;
+import vo.Man;
+import vo.Reader;
+import vo.Worker;
+
+public class EnrollMain {
+	static Scanner keyin = new Scanner(System.in);
+	static Speakable[] speaker = new Speakable[2];  // 최대 2명까지 입력받을 수 있음
+	static int count=0;
+	
+	
+	public static void main(String[] args) {
+		String choice;
+		
+		while (true) {
+			int count=0;
+			if (count==2) {
+				System.out.println("두 명 Speaker의 등록이 완료되었습니다.");
+				System.out.println("이제 Speaker들의 speak 실행 결과입니다.");
+				System.out.println(speaker.toString());
+			}
+			menu();
+			choice = keyin.next();
+			
+			switch(choice) {
+			case "1" : reader(); break;
+			case "2" : worker(); break;
+			case "0" :
+				System.out.println("**프로그램을 종료합니다.");
+				keyin.close();
+				return;
+			default :
+				System.out.println("err> 메뉴를 다시 선택해주세요");
+			}
+		}
+	}
+
+	private static void reader() {
+		System.out.println("\n[ Reader 등록 ]");
+		String name;
+		
+		if (count >=2) {
+			System.out.println("** 인원 초과로 인한 Reader 등록 불가");
+			return;
+		}
+		
+		System.out.print("* 이름을 입력하세요: ");
+		name = keyin.next();
+
+		// 객체 생성
+		Man m = new Man(name);
+		if (m instanceof Reader) {
+			((Reader)m).speak(); // 쓰려는 시점에서는 다운캐스팅해야한다
+			++count;
+			System.out.println("** Reader 등록 완료");
+		}
+	}
+
+	private static void worker() {
+		System.out.println("\n[ Worker 등록 ]");
+		String name;
+		
+		if (count >=2) {
+			System.out.println("** 인원 초과로 인한 Worker 등록 불가");
+			return;
+		}
+		
+		System.out.print("* 이름을 입력하세요: ");
+		name = keyin.next();
+
+		// 객체 생성
+		Man m = new Man(name);
+		if (m instanceof Worker) {
+			((Worker)m).speak(); // 쓰려는 시점에서는 다운캐스팅해야한다
+			++count;
+			System.out.println("** Worker 등록 완료");
+		}
+		
+	}
+
+	private static void menu() {
+		System.out.println("=====[등록 시스템]=====");
+		System.out.println("     1) Reader 등록");
+		System.out.println("     2) Worker 등록");
+		System.out.println("     0) 종      료");
+		System.out.println("=========================");
+		System.out.println("         선택 > ");
+	}
+	
+}

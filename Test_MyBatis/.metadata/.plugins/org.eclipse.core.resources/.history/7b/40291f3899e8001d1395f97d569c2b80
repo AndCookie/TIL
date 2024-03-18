@@ -1,0 +1,10 @@
+package third;
+// singleton pattern : 객체를 전체 프로젝트 내에서 하나 밖에 못만드는 것
+// 1.  생성자는 private : 외부에서 new로 생성 불가능하며 연결을 잇고 끊는 작업만 수행
+// 2.  멤버들은 static final
+// 객체를 전체 프로젝트 내에서
+
+public class ConnectionManager {
+	private ConncetionManager() {};
+	// private 생성자로 만들어서 다른 곳에서 new로 못쓰게 막아버린 것
+}

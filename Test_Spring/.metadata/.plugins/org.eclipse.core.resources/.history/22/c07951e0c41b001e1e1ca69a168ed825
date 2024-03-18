@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+/* 광고 */
+
+div.carousel-item > img {
+  height: 630px;
+  width : 970px;
+}

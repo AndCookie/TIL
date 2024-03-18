@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
+</head>
+
+<body>
+    <div class="container">
+    <form th:action="@{/member/signin}" method="POST">
+        <h2>로그인</h2>
+      
+        <table border="1">
+             <tr>
+                <th><span class="important">*</span>아이디</th>
+                <td>
+                    <input type="text" id="memberid" name="memberid">
+                </td>
+            </tr>
+            <tr>
+                <th><span class="important">*</span>비밀번호</th>
+                <td>
+                    <input type="password" id="memberpwd" name="memberpwd"><br>
+                </td>
+            </tr>
+ 
+        </table>
+        <div class="btns">
+            <input id="submitBtn" type="submit" value="로그인">
+            <input type="button" value="취소">
+        </div>
+    </form>
+    </div> <!-- end .container -->
+</body>
+
+</html>

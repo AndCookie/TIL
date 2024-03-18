@@ -1,0 +1,12 @@
+-- 5월3일 회원정보 테이블 --
+DROP TABLE userinfo;
+
+
+CREATE TABLE userinfo
+(
+    USERID   VARCHAR2(20) PRIMARY KEY,
+    USERNAME VARCHAR2(20) NOT NULL,
+    GENDER   VARCHAR2(5) CHECK(GENDER IN ('남', '여')),
+    PHONE    VARCHAR2(20),
+    BIRTHDAY DATE
+);

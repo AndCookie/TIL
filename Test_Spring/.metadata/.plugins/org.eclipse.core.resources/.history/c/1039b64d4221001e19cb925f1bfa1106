@@ -1,0 +1,60 @@
+-- 2차 프로젝트
+-- sql 작성
+
+-- 3차 수정
+-- drop table
+DROP TABLE inquiry;
+DROP TABLE product;
+DROP TABLE member;
+
+DROP SEQUENCE member_seq;
+DROP SEQUENCE product_seq;
+DROP SEQUENCE inquiry_seq;
+
+
+-- member table
+-- 회원들의 정보
+CREATE TABLE member
+(
+    
+    member_id VARCHAR2(20) PRIMARY KEY,
+    member_pw VARCHAR2(100) NOT NULL,
+    member_nm VARCHAR2(30) NOT NULL,
+    member_type NUMBER CHECK(member_type IN(0,1,2)),
+    membership number(3) DEFAULT 0,
+    country VARCHAR2(30) NOT NULL,
+    company_nm VARCHAR2(30) NOT NULL,
+    company_tell VARCHAR2(30) NOT NULL,
+    department_nm VARCHAR2(30),
+    role_nm VARCHAR2(20) DEFAULT 'ROLE_USER',	-- 관리자의 경우 ROLE_ADMIN
+    enabled NUMBER(1) DEFAULT 1					-- security를 위해 필요
+);
+CREATE SEQUENCE member_seq;
+
+-- 제품
+CREATE TABLE product
+(
+    product_id NUMBER(10) PRIMARY KEY,
+    product_nm VARCHAR2(30) NOT NULL,
+    product_info VARCHAR2(4000) NOT NULL,
+    originalfile VARCHAR2(1000),
+    savedFileName VARCHAR2(1000),
+    member_id  VARCHAR2(20) references member(member_id) on delete cascade,
+    category_nm VARCHAR2(30), 
+    payment_term VARCHAR2(5) CHECK (payment_term IN('t/t','l/c','d/a','d/p')),
+    regdate DATE DEFAULT sysdate
+);
+CREATE SEQUENCE product_seq;
+
+-- inquiry
+-- 인콰이어리 테이블 생성
+CREATE TABLE inquiry
+(
+    inq_id VARCHAR2(20) PRIMARY KEY,
+    snd_id VARCHAR2(20) NOT NULL,
+    rcv_id VARCHAR2(20) NOT NULL,
+    input_date DATE DEFAULT SYSDATE,
+    product_id number(10) references product(product_id) on delete cascade,
+    message VARCHAR2(3000) NOT NULL
+);
+CREATE SEQUENCE inquiry_seq;

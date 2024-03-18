@@ -1,0 +1,21 @@
+package net.kdigital.skyscrapper.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@RequestMapping("/category")
+@Slf4j
+public class DashboardController {
+//	@Autowired
+//	CategoryService categoryService;
+	
+	
+	@GetMapping("/category_bidet")
+	public String category() {
+		return "/category/category_bidet";
+	}
+}

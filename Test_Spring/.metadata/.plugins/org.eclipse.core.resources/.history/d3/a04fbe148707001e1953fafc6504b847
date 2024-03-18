@@ -1,0 +1,14 @@
+package net.kdigital.hackathon.mapper;
+
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import net.kdigital.spring7.domain.Member;
+
+@Mapper
+public interface DragMapper {
+
+
+
+}

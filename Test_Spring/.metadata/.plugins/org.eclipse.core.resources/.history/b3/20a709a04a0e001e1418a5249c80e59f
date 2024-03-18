@@ -1,0 +1,5 @@
+package net.kdigital.hackathon.config;
+
+public class AppConfig {
+
+}

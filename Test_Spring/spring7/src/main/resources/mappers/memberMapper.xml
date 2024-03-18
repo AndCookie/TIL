@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+
+<!-- mapperXML 파일에서 insert, update, delete 태그는 resultType을 쓰지 않는다!! 사용시 오류 발생!! -->
+<mapper namespace="net.kdigital.spring7.mapper.MemberMapper">
+<!-- namespace란에는 연동할 인터페이스의 전체 이름을 기재 (~Mapper.java의 경로)-->
+	
+	<!-- 회원가입 -->
+	<insert id="insertMember" parameterType="Member">
+		INSERT INTO members
+			(memberid, memberpwd, membername, email, phone, address)
+		VALUES
+			(#{memberid}, #{memberpwd}, #{membername}, #{email}, #{phone}, #{address})
+	</insert>
+	
+	<!-- 회원 조회 / 아이디 체크-->
+	<select id="selectMember" parameterType="map" resultType="Member">
+		SELECT *
+		FROM members
+		WHERE
+			memberid = #{memberid}
+			<if test="memberpwd != null">
+				and
+				memberpwd = #{memberpwd}
+			</if>
+	</select>
+	
+	<!--  개인정보 수정 요청 -->
+	<update id="updateMember" parameterType="Member">
+		UPDATE members
+		SET
+			memberid = #{memberid}, memberpwd = #{memberpwd}, membername = #{membername},
+			email = #{email}, phone = #{phone}, address = #{address}
+		WHERE memberid = #{memberid}
+	</update>
+	
+	
+</mapper>

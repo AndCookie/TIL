@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+span#result {
+	color: red;
+}
+</style>
+<script th:src="@{/script/jquery-3.7.0.min.js}"></script>
+<script>
+$(function() {
+	$("#btn").on('click', predict);
+})
+
+function predict(){
+	let petalLength = $("#petalLength").val();
+	let petalWidth  = $("#petalWidth").val();
+	let sepalLength = $("#sepalLength").val();
+	let sepalWidth  = $("#sepalWidth").val();
+	
+	// 문자가 포함되어 있는 경우
+	if (isNaN(petalLength) || isNaN(petalWidth) || isNaN(sepalLength) || isNaN(sepalWidth)) {
+		alert("데이터는 숫자로 입력해주세요");
+		return;
+	}
+	
+	let sendData = {"petalLength":petalLength, "petalWidth":petalWidth,
+					"sepalLength":sepalLength, "sepalWidth":sepalWidth};
+	
+	// alert(JSON.stringify(sendData));
+	$.ajax({
+		url:'predict'
+		, method: 'POST'
+		, data : sendData
+		, success : function(resp) { // resp = {"predict_result" : "setosa"}
+			$("#result").text(resp["predict_result"]);
+		}
+	})
+}
+</script>
+</head>
+
+<body>
+	<h2>붓꽃 분석</h2>
+	<ul>
+		<li>
+			<label for="sepalLength">꽃받침(Sepal Length)의 길이:</label>
+			<input type="text" id="sepalLength" name="sepalLength">
+		</li>
+		<li>
+			<label for="sepalWidth">꽃받침(Sepal Width)의 너비:</label>
+			<input type="text" id="sepalWidth" name="sepalWidth">
+		</li>
+		<li>
+			<label for="petalLength">꽃잎(Petal Length)의 길이:</label>
+			<input type="text" id="petalLength" name="petalLength">
+		</li>
+		<li>
+			<label for="petalWidth">꽃잎(Petal Width)의 너비:</label>
+			<input type="text" id="petalWidth" name="petalWidth">
+		</li>
+		<li>
+			<input type="button" id="btn" value="분류결과">
+		</li>
+	</ul>
+	<h3>분류 결과 : <span id="result"></span></h3>
+</body>
+</html>

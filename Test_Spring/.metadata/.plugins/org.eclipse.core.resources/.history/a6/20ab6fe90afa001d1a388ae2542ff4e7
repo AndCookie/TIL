@@ -1,0 +1,25 @@
+package net.kdigital.spring4.controller;
+
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import net.kdigital.spring4.domain.Friend;
+
+@Controller
+@RequestMapping("/display")
+public class ThymeleafOperController {
+	
+	@GetMapping("/operate")
+	public String Operate(Model model) {
+		int num = 25;
+	    Friend f = new Friend("사오정", 21, "1111", false);
+	    
+	    model.addAttribute("num", num);
+		
+		return "operate";
+	}
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>객체 처리</title>
+</head>
+<body>
+	<h2>객체 처리(ArrayList)</h2>
+	<ul>
+		<li><span th:text="${list}" ></span></li>
+	</ul>
+	<hr>
+	<ul th:each="item : ${list}">
+		<li>[[ ${item} ]]</li>
+	</ul>
+	<hr>
+	<ul>
+		<li>ArrayList의 크기(1) : <span th:text="${list.size()}"></span></li>
+		<li>ArrayList의 크기(2) : <span th:text="${#lists.size(list)}"></span></li>
+		<!--  list는 모델에 저장한 이름 -->
+		<li>ArrayList의 isEmpty(1) : <span th:text="${list.isEmpty()}"></span></li>
+		<li>ArrayList의 isEmpty(2) : <span th:text="${#lists.isEmpty(list)}"></span></li>
+		<li>List를 문자열로 변경 : <span th:text="${list.isEmpty()}"></span></li>
+		<li>문자열을 List로 변경 : <span th:text="${#lists.isEmpty(list)}"></span></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>개인정보 수정</title>
+<!-- 글꼴1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap"
+    rel="stylesheet">
+<!-- 글꼴2 -->    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+
+<!-- 외부 JS -->
+<script defer th:src="@{/script/mypage.js}"></script>
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="logo">
+				<a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="로고"></a>
+		</div>
+	<form id="memberForm" th:action="@{/member/modify}" method="POST">
+    	<h2>개인정보 수정 입력</h2>
+    	<div><span class="important">*</span>표시된 항목은 <span class="red">필수입력</span> 항목입니다.</div>
+      	<table border="1">
+	         
+	        <tr>
+	            <th><span class="important">*</span>아이디</th>
+	            <td>
+	            	<input type="text" id="memberid" name="memberid" th:value="${#authentication.name}" readonly>
+	            </td>
+	         </tr>
+	         
+	         <tr>
+	            <th><span class="important">*</span>비밀번호</th>
+	            <td>
+	            	<input type="password" id="memberpwd" name="memberpwd""><br>
+	           		<span>영문, 숫자, 특수문자 중 2가지 이상 혼합하여 3~5자로 입력하세요<br>
+	          			  ※ 특수문자는 "!@#()_|만 사용가능합니다</span><br>
+				</td>
+	         </tr>
+	         
+	         <tr>
+	            <th><span class="important">*</span>이름</th>
+	            <td><input type="text" id="membername" name="membername" th:value="${member.membername}" readonly></td>
+	        </tr>
+	         
+	         <tr>
+	            <th><span class="important">*</span>이메일</th>
+	            <td>
+	            	<input type="text" id="m1" th:value="${m1}">
+	            	<input type="text" id="m2" th:value="${m2}">
+	            	<select id="m3">
+	            		<optgroup label="선택">
+	            			<option th:selected="${m2 == 'naver.com'}">naver.com</option>
+		            		<option th:selected="${m2 == 'gmail.com'}">gmail.com</option>
+		               		<option th:selected="${m2 == 'daum.net'}">daum.net</option>
+	               		</optgroup>
+	            	</select>
+	            	<input type="hidden" name="email" id="email" value="">
+				</td>
+	         </tr>
+	         
+	         <tr>
+	            <th><span class="important">*</span>연락처 (휴대전화)</th>
+	            <td>
+					<span> ※ 휴대전화 번호를 입력하여 주시기 바랍니다</span><br>
+		            <span>
+		            	<select id="p1">
+		            		<option th:selected="${p1== '010'}">010</option>
+		            		<option th:selected="${p1== '017'}">017</option>
+		            		<option th:selected="${p1== '019'}">019</option>
+		            	</select>-
+		            	<input type="text" id="p2" th:value="${p2}">-<input type="text" id="p3" th:value="${p3}">
+		            	<input type="hidden" name="phone" id="phone" value="">
+		            </span><br>
+	            </td>
+	         </tr>
+	         
+	         <tr>
+	            <th><span class="important">*</span>주소</th>
+	            <td>
+	            	<input type="text" name="address" placeholder="주소 입력" style="width:500px;" th:value="${member.address}">>
+	            </td>
+	         </tr>
+	        
+   		</table>
+	
+	    <div class="btns">
+	    	<input id="submitBtn" type="submit" value="수정하기">
+	     	<input type="button" value="취소">
+	  	</div>
+	  	
+	</form>
+  	</div> <!-- end.container -->
+</body>
+</html>

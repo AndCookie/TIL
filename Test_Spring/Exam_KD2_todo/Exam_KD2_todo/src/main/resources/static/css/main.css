@@ -1,0 +1,20 @@
+@charset "UTF-8";
+div.container {
+	width: 800px;
+	margin : 0 auto;
+}
+div.container > h2 {
+	text-align : center;
+}
+span.result {
+	font-size: 0.7em;
+}
+table {
+	width: 800px;
+	border : 1px solid lightgray;
+}
+table th {
+	width: 200px;
+	height : 30px;
+	background-color : #eee;
+}

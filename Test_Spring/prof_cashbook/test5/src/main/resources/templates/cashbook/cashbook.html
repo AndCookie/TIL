@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<h2>내 가계부</h2>
+		<form th:action="@{/cash/insert}" method="POST">
+			<table>
+				<tr>
+					<th>구분</th>
+					<td>
+						<input type="radio" name="type" value="수입" checked> 수입
+						<input type="radio" name="type" value="지출" > 지출
+					</td>
+				</tr>
+				<tr>
+					<th>메모</th>
+					<td>
+						<input type="text" name="memo" placeholder="내용 입력" >
+					</td>
+				</tr>
+				<tr>
+					<th>금액</th>
+					<td>
+						<input type="text" name="amount" placeholder="금액 입력" >
+					</td>
+				</tr>				
+				<tr>
+					<th colspan="2">
+						<input type="submit" id="submitBtn" value="등록">
+					</th>
+				</tr>
+			</table>
+		</form>
+		
+		<table style="border:1px solid black;">
+			<tr>
+				<th style="width:100px;">날짜</th>
+				<th style="width:100px;">구분</th>
+				<th style="width:200px;">메모</th>
+				<th>금액</th>
+			</tr>
+			
+			<tr th:each="cashbook : ${list}">
+				<td th:text="${cashbook.inputdate}"></td>
+				<td th:text="${cashbook.type}"></td>
+				<td th:text="${cashbook.memo}"></td>
+				<td th:text="${cashbook.amount}"></td>
+				<td><input type="button" value="삭제" class="btnDel" th:data-num="${cashbook.infonum}"></td>
+			</tr>
+		</table>		
+	</div>
+</body>
+</html>

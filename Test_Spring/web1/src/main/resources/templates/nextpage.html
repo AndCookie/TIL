@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>DB 연동 작업</title>
+<style>
+   input[type="button"]#update{
+      display : none;
+      
+   }
+</style>
+<script th:src="@{/jquery-3.7.0.min.js}"></script>
+<script>
+	$(function(){
+	    init();
+	    
+	    $("#send").on('click', send);
+	    $("#update").on('click', update);
+	 });
+	
+	// 데이터 수정
+ 	function update(){
+ 		let seqno = $("#seq").val();
+ 		let name = $("#name").val();
+        let phone = $("#phone").val();
+        let address = $("#address").val();
+        
+        let sendData = {"seq":seqno, "name":name, "phone":phone, "address":address};
+        // console.log(sendData);
+        $.ajax({
+            url : 'friendUpdate'
+            , method : 'POST'
+            , data : sendData
+            , success : init
+         });
+ 	};
+ 	
+ 	
+	// 데이터 등록 (저장)
+    function send() {
+        let name = $("#name").val();
+        let phone = $("#phone").val();
+        let address = $("#address").val();
+        
+        let sendData = {"name":name,"phone":phone,"address":address}; //그냥 출력시 오브젝트타입이라고 뜸
+        $.ajax({
+           url : 'friendRegist'
+           , method : 'POST'
+           , data : sendData
+           , success : init
+        });
+    }
+    // 초기화
+	function init() {
+		$.ajax({
+		       url: 'retrieveAll'
+		       , method: 'GET'
+		       , success: output
+		});
+	}
+	// 처리 결과 출력 (테이블로 생성한 후 #result)
+	function output(resp) {
+		let tag = `
+				<table border="1">
+					<tr>
+						<th>번호</th><th>이름</th><th>전화번호</th><th>주소</th><th>비고</th>
+					</tr>`;
+		$.each(resp, function(idx, item) {
+			tag += `<tr>
+						<td>${(idx+1)}</td>
+						<td>${item["name"]}</td>
+						<td>${item["phone"]}</td>
+						<td>${item["address"]}</td>
+						<td>
+							<input type="button" class="deleteBtn" value="삭제" data-seq='${item["seq"]}'>
+							<input type="button" class="modifyBtn" value="수정" data-seq='${item["seq"]}'>
+						</td>
+					</tr>`;
+		});
+		
+		tag +=`</table>`;
+		
+		$("#result").html(tag);
+		
+		$(".deleteBtn").on('click', deleteFriend);
+		$(".modifyBtn").on('click', modifyFriend);
+		cleanUp();
+		$("input[type='button']#send").css("display", "inline");
+        $("input[type='button']#update").css("display", "none");
+	}; // data- : 사용자 정의 속성 (글로벌 전역 속성)
+	
+	// 입력 상자를 지우는 함수
+	function cleanUp(){
+		$("#name").val('');
+		$("#phone").val('');
+		$("#address").val('');
+	};
+	// 정보 삭제
+	function deleteFriend(){
+		let answer = confirm("삭제하시겠습니까?");
+		// 새로운 창의 세 종류 : alert / confirm / prompt
+		// confirm은 true/false를 반환함
+		if (!answer)
+			return;
+		
+		// attr("속성값") : 특정 속성값 가져오기
+		let seqno = $(this).attr('data-seq');
+		$.ajax({
+			url: 'friendDelete'
+			, method : 'GET'
+			, data : {"seq" : seqno}
+			, success : init
+		})
+	};
+	// 정보 수정
+	function modifyFriend(){
+		let seqno = $(this).attr('data-seq');
+		$.ajax({
+			url : 'friendSelect'
+			, method : 'GET'
+			, data : {"seq" : seqno}
+			, success : function(resp) {
+				// 받은 데이터를 입력상자 위에 올리는 작업
+				$("#seq").val(resp["seq"]);		        
+				$("#name").val(resp["name"]);
+		        $("#phone").val(resp["phone"]);
+		        $("#address").val(resp["address"]);
+		        
+		        $("input[type='button']#send").css("display","none");
+	            $("input[type='button']#update").css("display","inline");
+			}
+		})
+	};
+
+</script>
+</head>
+
+<body>
+    <h2>[ DB와 연동한 에이젝스 ]</h2>
+    <div>
+    	<input type="hidden" id="seq" value="">
+        <label>이름 : <input type="text" id="name"></label>&nbsp;
+        <label>전화번호 : <input type="text" id="phone"></label>&nbsp;
+        <label>주소 : <input type="text" id="address"></label>
+        <input type="button" id="send" value="저장">
+        <input type="button" id="update" value="수정">
+    </div>
+    <br><hr><br>
+        <div id="result"></div>
+    
+</body>
+</html>

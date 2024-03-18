@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>친구 정보 저장</title>
+</head>
+<body>
+	<h2>[ 친구 정보 입력 ]</h2>
+		<form th:action="@{/insert}" method="POST">
+		<!-- 하나는 get방식이고 하나는 post 방식이므로 요청의 이름이 같더라도 다른 요청으로 인식하므로 상관없다 -->
+			<label>
+				<!-- name은 VO에 맞추기 -->	
+				이름 : <input type="text" name="fname" placeholder="이름 입력" required>
+			</label><br>
+			<label>
+				<!-- 사용자가 바꾸지 않으면 기본적으로 20살로 넘어간다 -->
+				나이 : <input type="text" name="age" placeholder="나이 입력" value="20">
+			</label><br>
+			<label>
+				전화번호 : <input type="text" name="phone" placeholder="번호 입력">
+			</label><br>
+			<label>
+				성향 : <input type="radio" name="active" value="1"> 외향적(1)
+					   <input type="radio" name="active" value="0"> 내성적(0)
+			</label><br>
+			
+			<input type="submit" value="저장">
+			<input type="reset" value="초기화">
+		</form>
+</body>
+</html>

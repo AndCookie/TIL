@@ -1,0 +1,14 @@
+
+public class Exam_1 {
+
+	public static void main(String[] args) {
+		int celsius = 17;
+		double fahrenheit = 9/(double)5*celsius +32;
+		System.out.println("섭씨 온도 C "+ celsius +"°는 " + "화씨 온도 F" + fahrenheit + "와 같습니다.");
+		System.out.println(9/5);
+		
+		
+		
+	}
+
+}

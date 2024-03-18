@@ -1,0 +1,5 @@
+package net.kdigital.spring4.controller;
+
+public class ThymeCollectController {
+
+}

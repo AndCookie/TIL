@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="net.kdigital.todolist.mapper.TodoListMapper">
+
+	<!-- todo 생성 생성: 동적 쿼리문을 이용해 날짜를 선택하지 않으면 현재 날짜로 작성하도록 한다.  -->
+	<insert id="todoCreate" parameterType="Todo">
+		INSERT INTO todolist
+			(seqno, todoid, regdate, status, importance, categories, todo)
+			<!-- test=컬럼명 -->
+		VALUES
+			(todolist_seq.NEXTVAL, #{todoid},
+			<if test="regdate != ''">#{regdate}, </if>
+			<if test="regdate == ''">sysdate, </if>
+			#{status}, #{importance},
+			#{categories}, #{todo})
+	</insert>
+
+	<!-- 로그인한 사람의 todo 조회: 날짜는 연도 4자리-월2자리-일2자리로 출력 -->
+	<select id="todoFindById" parameterType="String" resultType="Todo">
+		SELECT
+			seqno, todoid, to_char(regdate, 'YYYY-MM-DD') as regdate, status, importance, categories, todo
+		FROM todolist
+		WHERE todoid = #{todoid}
+		ORDER BY regdate DESC
+	</select>
+	
+	<!-- todo 삭제 -->
+	<delete id="todoDelete" parameterType="int">
+	DELETE todolist
+	WHERE seqno = #{seqno}
+	</delete>
+</mapper>

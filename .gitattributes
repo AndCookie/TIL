@@ -1,0 +1,8 @@
+.git/objects/26/fff80d110908e0a3efbcd6d28fe2dbbe3f8356 filter=lfs diff=lfs merge=lfs -text
+.git/objects/33/1967e8ede65fc2af81b9fa69bc27c99e569c99 filter=lfs diff=lfs merge=lfs -text
+.git/objects/6f/9369e3fab39ee041aa7cc7e4c64c42939583ad filter=lfs diff=lfs merge=lfs -text
+.git/objects/8c/47cfcc2adee894a77da9d47b58c7a4dc247787 filter=lfs diff=lfs merge=lfs -text
+분석/07. filter=lfs diff=lfs merge=lfs -text
+Deep filter=lfs diff=lfs merge=lfs -text
+Learning/ratings.csv filter=lfs diff=lfs merge=lfs -text
+데이터 filter=lfs diff=lfs merge=lfs -text

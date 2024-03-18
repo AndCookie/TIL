@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 학생 성적 처리 SQL -->
+<mapper namespace="net.kd.school.dao.ScoreMapper">
+
+	<!-- 학생 정보 저장 -->
+	<insert id="insertStudent" parameterType="StudentVO">
+		insert into school_student values (#{stnum}, #{stclass}, #{stname})
+	</insert>
+	
+	<!-- 학생 성적 저장 -->
+	<insert id="scoreInsert" parameterType="ScoreVO">
+		insert into school_score values (#{stnum}, #{java}, #{sql}, #{spring})
+	</insert>
+	
+	<!-- 전체 학생 목록 조회 -->
+	<select id="selectAll" resultType="StudentVO">
+		select
+			*
+		from 
+			school_student
+		order by
+			stclass, stnum
+	</select>
+	
+	<!-- 1명의 학생 정보 조회 -->
+	<select id="findByNum" parameterType="string" resultType="StudentVO">
+		select * from school_student where stnum = #{stnum}
+	</select>
+	
+	<!-- 학생 정보 삭제 --> 	
+	<delete id="deleteStudent" parameterType="string">
+		delete from school_student where stnum = #{stnum}
+	</delete>
+	
+	<!-- 전체 학생 성적 조회 -->
+	<select id="scoreList" resultType="Total">
+		select
+			s1.stnum
+			, s1.stclass
+			, s1.stname
+			, s2.java
+			, s2.sql
+			, s2.spring
+			, (s2.java + s2.sql + s2.spring) as total
+			, round((s2.java + s2.sql + s2.spring) / 3, 1) as avg
+		from 
+			school_student s1,  school_score s2
+		where
+			s1.stnum = s2.stnum
+		order by
+			s1.stnum
+	</select>
+
+</mapper>

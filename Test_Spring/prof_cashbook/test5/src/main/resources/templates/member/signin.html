@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+    	<form id="memberForm" th:action="@{/member/signin}" method="POST">
+			<h2>[로그인]</h2>
+      
+        <table border="1">
+             <tr>
+                <th>아이디</th>
+                <td>
+                    <input type="text" id="memberid" name="memberid">
+                </td>
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td>
+                    <input type="password" id="memberpw" name="memberpw">
+                </td>
+            </tr>
+ 			<tr>
+ 				<th>
+ 					<input id="submitBtn" type="submit" value="로그인" >
+           	 		<input type="reset" value="취소">
+ 				</th>
+ 			</tr>
+        </table>
+    </form>
+    </div> <!-- end .container -->
+    
+    <script>
+    document.getElementById("submitBtn").addEventListener('click', validation);
+     
+    function validation(e) {
+    	 e.preventDefault();
+    	 
+    	 let memberid = document.getElementById("memberid");
+    	 if(memberid.value.length < 3 || memberid.value.length > 10) {
+    		 alert("아이디는 3~10사이로 입력해주세요");
+    		 memberid.focus();
+    		 memberid.select();
+    		 return;
+    	 }
+    	 
+    	 let memberpw = document.getElementById("memberpw");
+    	 if(memberpw.value.length < 3 || memberpw.value.length > 10) {
+    		 alert("비밀번호는 3~10사이로 입력해주세요");
+    		 memberpw.focus();
+    		 memberpw.select();
+    		 return;
+    	 }	
+    	
+    	 let memberForm = document.getElementById("memberForm");
+
+    	 memberForm.submit()
+     }    
+    
+    
+    
+    </script>
+</body>
+
+</html>
+

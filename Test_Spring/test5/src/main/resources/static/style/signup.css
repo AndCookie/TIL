@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+.container {
+        width: 890px;
+        padding: 30px;
+	}
+div.header > div.header_button {
+  text-align: center;
+  margin-bottom: 50px;
+	}
+.red {
+  color: red;
+	}
+.blue {
+  color: rgb(43, 116, 186);
+	}
+
+div.header > div.header_button > input.header {
+  color: rgb(128, 128, 128);
+  background-color: rgba(128, 128, 128, 0.493);
+  width: 100px;
+  height: 50px;
+  margin: 20px;
+  border-radius: 10px;
+  border: 0px;
+  padding: 0px;
+	}
+div.header > div.header_button > input.header:hover {
+  border: 1px solid rgb(43, 116, 186);
+  background-color: white;
+  color: black;
+  cursor: pointer;
+	}
+div.contents,
+div.instruct {
+  font-size: small;
+  margin-bottom: 10px;
+	}
+
+div.contents > div.label_list {
+  width: 100px;
+  float: left;
+  background-color: rgb(244, 244, 244);
+  padding: 0px;
+  padding-left: 10px;
+	}
+hr {
+  margin: 0px;
+	}
+
+label {
+  display: inline-block;
+  text-align: left;
+  font-weight: bold;
+	}
+div.fillIn {
+  width: 750px;
+  float: left;
+}
+
+.box {
+  padding-left: 15px;
+	}
+.name {
+  height: 40px;
+	}
+.userid {
+  height: 50px;
+	}
+.userPassword {
+  height: 70px;
+	}
+.checkPassword {
+  height: 30px;
+	}
+.phone {
+  height: 60px;
+	}
+.email {
+  height: 30px;
+	}
+.address {
+  height: 30px;
+	}
+.agreement {
+  height: 200px;
+	}
+.kktagreementbox {
+  background-color: rgb(244, 244, 244);
+  padding: 10px;
+	}
+
+div.submit {
+  clear: both;
+  text-align: center;
+	}
+
+.submit_button {
+  color: white;
+  font-weight: bold;
+  background-color: rgb(43, 116, 186);
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: 0px;
+  padding: 0px;
+	}
+.reset_button {
+  color: rgb(128, 128, 128);
+  font-weight: bold;
+  background-color: rgba(128, 128, 128, 0.493);
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: 0px;
+  padding: 0px;
+	}
+.submit_button:hover,
+.reset_button:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 2px rgb(128, 128, 128);
+	}
+#idConfirm {
+  background-color: gray;
+  border: 0px;
+  color: white;
+  width: 100px;
+  height: 20px;
+  border-radius: 3px;
+	}
+#idConfirm:hover {
+  cursor: pointer;
+	}
+div.footer {
+  padding-top: 50px;
+	}
+ul {
+  list-style-type: none;
+  padding: 0px;
+  border: 1px solid rgb(128, 128, 128);
+  width: 860px;
+	}
+li {
+  display: inline-block;
+  margin: 20px;
+	}
+li.department,
+li.tel {
+  float: left;
+	}
+li.updateDate {
+  float: right;
+	}

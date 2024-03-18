@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<a th:href="@{/}">
+			<img th:src="@{/images/home.png}" alt="logo">
+			<!-- @를 사용하면 자동으로 홈디렉토리를 static으로 인식한다 -->
+		</a>
+	</p>
+	<h2>8) Thymeleaf 연산 (산술연산, 비교연산)</h2>
+	<!-- 산술연산 + = * / % -->
+	<p th:text="${num+1}"></p>
+	<p>연산의 결과는 : [[ ${num+1} ]]</p>
+	<p>연산의 결과는 : <span th:text="${num*2}">....</span></p>
+	
+	<!-- 비교연산자 >gt <lt >=ge <=le ==eq !=ne -->
+	<!-- greater/less than & greater/less equal & equal & not equal-->
+	<p th:text="${num gt 50}"></p>
+	<p>양수인지 비교 : [[ ${num > 0} ]]</p>
+	<p>연산의 결과는 : <span th:text="${num gt 2}">....</span></p>
+	
+	<hr>
+	<h2>9) Thymeleaf 연산(논리연산 and or not)</h2>
+	<p>1~50 사이? [[ ${num ge 1 and num le 50}]]</p>
+	<p>1~50 사이? [[ ${num ge 1 and num le 50} ? '그렇다' : '아니다']]</p>
+	<p>1~50 사이? <span th:text="${num ge 1 and num le 50} ? '맞다' : '틀리다'">...</span></p>
+	
+	<p>음수가 아니다? : [[ ${not(num lt 0)} ? '음수 아님' : '음수 맞음' ]]</p>
+	<p>연산의 결과는 : <span th:text="${not(num lt 0)}">....</span></p>
+	<!-- 단항 연산자 ++ -- 는 사용 불가합니다 -->
+	
+	<hr>
+	<p> [[ ${f.name} ]]은 [[ ${f.active} ? '외향적' : '내향적' ]]이다</p>
+	<p> 
+		<span th:text="${f.name}"></span>은
+		<span th:text="${f.active} ? '외향적' : '내향적'">...</span>이다
+	</p>
+	<p> 
+		<span th:text="${f.name}"></span>은
+		<span th:text="${f.active eq true} ? '외향적' : '내향적'">...</span>이다
+	</p>
+	
+	<hr>
+	<h2>10) 목록 데이터 출력하기 (th:each)</h2>
+	<ul th:each="f : ${friendList}">
+		<!-- for (Friend f : FriendList) { sysout(f.getName()} 의 자바 코드를 참고하자 -->
+		<li th:text="${f.name}"></li>
+		<p> [[ ${f.name} ]]은 [[ ${f.active} ? '외향적' : '내향적' ]]이다</p>
+	</ul>
+	
+	<hr>
+	<ul th:each="f : ${friendList}">
+		<!-- for (Friend f : FriendList) { sysout(f.getName()} 의 자바 코드를 참고하자 -->
+		<li>[[ ${f.name} ]]은 [[ ${f.active} ? '외향적' : '내향적' ]]이다</li>
+	</ul>
+	<!-- 만약 table을 만드는 경우에는 tr이 for문 역할을 하며 th/hd가 세부 명령문 역할을 한다 -->
+		
+	
+</body>
+</html>

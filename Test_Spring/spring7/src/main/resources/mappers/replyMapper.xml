@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+
+<!-- mapperXML 파일에서 insert, update, delete 태그는 resultType을 쓰지 않는다!! 사용시 오류 발생!! -->
+<mapper namespace="net.kdigital.spring7.mapper.ReplyMapper">
+<!-- namespace란에는 연동할 인터페이스의 전체 이름을 기재 (~Mapper.java의 경로)-->
+	
+	<!-- 댓글 전체 출력 -->
+	<!-- id에는 메소드 이름  // resultType에는 반환 타입 -->
+	<!-- ${} : 변수라는 의미 // #{} : 값이라는 의미 -->
+	<select id="selectReplyAll" parameterType="int" resultType="Reply">
+		SELECT
+			replyseq, boardseq, memberid, replytext, to_char(regdate, 'YYYY-MM-DD') as regdate
+		FROM reply
+		WHERE
+			boardseq = #{boardseq}
+	</select>
+	
+</mapper>

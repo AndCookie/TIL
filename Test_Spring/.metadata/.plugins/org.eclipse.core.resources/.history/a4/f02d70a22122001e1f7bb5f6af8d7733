@@ -1,0 +1,43 @@
+/**
+ * 
+ */
+
+anychart.onDocumentReady(function () {
+             $.ajax({
+                 url: 'bar',
+                 method: 'get',
+                 success: function(data) {
+                     // 데이터를 처리하고 차트 생성
+   
+                     var chartData = []; // 차트 데이터를 저장할 배열
+   
+                     // 데이터를 순회하며 차트 데이터 형식에 맞게 추가
+                     for (var i = 0; i < data.length; i++) {
+                         var item = data[i];
+                         chartData.push([item.companyNn, item.reviewCnt]);
+                     }
+   
+                     // 차트 생성
+                     var chart = anychart.column();
+   
+                     // 컬럼 시리즈 생성 및 데이터 설정
+                     var series = chart.column(chartData);
+                     
+                     //투명하게
+                     chart.background().fill("rgba(0, 0, 0, 0)");
+   
+                     // 차트 제목 설정
+                     // chart.title("Total number of reviews by brand");
+   
+                     // x축과 y축의 제목 설정
+                     chart.xAxis().title("brand");
+                     chart.yAxis().title("number of review");
+   
+                     // 컨테이너 ID 설정
+                     chart.container("container1");
+   
+                     // 차트 그리기
+                     chart.draw();
+                 }
+             });
+           });

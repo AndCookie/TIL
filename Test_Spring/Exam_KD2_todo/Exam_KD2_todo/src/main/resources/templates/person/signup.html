@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/main.css}">
+<style>
+div.container {
+	width: 800px;
+	margin : 0 auto;
+}
+div.container > h2 {
+	text-align : center;
+}
+span.result {
+	font-size: 0.7em;
+}
+table {
+	width: 800px;
+	border : 1px solid lightgray;
+}
+table th {
+	width: 200px;
+	height : 30px;
+	background-color : #eee;
+}
+
+</style>
+<script defer th:src="@{/script/jquery-3.7.0.min.js}"></script>
+<script defer th:inline="javascript" th:src="@{/script/signup.js}"></script>
+</head>
+<body>
+	<div class="container">
+	
+		<h2>[ 회원 가입 ]</h2>
+		<div>
+			<a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="logo" style="width: 30px;"></a>
+		</div>
+		
+		<form id="registForm" th:action="@{/person/regist}" method="POST"> 
+			<table>
+				<tr>
+					<th>
+						<label for="todoid">아이디</label>
+					</th>
+					<td>
+						<input type="text" id="todoid"  name="todoid" placeholder="아이디를 3~5자 이내로 입력" required>
+						<span id="todoidresult" class="result todoidresult"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="todopwd">비밀번호</label>
+					</th>
+					<td>
+						<input type="password" id="todopwd" name="todopwd" placeholder="비밀번호를 3~5자 이내로 입력" required>
+						<span id="todopwdresult" class="result todopwdresult" ></span>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="todoname">이름</label>
+					</th>
+					<td>
+						<input type="text" id="todoname" name="todoname" placeholder="이름을 입력" required>
+						<span id="todonameresult" class="result todonameresult"></span>
+					</td>
+				</tr>
+				<tr>
+					<th colspan="2">
+						<input type="button" id="regist" value="가입">&nbsp;
+						<input type="reset" value="취소">
+					</th>
+				</tr>		
+			</table>
+		</form>
+	</div>
+</body>
+</html>

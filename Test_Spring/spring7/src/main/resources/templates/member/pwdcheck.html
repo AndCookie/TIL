@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>비밀번호 확인</title>
+<!-- 글꼴1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap"
+    rel="stylesheet">
+<!-- 글꼴2 -->    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+
+<!-- 외부 JS -->
+<script defer th:src="@{/script/pwdcheck.js}"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="logo">
+				<a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="로고"></a>
+		</div>
+	<form id="memberForm" th:action="@{/member/pwdcheck}" method="POST">
+    	<h2>비밀번호 확인</h2>
+      	<table border="1">
+	        <tr>
+	            <th><span class="important">*</span>아이디</th>
+	            <td>
+	            	<input type="text" id="memberid" name="memberid" th:value="${#authentication.name}">
+	            </td>
+	         </tr>
+	         
+	         <tr>
+	            <th><span class="important">*</span>비밀번호</th>
+	            <td>
+	            	<input type="password" id="memberpwd" name="memberpwd"><br>
+	           	</td>
+	         </tr>
+	        
+   		</table>
+	
+	    <div class="btns"> <!-- class에는 button이라고 주면 안된다. 마치 키워드 역할을 하게 되므로 노노 -->
+	    	<input id="submitBtn" type="submit" value="인증하기">
+	     	<input type="button" value="취소">
+	  	</div>
+	  	
+	</form>
+  	</div> <!-- end.container -->
+</body>
+</html>

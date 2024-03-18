@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+  	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8">
+<title>My Todo List</title>
+<link rel="stylesheet" th:href="@{/css/list.css}">
+<style>
+
+</style>
+<script th:src="@{/script/jquery-3.7.0.min.js}"></script>
+<script th:inline="javascript">
+$(function (){
+	init();
+	$("#todoBtn").on('click', insertTodo);
+
+});
+
+// 초기화
+function init() {
+	$.ajax({
+		url : 'findById'
+		, method :'GET'
+		, data : {"todoid" : $("#todoid").text()}
+		, success : output
+	});
+	
+}
+
+// 화면 출력
+function output(resp) {
+	let data = '<table border="1"> <tr> <th>날짜</th> <th>분류</th> <th>상태</th> <th>중요도</th> <th>해야할 일</th> <th>비고</th> </tr>';
+    $.each(resp, function(idx, item){
+    	console.log($(".todoid").val())
+	    data += `<tr class="todotr">
+	     			<td class="regdate"> ${item.regdate}</td>
+	     			<td class="categories"> ${item.categories}</td>
+	      			<td class="status"> ${item.status}</td>
+	      			<td class="importance"> ${item.importance}</td>
+	      			<td class="todo"> ${item.todo}</td>
+	      			<td><input type="button" class="deleteBtn" value="삭제" data-no="${item.seqno}"></td>
+	     		  </tr>`;
+	   });
+	   data += '</table>';
+	   
+	   $("#result").html(data);
+	
+	   $(".deleteBtn").on('click', deleteTodo);
+	   cleanUp();
+	}
+
+
+// 등록
+function insertTodo(){
+	
+	let seqno = $(".seqno").val();
+	let todoid = $("#todoid").text();
+	let regdate = $("#regdate").val();
+	let status = $(".status input:checked").val();
+	let importance = $("#importance option:selected").val();
+	let categories = $(".categories input:checked").val();
+	let todo = $(".todo").val();
+	
+	let sendTodo = {"seqno":seqno, "todoid":todoid, "regdate":regdate, "status":status, "importance":importance, "categories":categories, "todo":todo};
+   
+	console.log(JSON.stringify(sendTodo));
+	$.ajax({
+		type : 'POST'
+		, url : 'todoCreate'
+		, data : sendTodo
+		, success : function(resp) {
+				$("#todoForm")[0].reset();
+				init();
+		}
+		, error : function(request,status,error){
+		     
+		}
+	});
+}
+
+
+// 삭제 (Ajax이용)
+function deleteTodo() {
+	let answer = confirm("정말로 삭제하시겠습니까?");
+	if (!answer)
+		return;
+	
+	let todoseq = $(this).attr('data-no');
+	   $.ajax({
+	      method: "GET"
+	      , url : "todoDelete"
+	      , data : {"seqno" : todoseq}
+	      , success : init
+	   });
+	}
+
+// 폼 데이터 초기화
+function cleanUp() {
+	$(".seqno").val('');
+	$(".todoid").val('');
+    $(".regdate").val('');
+    $(".status").val('');
+    $(".importance").val('');
+    $(".categories").val('');
+    $(".todo").val('');
+}
+</script>
+</head>
+<body>
+	<div class="container">
+
+		<h2>[ Todo List ]</h2>
+		
+		<div>
+			<a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="logo" style="width: 30px;"></a>
+		</div>
+		
+		<form id="todoForm" th:action="@{/todo/todoCreate}" method="POST">
+			<input type="hidden" name="seqno" id="seqno">
+			<table>
+				<tr>
+					<th>
+						<label>아이디</label>
+					</th>
+					<td>
+						<span class="todoid" id="todoid" name="todoid"> [[${#authentication.name}]]  </span>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="regdate">작성일</label>
+					</th>
+					<td class="regdate">
+						<input type="date" id="regdate" name="regdate">
+					</td>
+				</tr>
+				
+				<tr>
+					<th>
+						<label for="status">상태</label> 
+					</th>
+					<td class="status">
+						<input type="radio" name="status" value="진행" checked>진행
+						<input type="radio" name="status" value="지연">지연
+						<input type="radio" name="status" value="완료">완료
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="importance">중요도</label>
+					</th>
+					<td>
+						<select id="importance" class="importance" name="importance">
+		            		<option value="높음" selected>높음</option>
+		            		<option value="보통">보통</option>
+		            		<option value="낮음">낮음</option>
+		            	</select>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="categories">분류</label>
+					</th>
+					<td class="categories">
+						<input type="radio" name="categories" value="개인" checked>개인
+						<input type="radio" name="categories" value="회사">회사
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="todo">To Do</label>
+					</th>
+					<td>
+						<textarea class="todo" id="todo" name="todo" rows="5" cols="80" required></textarea>
+					</td>
+				</tr>
+							
+				<tr>
+					<th colspan="2">
+						<input type="button" id="todoBtn" value="할일 등록">&nbsp;
+						<input type="reset" value="취소">
+					</th>
+				</tr>		
+			</table>
+		</form>
+		
+		<!-- todo 출력 -->
+		<h3>(todo 보기)</h3>
+		<div id="result">
+		
+		</div>
+	</div>
+</body>
+</html>

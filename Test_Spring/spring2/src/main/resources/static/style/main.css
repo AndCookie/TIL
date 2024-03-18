@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* 한글인 경우 @charset 사용 */
+
+h2{
+	color:blue;
+	background-color:yellow;
+}
+p {
+	font-weight:bolder;
+	color:green;
+}

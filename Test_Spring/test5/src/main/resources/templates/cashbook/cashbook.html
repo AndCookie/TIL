@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>가계부</title>
+<!-- 글꼴1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap"
+    rel="stylesheet">
+<!-- 글꼴2 -->    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+<link rel="stylesheet" th:href="@{/style/signup.css}">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="logo">
+				<a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="로고"></a>
+		</div>
+	<form id="memberForm" th:action="@{/cash/insert}" method="POST">
+		<h2>[ 나의 가계부 ]</h2>
+		<table>
+			<ul>
+				<tr>
+					<th>구분</th>
+					<td>
+						<input type="radio" name="type" value="수입" checked> 수입
+						<input type="radio" name="type" value="지출"> 지출
+					</td>
+				</tr>
+				<tr>
+					<th>메모</th>
+					<td>
+						<input type="text" name="memo" placeholder="내용 입력" >
+					</td>
+				</tr>
+				<tr>
+					<th>금액</th>
+					<td>
+						<input type="text" name="amount" placeholder="금액 입력" >
+					</td>
+				</tr>
+				<tr>
+					<th colspan="2">
+						<input id="submitBtn" type="submit" value="등록하기">
+					</th>
+				</tr>	
+			</ul>
+		</table>
+		
+		<table style="border:1px solid black">
+			<tr>
+			   <th>날짜</th>
+			   <th>구분</th>
+			   <th>메모</th>
+			   <th>금액</th>         
+			</tr>
+			<br><br>
+			<tr th:each = "cashbook:${list}">
+			      
+			   <td th:text="${cashbook.inputdate}"></td>
+			   <td th:text="${cashbook.type}"></td>
+			   <td th:text="${cashbook.memo}"></td>
+			   <td th:text="${cashbook.amount}"></td>
+			   <td><input type="button" value="삭제" class="btnDel" th:data-num="${cashbook.infonum}"></td>
+			</tr>
+      
+		</table>
+	</form>
+	</div> <!-- end.container -->
+
+</body>
+</html>

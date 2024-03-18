@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;friendMapper.xml&apos; to &apos;spring7/src/main/resources/mappers&apos;&#x0D;&#x0A;- Original project: &apos;spring5&apos;&#x0D;&#x0A;- Destination element: &apos;spring7/src/main/resources/mappers&apos;&#x0D;&#x0A;- Original element: &apos;friendMapper.xml&apos;" description="Copy file" destination="=spring7/src\/main\/resources=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;mappers" element1="src/main/resources/mappers/friendMapper.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1685417452565" units="0" version="1.0"/>
+</session>

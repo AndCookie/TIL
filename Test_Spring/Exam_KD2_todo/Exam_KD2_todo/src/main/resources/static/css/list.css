@@ -1,0 +1,16 @@
+@charset "UTF-8";
+@import url("main.css");
+
+td.center {
+	text-align : center;
+}
+#todolist, tr, td {
+	border : 1px solid #eee;
+	border-collapse : collapse;
+}
+td {
+	padding: 5px;
+}
+th.item{
+	width: 60px;
+}

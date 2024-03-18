@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script defer th:src="@{/script/member.js}"></script>
+</head>
+
+<body>
+    <div class="container">
+		<h2>[ 회원가입 ]</h2>
+    	<form id="memberForm" th:action="@{/member/signup}" method="POST">
+        <table border="1">
+        	<tr>
+                <th> 아이디</th>
+                <td>
+                    <input type="text" id="memberid" name="memberid">
+                </td>
+            </tr>
+        	<tr>
+                <th> 비밀번호</th>
+                <td>
+                    <input type="password" id="memberpw" name="memberpw">
+                </td>
+            </tr>
+        	<tr>
+                <th> 비밀번호 확인</th>
+                <td>
+                    <input type="password" id="memberpwchk" >
+                </td>
+            </tr>            
+        	<tr>
+                <th>이름</th>
+                <td>
+                    <input type="text" id="membername" name="membername">
+                </td>
+            </tr>
+ 			<tr>
+ 				<th colspan="2">
+            	<input id="submitBtn" type="submit" value="가입하기" >
+            	</th>
+            </tr>
+		</table>
+    </form>
+    </div> <!-- end .container -->
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>연도별 통계</title>
+<!-- 글꼴1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap"
+    rel="stylesheet">
+<!-- 글꼴2 -->    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Foldit:wght@900&family=Gowun+Dodum&family=Montagu+Slab:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="logo">
+				<a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="로고"></a>
+		</div>
+	
+		<h2>[ 나의 연도별 통계 ]</h2>
+		<table style="border:1px solid black">
+			<tr>
+			   <th>연도</th>
+			   <th>지출</th>
+			   <th>수입</th>      
+			</tr>
+			<br><br>
+			<tr th:each = "statistics :${map}">
+			   <td th:text="${statistics.key}"></td>   
+			   <td th:text="${statistics.value.outtotal}"></td>
+			   <td th:text="${statistics.value.intotal}"></td>
+			</tr>
+      
+		</table>
+
+	</div> <!-- end.container -->
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>객체 처리</title>
+</head>
+<body>
+	<h2>객체 처리(ArrayList)</h2>
+	<ul>
+		<li><span th:text="${list}" ></span></li>
+	</ul>
+	<hr>
+	<ul th:each="item : ${list}">
+		<li>[[ ${item} ]]</li>
+	</ul>
+	<hr>
+	<ul>
+		<li>ArrayList의 크리 : <span th:text="${list.size()}"></span></li>
+	</ul>
+</body>
+</html>

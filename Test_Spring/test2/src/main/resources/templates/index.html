@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>신상정보 입력</title>
+</head>
+<body>
+	<h2>[ 신상정보 입력 ]</h2>
+	<form th:action="@{/info}" method="POST" >
+	<!-- calc 그대로 쓰면 /test1이 사라짐-->
+		<label>
+			아이디 : <input type="text" name="userid"></input> 		
+		</label><br>
+		<label>
+			이름 : <input type="text" name="username"></input> 		
+		</label><br>
+		<label>
+			생년 : <input type="text" name="year"></input> 		
+		</label><br>
+		<label>
+			성별 : <input type="radio" name="gender" value="남성" checked>남자</input>
+				   <input type="radio" name="gender" value="여성">여자</input>	
+		</label><br>
+		
+		<input type="submit" value="전송">
+	</form>
+
+</body>
+</html>
