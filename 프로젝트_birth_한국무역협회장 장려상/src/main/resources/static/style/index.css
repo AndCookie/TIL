@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+/* 헤더 */
+div.header {
+    float:left;
+}
+
+/* 배너 */
+div.banner {
+	float:left;
+	margin-top: -15px;
+	margin-left: -20px;
+	margin-bottom: -100px;
+}
+
+img.banner_image{
+	width:1000px;
+	height: 200px;
+}
+p.main_image_text1 {
+  position: relative;
+  top: -150px;
+  left: 50px;
+  font-size: 3.5em;
+  font-weight:bold;
+  color:black;
+}
+p.main_image_text2 {
+  position: relative;
+  top: -160px;
+  left: 60px;
+  color: white;
+  font-family: 'NanumSquareNeoBold';
+  font-size: 22px;
+}
+
+/* sub */
+div.sub {
+	display: inline-block;
+}
+div.sub > img {
+	width: 1000px;
+}
+
+/* map */
+
+div.map {
+	float:left;
+	margin-top: 80px;
+}
+div.map > h3 {
+	margin-left: 20px;
+}
+
+div.one,
+div.two,
+div.three {
+   width:270px;
+   height:200px;
+   margin: 5px;
+   float:left;
+   margin-left: 20px;
+   margin-bottom: 50px;
+   text-align:center;
+}
+
+div.two,
+div.three {
+	margin-left:60px;
+}
+
+div.one > a,
+div.two > a,
+div.three > a {
+   text-decoration-line:none;
+}
+
+div.one > a > span.centered-text,
+div.two > a > span.centered-text,
+div.three > a > span.centered-text {
+	display: block;
+	width:270px;
+    height:40px;
+    color:white;
+    font-size:20px;
+    background-color:rgba(0, 0, 0, 0.8);
+    text-align:center;
+}
+
+/* 인포 */
+div.info {
+   float:left;
+   width:1000px;
+   text-align: center;
+   margin-left: 60px;
+   margin-top : 20px;
+}
+hr.info {
+	margin-top : -30px;
+}
+div.info > a {
+	margin-bottom : 30px;
+}
+div.info > p {
+   margin:0;
+}
