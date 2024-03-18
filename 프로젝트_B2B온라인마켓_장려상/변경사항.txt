@@ -1,0 +1,25 @@
+7월 6일 취합 과정 중 어휘 통일을 위한 변경사항
+
+1. Controller와 html 어휘 통일 <category/bidet>
+  변경사항 : 템플릿 중에 dashboard/dashboard는 category/bidet로 변경
+
+  변경파트: Controller {@getmapping + @postmapping} 
+
+               templete.dashboard  +  dashboard
+           =>templete.category    +  listbidet 
+
+2. member.html : signin
+  변경사항 : th:action=*"@{/member/login}"* 에서  *"@{/member/signin}"*으로 변경
+
+3. 용어정리를 위한 어휘 통일 ( th 이미 너무 많이 써서 이것만 좀 바꿀게요 ㅠ)
+  변경사항 : category_bidet.html => listbidet.html
+
+----------------------------
+조율 사항 : 
+1. 검색어 기능에 
+    제목▼ 회사▼ 추가할건지
+          +
+   검색 버튼에서 
+   form 태그를 사용해 검색을 해서 기존 style은 a태그에 맞춰져 있는 부분
+
+2. readproduct.html  css추가

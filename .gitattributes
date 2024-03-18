@@ -6,3 +6,7 @@
 Deep filter=lfs diff=lfs merge=lfs -text
 Learning/ratings.csv filter=lfs diff=lfs merge=lfs -text
 데이터 filter=lfs diff=lfs merge=lfs -text
+프로젝트_B2B온라인마켓_장려상/PredictServer/HASH.pickle filter=lfs diff=lfs merge=lfs -text
+프로젝트_B2B온라인마켓_장려상/PredictServer/INQ_CV.pickle filter=lfs diff=lfs merge=lfs -text
+프로젝트_B2B온라인마켓_장려상/PredictServer/PRODUCT_CV.pickle filter=lfs diff=lfs merge=lfs -text
+프로젝트_B2B온라인마켓_장려상/PredictServer/PRODUCT_NB.pickle filter=lfs diff=lfs merge=lfs -text

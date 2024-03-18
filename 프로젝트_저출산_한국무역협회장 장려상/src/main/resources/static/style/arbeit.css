@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+div.menu > a#a {
+	background-color: rgba(128, 128, 128, 0.4);
+	color:#F2A50A;
+}
+
+div.menu > a#a > li {
+	color:#F2A50A;
+}
