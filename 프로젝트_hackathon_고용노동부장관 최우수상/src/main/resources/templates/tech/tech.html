@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>기술</title>
+
+<!-- 부트스트랩 -->
+<!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 글꼴 -->
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+<link rel="stylesheet" th:href="@{/style/tech.css}">
+
+<!-- 외부JS -->
+<script defer th:src="@{/script/tech.js}"></script>
+
+
+</head>
+
+<body>
+   <div class="container">
+      <!-- 부트스트랩의 container -->
+      <div class="left-sidebar">
+         <ul>
+            <div class="logo">
+               <a th:href="@{/}" class="btn"><li><img
+                     th:src="@{/images/logo.png}" alt="로고"></li></a>
+            </div>
+            <div class="menu">
+               <!-- 인증과 무관 -->
+               <a th:href="@{/tech/tech}" class="btn" id="t"><li>TECH</li></a> <a
+                  th:href="@{/drag/busan}" class="btn" id="d"><li>SERVICE</li></a> <a
+                  th:href="@{/port/port}" class="btn" id="p"><li>PORT</li></a> <a
+                  th:href="@{/weather/weather}" class="btn" id="w"><li>WEATHER</li></a>
+               <a th:href="@{/schedule/schedule}" class="btn" id="s"><li>SCHEDULE</li></a>
+               <hr>
+               <a th:href="@{/about/about}" class="btn" id="a"><li>ABOUT
+                     US</li></a> <a th:href="@{/refer/refer}" class="btn" id="r"><li>REFERENCE</li></a>
+            </div>
+         </ul>
+      </div>
+      <!-- end.left-sidebar -->
+
+      <div class="contents">
+         <h2>주요 기술</h2>
+         <img th:src="@{/icon/dot.png}" alt="동그라미" class="dot">
+        <br>
+         <!-- <img src="./images/주묘.png" alt="주묘" width="600px;"> -->
+         <div class="dragged_anchor">
+            <h3>닻끌림, 주묘현상</h3>
+            <img th:src="@{/images/주묘2.png}" alt="주묘2"
+               class="dragged_anchor_img"><br> <br>
+
+            <ul>
+               <li>닻은 선박의 자동차의 브레이크와 같은 기능을 합니다.</li>
+               <li>선박이 정박지에 도착하면 닻을 내리는 <span class="highlight">투묘 행위</span>를
+                  합니다.
+               </li>
+               <li>배는 투묘지점을 기준으로 원을 그리고, 이 <span class="highlight">선회반경</span>
+                  안에서 움직입니다.
+               </li>
+               <li>그러나 기상상황의 악화로 인해 외력이 강해지면, <br> 선박이 해당 선회반경을 벗어나 일자나
+                  지그재그 형태의 궤적을 그립니다.
+               </li>
+            </ul>
+
+         </div>
+         <!-- div dragged_anchor -->
+
+
+
+         <div class="danger">
+            <h3>닻끌림의 피해</h3>
+            <img th:src="@{/images/주묘3.png}" alt="주묘3" class="danger_img">
+            <br>
+
+            <ul>
+               <li>닻끌림은 <span class="highlight">좌초, 기름유출, 케이블 손상</span>과 같은
+                  피해를 야기합니다.
+               </li>
+               <li>최근 이상기후 및 초강력 태풍으로 자연재해 발생 빈도가 증가하는 추세이며,<br> 이는 전
+                  세계적으로 해양안전을 위협하고 있습니다.
+               </li>
+               <li>포크는 기상 상황에 따른 닻끌림 발생 위험도를 예측해 사전에 사고를 예방하고 있습니다.</li>
+            </ul>
+
+         </div>
+         <!-- div danger -->
+
+
+
+         <div class="predict">
+            <h3>모델 구현</h3>
+            <img th:src="@{/images/예측.png}" alt="예측" class="predict_img"><br>
+            <br>
+            <ul>
+               <li>포크는 정박지의 닻끌림 위험도 예측정보를 활용해 대응 할 수 있도록<br> <span
+                  class="highlight">날씨정보, 정박지 위험도, 위험도에 따른 대응 요령</span>을 제공하고 있습니다.
+               </li>
+            </ul>
+         </div>
+         <!-- div predict -->
+
+
+
+
+         <div class="tech">
+            <h3>사용기술</h3>
+            <img th:src="@{/images/lstm.png}" alt="lstm" class="tech_img">
+            <br> <span style="display:block; text-align:right;">주요 사용 기술 : LSTM</span> <br>
+            <ul>
+               <li>LSTM은 딥러닝 모델 중 하나로, <span class="highlight">시계열 예측
+                     모델</span>입니다.
+               </li>
+               <li>LSTM은 과거 정보를 기억하는 능력을 가지고 있어 이전 데이터를 시간 순서대로 학습하여 현재나 미래의
+                  예측 값을 도출할 수 있습니다.</li> <li>저희 포크는 30분, 1시간, 1시간 반 후의
+               <span class="highlight">닻끌림 예측정보</span>를 제공합니다.
+               </li>
+            </ul>
+         </div>
+
+      </div>
+      <!-- end.contents -->
+   </div>
+   <!-- end.container -->

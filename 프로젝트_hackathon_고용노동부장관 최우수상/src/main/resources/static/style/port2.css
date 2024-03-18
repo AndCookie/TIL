@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+div.menu > a#p {
+	background-color: rgba(128, 128, 128, 0.4);
+	color:#F2A50A;
+}
+
+div.menu > a#p > li {
+	color:#F2A50A;
+}
+img.port {
+	width:200px;
+}
+table {
+	float:left;
+	border-collapse: collapse;
+    width: 570px;
+    border:1px solid black;
+}
+table.busan {
+	margin-right:30px;
+}
+
+table > thead > tr > th.region {
+	width:60px;
+}
+table > thead > tr > th.tonnage{
+	width:300px;
+}
+th.img{
+	width:600px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 2px 8px 2px 8px;
+    text-align: left;
+    text-align:center;
+}
+
+th {
+    background-color: #f2f2f2;
+}

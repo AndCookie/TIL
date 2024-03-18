@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+div.menu > a#w {
+	background-color: rgba(128, 128, 128, 0.4);
+	color:#F2A50A;
+}
+
+div.menu > a#w > li {
+	color:#F2A50A;
+}
+
+img.copy {
+	width: 85%;
+	margin-bottom: 100px;
+}

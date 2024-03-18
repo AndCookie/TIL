@@ -1,0 +1,1032 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'NanumSquareNeo-normal';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+   font-family: "NanumSquare-Regular";
+   font-weight: 700;
+   src: url("src/main/resources/static/font/NanumSquareNeo/woff/NanumSquare-Regular.woff") format("application/font-woff");
+  }
+
+@font-face {
+   font-family: "NanumSquare-Light";
+   font-weight: 700;
+   src: url("src/main/resources/static/font/NanumSquareNeo/woff/NanumSquare-Light.woff") format("application/font-woff");
+}
+
+@font-face {
+   font-family: "NanumSquare-Bold";
+   font-weight: 700;
+   src: url("src/main/resources/static/font/NanumSquareNeo/woff/NanumSquare-Bold.woff") format("application/font-woff");
+}
+
+@font-face {
+   font-family: "NanumSquare-ExtraBold";
+   font-weight: 700;
+   src: url("src/main/resources/static/font/NanumSquareNeo/woff/NanumSquare-ExtraBold.woff") format("application/font-woff");
+}
+
+body {
+   font-family: 'NanumSquareNeo-normal', sans-serif;
+}
+
+div.cont-wrap {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1260px;
+    padding: 0;
+}
+
+div.cont-box03 {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    background: #eef2f7;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 30px;
+    height: 540px;
+    padding-left: 420px;
+}
+
+div.right-con {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    float: none;
+    width: 100%;
+    padding-left: 0;
+    min-height: 499px;
+}
+
+div.hid {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -9999px;
+    top: -9999px;
+    line-height: 0;
+    padding: 0;
+}
+
+h3 {
+	font-family: 'ns', sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 0;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    color: #000;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 10px 13px 0;
+    margin-top: 0;
+}
+
+div.over-scroll {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    overflow-x: auto;
+}
+
+table.table-col {
+	padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-top: 2px solid #000;
+    min-width: auto;
+    margin: 20px 13px 0;
+    width: calc(100% - 26px);
+}
+
+caption.hid {
+	word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -9999px;
+    top: -9999px;
+    line-height: 0;
+    padding: 0;
+}
+
+colgroup {
+	word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: border-box;
+}
+
+colgroup > col {
+	width: 45%;
+}
+
+thead {
+	word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: border-box;
+}
+
+thead > tr > th {
+	border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-family: 'ns', sans-serif;
+    color: #000000;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid #000;
+    font-weight: 700;
+    text-align: center;
+    font-size: 13px;
+    padding: 5px 5px;
+    border-left: 0;	
+}
+
+tbody {
+	word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: border-box;
+}
+
+tbody > tr > td {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-family: 'ns', sans-serif;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid #e0e6ef;
+    text-align: center;
+    font-size: 13px;
+    word-break: break-word;
+    padding: 10px 0;
+    vertical-align: middle;
+    border-left: 0;
+}
+
+tbody > tr > td > span {
+	border-collapse: separate;
+    border-spacing: 0;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-family: 'ns', sans-serif;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    text-align: center;
+    font-size: 13px;
+    word-break: break-word;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 10px;
+}
+
+tbody > tr > td > i.wic DB01 {
+	border-collapse: separate;
+    border-spacing: 0;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-family: 'ns', sans-serif;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    text-align: center;
+    font-size: 13px;
+    word-break: break-word;
+    box-sizing: border-box;
+    font-style: normal;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-size: 100% auto;
+    text-indent: -99999px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../icon/DY@64/A/Light/DB01.png);
+    vertical-align: middle;
+}
+
+tbody > tr > td > img.line {
+    border-collapse: separate;
+    border-spacing: 0;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-family: 'ns', sans-serif;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    text-align: center;
+    font-size: 13px;
+    word-break: break-word;
+    box-sizing: border-box;
+    border: 0;
+    height: auto;
+    margin-left: 10px;
+    max-width: 40px;
+    vertical-align: middle;
+    width: 10px;
+}
+
+p.bu {
+	font-family: 'ns', sans-serif;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    float: right;
+    margin-top: 10px;
+    font-size: 10px;
+    margin-right: 13px;
+}
+
+div.cont-box04{
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    margin-top: 25px;
+    min-height: 334px;
+    height: 334px;
+    position: relative;
+}
+
+h3 {
+	font-family: 'ns', sans-serif;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 5px;
+    position: relative;
+    font-size: 20px;
+    margin-top: 0;
+    padding: 0 13px;
+}
+
+h3 > i.icon tooltip-btn{
+	font-family: 'ns', sans-serif;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    color: #000;
+    font-weight: 700;
+    font-size: 20px;
+    box-sizing: border-box;
+    font-style: normal;
+    background: url('../image/icon_help_2.png');
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background-size: 100% !important;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+h3 > i > span.tooltip {
+	font-family: 'ns', sans-serif;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    font-style: normal;
+    box-sizing: border-box;
+    display: none;
+    color: #000000;
+    background: #efefef;
+    position: absolute;
+    left: 0;
+    line-height: 140%;
+    text-align: left;
+    font-weight: 500;
+    z-index: 110;
+    font-size: 11px;
+    padding: 2px 5px;
+    top: 25px;
+}
+
+div.hid {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -9999px;
+    top: -9999px;
+    line-height: 0;
+    padding: 0;
+}
+
+div.hid > ul {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    list-style: none;
+}
+
+div.hid > ul > li {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+}
+
+div.over-scroll {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+div.gf-cont {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    border-top: 1px solid #e0e6ef;
+    border-bottom: 1px solid #e0e6ef;
+    padding: 20px 0;
+    width: 1200px;
+    min-width: 1200px;
+}
+
+ul.gf-01 {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    list-style: none;
+    overflow: hidden;
+    line-height: 35px;
+}
+
+ul.gf-01 > hid {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    list-style: none;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    overflow: hidden;
+    position: absolute;
+    height: 0;
+    left: -9999px;
+    top: -9999px;
+    line-height: 0;
+    padding: 0;
+    width: 60px;
+    color: #595959;
+    text-align: center;
+}
+
+ul.gf-01 > hid > li {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    list-style: none;
+    line-height: 0;
+    color: #595959;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    float: left;
+}
+
+ul.gf-01 > li.half {
+	font-family: 'ns', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    list-style: none;
+    line-height: 35px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    float: left;
+    background: #eef2f7;
+    color: #000;
+    font-size: 15px;
+    text-align: center;
+    margin-right: 2px;
+    width: 7.2%;
+}
+
+ul.gf-02 {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    list-style: none;
+    overflow: hidden;
+}
+
+ul.gf-02 > li.hid {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    list-style: none;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    overflow: hidden;
+    position: absolute;
+    height: 0;
+    left: -9999px;
+    top: -9999px;
+    line-height: 0;
+    padding: 0;
+    float: left;
+    text-align: center;
+    width: 7.28%;
+}
+
+ul.gf-02 > li.hid > li > i.wic NB04 {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    list-style: none;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    font-style: normal;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-size: 100% auto;
+    text-indent: -99999px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../icon/NY@128/A/Light/NB04.png);
+}
+
+ul.gf-02 > div.hid {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    list-style: none;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    overflow: hidden;
+    position: absolute;
+    height: 0;
+    left: -9999px;
+    top: -9999px;
+    line-height: 0;
+    padding: 0;
+    width: 60px;
+    color: #595959;
+    text-align: center;
+}
+
+ul.gf-02 > li.hid-half {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    list-style: none;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    overflow: hidden;
+    position: absolute;
+    height: 0;
+    left: -9999px;
+    top: -9999px;
+    line-height: 0;
+    padding: 0;
+    float: left;
+    text-align: center;
+    width: 7.28%;
+}
+
+div.gf-03 {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    position: relative;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper {
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    margin-left: 55px;
+    display: inline-block;
+    position: absolute;
+    width: calc(100% - 55px);
+    top: 0px;
+    height: 105px;
+    overflow: hidden;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart{
+	font-family: 'ns', sans-serif;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    line-height: 105px;
+    height: 230px;
+    margin-top: -50px;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4{
+	font-size: 13px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    direction: ltr;
+    unicode-bidi: isolate;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    position: relative;
+    overflow: hidden;
+    width: 1145px;
+    height: 230px;
+    text-align: left;
+    line-height: normal;
+    z-index: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: ns, sans-serif;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root {
+	color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    text-align: left;
+    line-height: normal;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    width: 1145;
+    height: 230;
+    box-sizing: border-box;
+    font-family: 'ns', sans-serif;
+    font-size: 12px;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > defs > clipPath#highcharts-dtcyblh-5 {
+	color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    text-align: left;
+    line-height: normal;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'ns', sans-serif;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > rect {
+	color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    text-align: left;
+    line-height: normal;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'ns', sans-serif;
+    font-size: 12px;
+    fill: rgba(0, 0, 0, 0);
+    x: 0;
+    y: 0;
+    width: 1145;
+    height: 230;
+    rx: 0;
+    ry: 0;
+    box-sizing: border-box;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > g.highcharts-grid highcharts-xaxis-grid {
+	color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    text-align: left;
+    line-height: normal;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'ns', sans-serif;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > g.highcharts-grid highcharts-xaxis-grid > path.highcharts-grid-line {
+	color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    text-align: left;
+    line-height: normal;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'ns', sans-serif;
+    font-size: 12px;
+    fill: none;
+    d: path("M 49.5 45 L 49.5 159");
+    opacity: 1;
+    box-sizing: border-box;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > g.highcharts-grid highcharts-yaxis-grid {
+	    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    text-align: left;
+    line-height: normal;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'ns', sans-serif;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > g.highcharts-grid highcharts-yaxis-grid > path.highcharts-grid-line {
+	color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    text-align: left;
+    line-height: normal;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'ns', sans-serif;
+    font-size: 12px;
+    fill: none;
+    stroke: rgba(0, 0, 0, 0);
+    stroke-width: 1;
+    d: path("M 10 159.5 L 1135 159.5");
+    opacity: 1;
+    box-sizing: border-box;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > rect.highcharts-plot-border  {
+	    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-size-adjust: 100%;
+    text-align: left;
+    line-height: normal;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'ns', sans-serif;
+    font-size: 12px;
+    fill: none;
+    x: 10;
+    y: 45;
+    width: 1125;
+    height: 114;
+    box-sizing: border-box;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > g.highcharts-axis highcharts-xaxis  {
+	color: #000000;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > g.highcharts-axis highcharts-xaxis > path.highcharts-tick {
+	color: #000000;
+}
+  
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > g.highcharts-axis highcharts-yaxis  {
+	color: #000000;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > g.highcharts-axis highcharts-yaxis > path.highcharts-axis-line {
+	color: #000000;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > g.highcharts-series-group {
+	color: #000000;
+}
+
+div.gf-03 > div.sea-wave-chart-wrapper > div#sea-wave-chart > div#highcharts-dtcyblh-4 > svg.highcharts-root > g.highcharts-series-group {
+	color: #000000;
+}
+
+
+
+
+
+
+
+
+

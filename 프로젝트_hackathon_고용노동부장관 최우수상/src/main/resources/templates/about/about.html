@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>About Us</title>
+
+<!-- 부트스트랩 -->
+<!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 글꼴 -->
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+<link rel="stylesheet" th:href="@{/style/about.css}">
+
+<!-- 외부JS -->
+<script defer th:src="@{/script/about.js}"></script>
+
+
+</head>
+
+<body>
+   <div class="container"> <!-- 부트스트랩의 container -->
+        <div class="left-sidebar">
+           <ul>
+               <div class="logo">
+                     <a th:href="@{/}" class="btn"><li><img th:src="@{/images/logo.png}" alt="로고"></li></a>
+            </div>
+            <div class="menu">
+                  <!-- 인증과 무관 -->
+                  <a th:href="@{/tech/tech}" class="btn" id="t"><li>TECH</li></a>
+                  <a th:href="@{/drag/busan}" class="btn" id="d"><li>SERVICE</li></a>
+                  <a th:href="@{/port/port}" class="btn" id="p"><li>PORT</li></a>
+                  <a th:href="@{/weather/weather}" class="btn" id="w"><li>WEATHER</li></a>
+                  <a th:href="@{/schedule/schedule}" class="btn" id="s"><li>SCHEDULE</li></a>
+                  <hr>
+                  <a th:href="@{/about/about}" class="btn" id="a"><li>ABOUT US</li></a>
+                  <a th:href="@{/refer/refer}" class="btn" id="r"><li>REFERENCE</li></a>
+               </div>
+         </ul>
+      </div> <!-- end.left-sidebar -->
+      <div class="contents">
+            <h2>소개글</h2>
+            <img th:src="@{/icon/dot.png}" alt="동그라미" class="dot"><br>
+            <div class="introduce">
+                <h3>팀 소개</h3>
+               <div class="intro">
+                  <div class="forkdiv"><img th:src="@{/images/fork.png}" alt="포크" class="fork"></div>
+                   <span class="text">
+                       저희 포크는 대한민국의 동아시아 허브로 발돋움하는 기반을 마련하기 위해 <br>
+                       가장 중요한 문제 중 하나인 항구 안전을 지키고자 만들어진 팀입니다. <br><br>
+                       대한민국 주요 항구에서의 닻 끌림에 따른 해양 안전사고 발생 위험도를 <br>
+                       공공데이터 기반으로 분석하여 실시간 예측 결과를 웹 서비스로 구현 및 제공하고 있습니다.<br><br>
+                       해양은 본래 끊임없이 변하는 존재입니다. <br>
+                       잔잔했던 바다가 갑자기 거대한 파도와 함께 육지의 안전을 위협하는 상황은 <br>
+                       급속도로 발전하며 변하는 해양산업과도 같기에, <br>
+                       우리는 그 어떤 위협에도 흔들리지 않기 위해 끊임없이 노력할 것입니다. <br>
+                       빠르고 정확한 예측과 편리한 접근성으로 최적의 서비스를 제공할 수 있는 팀이 되겠습니다.
+                   </span>
+               </div><!-- end.intro -->
+                <!-- <h3>VISION PERFECT COMMUNICATION</h3>
+                <p>
+                    세상 모든 것과의 커뮤니케이션 <br>
+                    (주)포크는 "Perfect Communication"의 '사람과 사람','사람과 사물','사람과 세상' 간 <br>
+                    자유롭게 평등한 의사소통을 할 수 있는 혁신적인 인공지능(AI)기술을 제공합니다. <br>
+                    모든 사람이 모든 것들과 소통하는 세상, 그 중심에 포크가 있습니다.
+                </p><br><br> -->
+
+                <h3>Core Competence</h3>
+                <img class="core" alt="competence" th:src="@{/images/competence.jpg}" width="800px">
+                <div class="core">
+	                <span>
+	                    사람을 향하는 소프트웨어를 개발합니다. <br>
+	                    Absolute Empathy(절대적 공감)을 바탕으로 창의성과 열정을 통해 세상 모든 것과 <br>
+	                    자유롭고 평등한 의사소통을 할 수 있는 혁신적 인공지능 기술을 제공합니다. <br>
+	                    <br>
+	                    도전하는 마음으로 세계 최고를 향합니다. <br>
+	                    Strategy Thinking(전략적 사고)와 Professional Mentality(프로의식)을 바탕으로 <br>
+	                    끊임없이 전문성을 실현해 모든 것과 완벽히 소통하는 최고의 SW로 미래를 선도합니다. <br> <br>
+	
+	                    혁신을 통한 제약없는 의사소통을 실현해 나갑니다. <br>
+	                    Fierce Action(치열한 행동)을 통해 현재에 안주하지 않고 미래를 위한 끊임없는 도전으로 <br>
+	                    자유로운 의사소통의 풍요로움을 제공해 인류의 행복에 공헌합니다.
+	                </span>
+                </div>
+
+                <h3>조직도</h3>
+                <p><img th:src="@{/images/조직도.jpg}" alt="조직도" id="organization"></p>
+
+            </div><!-- end.introduce -->
+            
+            <div class="container__slider">
+                <span class="slider__arrow">
+                    <img th:src="@{/images/arrow_left.png}" alt="슬라이더 좌측 이동" id="arrow1">
+                </span>
+                <div class="slider__box-wrap">
+                    <div class="slider__box">
+                        <div class="slider__box__title">AI 인공지능</div>
+                        <div class="slider__box__content">
+                            해양/기상과 관련된 정형/비정형 빅데이터를<br>
+                            포크의 인공지능 기술과 SW를 활용하여 비즈니스 프로세스에 적용 및<br>
+                            비즈니스 의사결정 과정에 전략적으로 활용할 수 있습니다.
+                        </div>
+                        <input class="slider__box__button" type="button" value="바로가기 &gt;">
+                        <!-- <div class="slider__box__button">바로가기 &gt;</div> -->
+                    </div>
+                </div>
+                <span class="slider__arrow">
+                    <img th:src="@{/images/arrow_right.png}" alt="슬라이더 우측 이동" id="arrow2">
+                </span>
+            </div><!-- end.container__slider -->
+            <div class="bottom"></div>
+        </div> <!-- end.contents -->
+    </div> <!-- end.container -->
+</body>
+</html>

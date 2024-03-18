@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+div.menu > a#s {
+	background-color: rgba(128, 128, 128, 0.4);
+	color:#F2A50A;
+}
+
+div.menu > a#s > li {
+	color:#F2A50A;
+}
+
+/* 선택 */
+div.select_box > label {
+	margin-right: 5px;
+	font-weight : bolder;
+}
+div.select_box > select {
+	margin-right: 30px;
+}
+div.select_box > select#shipping_company {
+	width: 130px;
+}
+div.select_box > select#route_select {
+	width: 400px;
+}
+
+/* 조회 결과 테이블 */
+table {
+   display: in-line;
+   width : 1100px;
+}
+th{
+   border: 1px solid #444444;
+   display: in-line;
+   font-size: 12px;
+   text-align:center;
+   background-color: #f2f2f2;
+   height:36px;
+}
+tr, td {
+   border: 1px solid #444444;
+   display: in-line;
+   font-size:11px;
+   padding: 3px 10px 3px 10px;
+}
+
+a {
+   color: black;
+   font-weight: normal;
+   text-decoration: None;
+}
+
+a:hover {
+   text-decoration: None;
+   cursor: None;
+   color: black;
+}
+

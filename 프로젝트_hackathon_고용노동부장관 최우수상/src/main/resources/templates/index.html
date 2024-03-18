@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>FORK</title>
+
+<!-- 부트스트랩 -->
+<!-- Latest compiled and minified CSS -->
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+   rel="stylesheet">
+<!-- Latest compiled JavaScript -->
+<script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 글꼴 -->
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+<link rel="stylesheet" th:href="@{/style/index.css}">
+
+<!-- 외부JS -->
+<script defer th:src="@{/script/myscript.js}"></script>
+
+</head>
+
+<body>
+	<div class="container">
+		<!-- 부트스트랩의 container -->
+        <div class="left-sidebar">
+        	<ul>
+            	<div class="logo">
+               		<a th:href="@{/}" class="btn"><li><img th:src="@{/images/logo.png}" alt="로고"></li></a>
+				</div>
+				<div class="menu">
+	               <!-- 인증과 무관 -->
+	               <a th:href="@{/tech/tech}" class="btn" id="t"><li>TECH</li></a>
+	               <a th:href="@{/drag/busan}" class="btn" id="d"><li>SERVICE</li></a>
+	               <a th:href="@{/port/port}" class="btn" id="p"><li>PORT</li></a>
+	               <a th:href="@{/weather/weather}" class="btn" id="w"><li>WEATHER</li></a>
+	               <a th:href="@{/schedule/schedule}" class="btn" id="s"><li>SCHEDULE</li></a>
+	               <hr>
+	               <a th:href="@{/about/about}" class="btn" id="a"><li>ABOUT US</li></a>
+	               <a th:href="@{/refer/refer}" class="btn" id="r"><li>REFERENCE</li></a>
+	            </div>
+		    </ul>
+		</div> <!-- end.left-sidebar -->
+      
+		<div class="contents">
+			<div class="header">
+		    	<span class="signUp">
+		        	<a href="#">로그인</a><span>|</span><a href="#">회원가입</a>
+		      	</span>
+		   		<div class="banner">
+		   			<br>
+		   			<img class="banner_image" th:src="@{/images/banner.jpg}">
+		   			
+		       		<h1 class="main_image_text1">포크 <span style="color:darkgray; font-size:0.7em;">FORK</span></h1>
+		       		<h2 class="main_image_text2">기상에 따른 닻끌림 예측 서비스</h2>
+		       		<hr class="main">
+		   		</div><!-- end.banner -->
+			</div><!-- end.header -->
+		
+	 	    <div class="map" style="border-bottom : solid 1px bold;">
+		    	<div class="busan">
+		        	<p>부산 현재 날씨 <img th:src="@{/images/sunny.png}" width=24px height=24px><b>맑음</b></p>
+			         <div class="busanImg">
+				         <a th:href="@{/drag/busan}">
+					         <img class="images" th:src="@{/images/busan.png}" alt="busan" style="width: 500px; height: 300px;">
+					         <span class="centered-text">부산항 현황</span>
+				         </a>
+			         </div>
+		        </div><!-- end.busan -->
+		
+		        <div class="ulsan">
+		        	<p>울산 현재 날씨 <img th:src="@{/images/sunny.png}" width=24px height=24px><b>맑음</b></p>
+		        	<div class="ulsanImg">
+			        	<a th:href="@{/drag/ulsan}">
+			         		<img class="images" th:src="@{/images/ulsan.png}" alt="ulsan" style="width: 500px; height: 300px;"> 
+			            	<span class="centered-text">울산항 현황</span>
+			            </a>
+		            </div>
+			    </div><!-- end.ulsan -->
+		   </div><!-- div.map -->
+		 
+		   <div class="info">
+		      <p>저희 포크 팀은 안전한 무역환경 조성을 위해 해양안전사고 중 하나인 닻끌림 현상에 주목하여,
+		      선박간 충돌을 예방할 수 있는 서비스를 개발하였습니다.</p>
+		      <p>기상변화에 따른 닻끌림 현상을 예측할 수 있는 딥러닝 모델을 제작하여
+		      현재 시점 기준으로 30분, 1시간, 그리고 1시간 반 뒤 미래의 발생 가능성을 지도에 시각화하여 제공합니다.
+		      이 외에도 실시간 내륙/해양 기상정보를 한눈에 볼 수 있으며,
+		      주요 선사 운항스케줄을 조회하여 입출항 정보를 함께 받아보실 수 있습니다.</p>         
+		   </div><!-- end.info -->
+		</div><!-- end.contents -->
+
+   </div><!-- end.container -->
+</body>
+</html>

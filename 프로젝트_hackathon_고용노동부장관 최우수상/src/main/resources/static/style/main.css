@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'NanumSquareNeo-normal';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+   font-family: "NanumSquare-Regular";
+   font-weight: 700;
+   src: url("src/main/resources/static/font/NanumSquareNeo/woff/NanumSquare-Regular.woff") format("application/font-woff");
+  }
+
+@font-face {
+   font-family: "NanumSquare-Light";
+   font-weight: 700;
+   src: url("src/main/resources/static/font/NanumSquareNeo/woff/NanumSquare-Light.woff") format("application/font-woff");
+}
+
+@font-face {
+   font-family: "NanumSquare-Bold";
+   font-weight: 700;
+   src: url("src/main/resources/static/font/NanumSquareNeo/woff/NanumSquare-Bold.woff") format("application/font-woff");
+}
+
+@font-face {
+   font-family: "NanumSquare-ExtraBold";
+   font-weight: 700;
+   src: url("src/main/resources/static/font/NanumSquareNeo/woff/NanumSquare-ExtraBold.woff") format("application/font-woff");
+}
+
+body {
+   font-family: 'NanumSquareNeo-normal';
+   font-size : 15px;
+}
+
+h2 {
+	font-size: 40px;
+	font-family: 'NanumSquareNeoHeavy';
+	color: #2D3C72;
+	font-weight: bolder;
+	padding-top : 50px;
+}
+
+h3 {
+	font-size: 25px;
+	font-family: 'NanumSquareNeoExtraBold';
+	color: rgb(136, 152, 225);
+	font-weight: bolder;
+}
+
+h5 {
+	font-size: 20px;
+	font-family: 'NanumSquareNeoExtraBold';
+	color: rgb(136, 152, 225);
+	font-weight: bolder;
+}
+
+div.contents > img.dot {
+	position:relative;
+	top:-70px;
+	left:-10px;
+	z-index: -1;
+}
+
+div.container {
+	float:left;
+	padding:0px 0px;
+}
+
+div.left-sidebar {
+	 position: fixed;
+	 top: 0; left: 0;
+     width:250px;
+     height: 100vh; /* 뷰포트의 높이를 100%로 설정하여 전체 높이 차지 */
+	 padding : 0px;
+	 margin-right: 50px;
+}
+
+div.logo {
+	padding:0px;
+	height:150px;
+}
+div.logo > a > li {
+	font-size:16px;
+}
+
+div.logo > a > li > img {
+	width: 120px;
+	height : 120px;
+}
+
+div.contents{
+    margin-left: 280px;
+  	padding: 20px;
+  	width : 100%;
+ 	height: calc(100vh - 20px); /* left-sidebar의 높이와 padding을 고려하여 contents의 높이 조정 */
+ 	overflow-y: auto; /* 세로 스크롤이 필요한 경우에만 스크롤 표시 */
+}
+
+div.left-sidebar > ul {
+	list-style-type: none;
+    padding:10px;
+    background-color:#2D3C72;
+    width:250px;
+    color: white;
+    height: 100%;
+    font-size:30px;
+    text-align:left;
+}
+
+a {
+	width : 220px;
+	padding:0px;
+	margin:0px;
+	color : white;
+	text-align : left;
+	font-weight: bolder;
+}
+
+div.menu > a > li {
+	color : white;
+	text-align : left;
+	font-weight: bolder;
+	padding:15px 15px 15px 5px;
+}
+
+div.menu > a:hover, div.menu > a.btn:hover { /* 마우스를 올렸을 때*/
+	background-color: rgba(128, 128, 128, 0.4);
+}
+
+div.menu > a:hover > li, div.menu > a.btn:hover > li { /* 마우스를 올렸을 때*/
+	color:#F2A50A;
+}
+
+div.menu > a:link > li, div.menu > a:visited > li { /* 방문 전/후 링크 상태 */
+    text-decoration: none;
+}
+
+div.menu > a:active > li { /* 클릭했을 때*/
+	font-weight:bolder;
+	color:#F2A50A;
+}
+

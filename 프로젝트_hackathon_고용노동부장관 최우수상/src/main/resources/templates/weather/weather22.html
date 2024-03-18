@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>날씨</title>
+<!-- 부트스트랩 -->
+<!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 글꼴 -->
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+
+<!-- 외부CSS -->
+<link rel="stylesheet" th:href="@{/style/main.css}">
+
+<link rel="stylesheet" th:href="@{/style/ie.css}">
+<link rel="stylesheet" th:href="@{/style/slick.css}">
+<link rel="stylesheet" th:href="@{/style/basic.css}">
+<link rel="stylesheet" th:href="@{/style/common-ui.css}">
+<link rel="stylesheet" th:href="@{/style/custom.css}">
+<link rel="stylesheet" th:href="@{/style/component.css}">
+<link rel="stylesheet" th:href="@{/style/custom.css}">
+<link rel="stylesheet" th:href="@{/style/print.css}">
+
+<!-- 외부JS -->
+<script defer th:src="@{/script/weather.js}"></script>
+
+
+</head>
+
+<body>
+	<div class="container"> <!-- 부트스트랩의 container -->
+        <div class="left-sidebar">
+        	<ul>
+            	<div class="logo">
+               		<a th:href="@{/}" class="btn"><li><img th:src="@{/images/logo.png}" alt="로고"></li></a>
+				</div>
+				<div class="menu">
+	               <!-- 인증과 무관 -->
+	               <a th:href="@{/tech/tech}" class="btn" id="t"><li>TECH</li></a>
+	               <a th:href="@{/drag/busan}" class="btn" id="d"><li>SERVICE</li></a>
+	               <a th:href="@{/port/port}" class="btn" id="p"><li>PORT</li></a>
+	               <a th:href="@{/weather/weather}" class="btn" id="w"><li>WEATHER</li></a>
+	               <a th:href="@{/schedule/schedule}" class="btn" id="s"><li>SCHEDULE</li></a>
+	               <hr>
+	               <a th:href="@{/about/about}" class="btn" id="a"><li>ABOUT US</li></a>
+	               <a th:href="@{/refer/refer}" class="btn" id="r"><li>REFERENCE</li></a>
+	            </div>
+			</ul>
+		</div> <!-- end.left-sidebar -->
+		<div class="contents">
+        	<h2>날씨 정보</h2>
+	        <img th:src="@{/icon/dot.png}" alt="동그라미" class="dot">
+	        <br>
+			<div class="weather">
+               	<div class="cont-wrap">
+				<!-- 바다검색 서브 모달 -->
+					 <div class="cont-box03">
+					 	<div class="right-con">
+					 		<div class="hid" data-role="title-holder">
+					 			<h3 class="tit"><strong>[부산앞바다]</strong> 날씨 전망</h3>
+								<div class="over-scroll">
+									<table class="table-col">
+										<caption class="hid">[부산앞바다] 일일예보, 오늘, 내일(최대 모래 오후) 바다예보를 날씨, 풍향, 풍속, 파고로 확인할 수 있는 표입니다.</caption>
+										<colgroup>
+											<col style="width:45%;">
+											<col style="width:10%;">
+											<col style="width:15%;">
+											<col style="width:12%;">
+											<col style="width:18%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col" colspan="2">날짜</th>
+												<th scope="col">풍향</th>
+												<th scope="col">풍속</th>
+												<th scope="col">파고</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td rowspan="1"><span>22일(목)</span>
+													<i style="vertical-align:middle;" class="wic DB01" title="맑음">맑음</i>
+												</td>
+												<td>오후</td>
+												<td>남서-서</td>
+												<td>3~7</td>
+												<td>0.5~1</td>
+											</tr>
+											<tr>
+												<td rowspan="2"><span>23일(금)</span>
+													<i style="vertical-align:middle;" class="wic DB01" title="맑음">맑음</i>
+													<img src="/w/resources/image/cel-icon.png" class="line" alt="">
+													<i style="vertical-align:middle;" class="wic DB01" title="맑음">맑음</i>
+												</td>
+												<td>오전</td>
+												<td>서-북서</td>
+												<td>3~7</td>
+												<td>0.5~1</td>
+											</tr>
+											<tr>
+												<td>오후</td>
+												<td>북동-동</td>
+												<td>3~7</td>
+												<td>0.5~1</td>
+											</tr>
+											<tr>
+												<td rowspan="2">
+													<span>24일(토)</span>
+													<i style="vertical-align:middle;" class="wic DB01" title="맑음">맑음</i>
+													<img src="/w/resources/image/cel-icon.png" class="line" alt="">
+													<i style="vertical-align:middle;" class="wic DB01" title="맑음">맑음</i>
+												</td>
+												<td>오전</td>
+												<td>북동-동</td>
+												<td>3~7</td>
+												<td>0.5~1</td>
+											</tr>
+											<tr>
+												<td>오후</td>
+												<td>북동-동</td>
+												<td>3~7</td>
+												<td>0.5~1</td>
+											</tr>
+										</tbody>
+									</table>
+								</div><!-- end.over-scroll -->
+								<p class="bu"><strong>참고</strong> : 풍속 (<span data-role="unit-label">m/s</span>),  파고(m)</p>
+							</div><!-- end.hid -->
+						</div><!-- end.right-con -->
+					</div><!-- end.cont-box03 -->
+					
+					
+					<div class="cont-box04" id="sea-today-mid-term">
+						<script>
+						//<!--
+							$('#midterm-tm-fc').html('2023.06.22(목) 06:00');
+						//-->
+						</script>
+						<script>
+							var waveMinList = [];
+							var waveMaxList = [];
+						</script>		
+						<h3 class="tit"><strong>[부산앞바다]</strong> 주간날씨<i class="icon tooltip-btn" tabindex="0"><span class="tooltip">예보일로부터 3일 후부터 10일까지의 중기기간에 대한 기상전망, 기온, 강수확률 정보를 제공합니다.</span></i></h3>
+						<div class="hid" aria-hidden="false">
+							<ul>
+								<li><span>06. 25(일) 오전</span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 25(일) 오후</span> 날씨: 흐리고 비, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 26(월) 오전</span> 날씨: 흐리고 비, 최저파고: 1m, 최고파고: 3m</li>
+								<li><span>06. 26(월) 오후</span> 날씨: 흐리고 비, 최저파고: 1m, 최고파고: 3m</li>
+								<li><span>06. 27(화) 오전</span> 날씨: 흐리고 비, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 27(화) 오후</span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 28(수) 오전</span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 28(수) 오후</span> 날씨: 구름많음, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 29(목) 오전</span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 29(목) 오후</span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 30(금) </span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>07. 01(토) </span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>07. 02(일) </span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+							</ul>
+						</div><!-- end.hid -->
+		        <div class="over-scroll" aria-hidden="true">
+			        <div class="gf-cont">
+			            <ul class="gf-01">
+			                <li>날짜</li>
+			                <li>06. 25(일)</li>
+			                <div class="hid">
+								<li><span>06. 25(일) 오전</span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 25(일) 오후</span> 날씨: 흐리고 비, 최저파고: 1m, 최고파고: 2m</li>
+							</div>
+							<li>06. 26(월)</li>
+							<div class="hid">
+								<li><span>06. 26(월) 오전</span> 날씨: 흐리고 비, 최저파고: 1m, 최고파고: 3m</li>
+								<li><span>06. 26(월) 오후</span> 날씨: 흐리고 비, 최저파고: 1m, 최고파고: 3m</li>
+							</div>
+							<li>06. 27(화)</li>
+							<div class="hid">
+								<li><span>06. 27(화) 오전</span> 날씨: 흐리고 비, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 27(화) 오후</span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+							</div>
+							<li>06. 28(수)</li>
+							<div class="hid">
+								<li><span>06. 28(수) 오전</span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 28(수) 오후</span> 날씨: 구름많음, 최저파고: 1m, 최고파고: 2m</li>
+							</div>
+							<li>06. 29(목)</li>
+							<div class="hid">
+								<li><span>06. 29(목) 오전</span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+								<li><span>06. 29(목) 오후</span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+							</div>
+							<li class="half">06. 30(금)</li>
+							<div class="hid">
+								<li><span>06. 30(금) </span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+							</div>
+							<li class="half">07. 01(토)</li>
+							<div class="hid">
+								<li><span>07. 01(토) </span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+							</div>
+							<li class="half">07. 02(일)</li>
+							<div class="hid">
+								<li><span>07. 02(일) </span> 날씨: 흐림, 최저파고: 1m, 최고파고: 2m</li>
+							</div>
+			            </ul>
+			            <ul class="gf-02">
+			                <li>날씨</li>
+			                <li class="hid">06. 25(일)</li>
+							<li><span>오전</span><i class="wic NB04" title="흐림">흐림</i></li>
+							<li><span>오후</span><i class="wic NB08" title="흐리고 비">흐리고 비</i></li>
+							<div class="hid">
+								오전 최저파고 : 1m
+								오전 최고파고 : 2m
+								오후 최저파고 : 1m
+								오후 최고파고 : 2m
+							</div>
+							<script>
+							
+							//<!--
+								waveMinList.push(parseFloat('1')); 
+								waveMinList.push(parseFloat('1')); 
+								waveMaxList.push(parseFloat('2')); 
+								waveMaxList.push(parseFloat('2')); 
+							//-->
+							</script>
+							<li class="hid">06. 26(월)</li>
+							<li><span>오전</span><i class="wic NB08" title="흐리고 비">흐리고 비</i></li>
+							<li><span>오후</span><i class="wic NB08" title="흐리고 비">흐리고 비</i></li>
+							<div class="hid">
+								오전 최저파고 : 1m
+								오전 최고파고 : 3m
+								오후 최저파고 : 1m
+								오후 최고파고 : 3m
+							</div>
+							<script>
+							//<!--
+								waveMinList.push(parseFloat('1')); 
+								waveMinList.push(parseFloat('1')); 
+								waveMaxList.push(parseFloat('3')); 
+								waveMaxList.push(parseFloat('3')); 
+							//-->
+							</script>
+							<li class="hid">06. 27(화)</li>
+							<li><span>오전</span><i class="wic NB08" title="흐리고 비">흐리고 비</i></li>
+							<li><span>오후</span><i class="wic NB04" title="흐림">흐림</i></li>
+							<div class="hid">
+								오전 최저파고 : 1m
+								오전 최고파고 : 2m
+								오후 최저파고 : 1m
+								오후 최고파고 : 2m
+							</div>
+							<script>
+							//<!--
+								waveMinList.push(parseFloat('1')); 
+								waveMinList.push(parseFloat('1')); 
+								waveMaxList.push(parseFloat('2')); 
+								waveMaxList.push(parseFloat('2')); 
+							//-->
+							</script>
+							<li class="hid">06. 28(수)</li>
+							<li><span>오전</span><i class="wic NB04" title="흐림">흐림</i></li>
+							<li><span>오후</span><i class="wic NB03" title="구름많음">구름많음</i></li>
+							<div class="hid">
+								오전 최저파고 : 1m
+								오전 최고파고 : 2m
+								오후 최저파고 : 1m
+								오후 최고파고 : 2m
+							</div>
+							<script>
+							//<!--
+								waveMinList.push(parseFloat('1')); 
+								waveMinList.push(parseFloat('1')); 
+								waveMaxList.push(parseFloat('2')); 
+								waveMaxList.push(parseFloat('2')); 
+							//-->
+							</script>
+							<li class="hid">06. 29(목)</li>
+							<li><span>오전</span><i class="wic NB04" title="흐림">흐림</i></li>
+							<li><span>오후</span><i class="wic NB04" title="흐림">흐림</i></li>
+							<div class="hid">
+								오전 최저파고 : 1m
+								오전 최고파고 : 2m
+								오후 최저파고 : 1m
+								오후 최고파고 : 2m
+							</div>
+							<script>
+							//<!--
+								waveMinList.push(parseFloat('1')); 
+								waveMinList.push(parseFloat('1')); 
+								waveMaxList.push(parseFloat('2')); 
+								waveMaxList.push(parseFloat('2')); 
+							//-->
+							</script>
+							<li class="hid half">06. 30(금)</li>
+							<li><span>종일</span><i class="wic NB04" title="흐림">흐림</i></li>
+							<div class="hid">
+								오전 최저파고 : 1m
+								오전 최고파고 : 2m
+							</div>
+							<script>
+								//<!--
+								waveMinList.push(parseFloat('1')); 
+								waveMaxList.push(parseFloat('2')); 
+								//-->
+							</script>
+							<li class="hid half">07. 01(토)</li>
+							<li><span>종일</span><i class="wic NB04" title="흐림">흐림</i></li>
+							<div class="hid">
+								오전 최저파고 : 1m
+								오전 최고파고 : 2m
+							</div>
+							<script>
+							//<!--
+								waveMinList.push(parseFloat('1')); 
+								waveMaxList.push(parseFloat('2')); 
+							//-->
+							</script>
+							<li class="hid half">07. 02(일)</li>
+							<li><span>종일</span><i class="wic NB04" title="흐림">흐림</i></li>
+							<div class="hid">
+								오전 최저파고 : 1m
+								오전 최고파고 : 2m
+							</div>
+							<script>
+							//<!--
+								waveMinList.push(parseFloat('1'));
+								waveMaxList.push(parseFloat('2'));
+							//-->
+							</script>
+			            </ul>
+			            <div class="gf-03">
+			            	<div>파고</div>
+			            	<div class="sea-wave-chart-wrapper">
+			                	<div id="sea-wave-chart" data-highcharts-chart="1">
+			                		<div id="highcharts-dtcyblh-4" dir="ltr" class="highcharts-container" style="position: relative; overflow: hidden; width: 1145px; height: 230px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: ns, sans-serif;">
+			                			<svg version="1.1" class="highcharts-root" style="font-family:'ns', sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="1145" height="230" viewBox="0 0 1145 230">
+			                				<desc>Created with Highcharts 6.1.2</desc>
+		                					<defs>
+		                						<clipPath id="highcharts-dtcyblh-5">
+		                							<rect x="0" y="0" width="1125" height="114" fill="none"></rect>
+		                						</clipPath>
+		                					</defs>
+			                				<rect fill="rgba(0,0,0,0)" class="highcharts-background" x="0" y="0" width="1145" height="230" rx="0" ry="0"></rect>
+			                				<rect fill="none" class="highcharts-plot-background" x="10" y="45" width="1125" height="114"></rect>
+			                				<g class="highcharts-grid highcharts-xaxis-grid" data-z-index="1">
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 49.5 45 L 49.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 136.5 45 L 136.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 223.5 45 L 223.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 310.5 45 L 310.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 397.5 45 L 397.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 484.5 45 L 484.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 572.5 45 L 572.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 659.5 45 L 659.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 746.5 45 L 746.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 833.5 45 L 833.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 920.5 45 L 920.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 1007.5 45 L 1007.5 159" opacity="1"></path>
+			                					<path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 1094.5 45 L 1094.5 159" opacity="1"></path>
+		                					</g>
+		                					<g class="highcharts-grid highcharts-yaxis-grid " data-z-index="1">
+		                						<path fill="none" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 10 159.5 L 1135 159.5" opacity="1"></path>
+		                						<path fill="none" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 10 146.5 L 1135 146.5" opacity="1"></path>
+		                						<path fill="none" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 10 134.5 L 1135 134.5" opacity="1"></path>
+		                						<path fill="none" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 10 121.5 L 1135 121.5" opacity="1"></path>
+		                						<path fill="none" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 10 108.5 L 1135 108.5" opacity="1"></path>
+		                						<path fill="none" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 10 96.5 L 1135 96.5" opacity="1"></path>
+		                						<path fill="none" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 10 83.5 L 1135 83.5" opacity="1"></path>
+		                						<path fill="none" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 10 70.5 L 1135 70.5" opacity="1"></path>
+		                						<path fill="none" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 10 58.5 L 1135 58.5" opacity="1"></path>
+		                						<path fill="none" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 10 44.5 L 1135 44.5" opacity="1"></path>
+		                					</g>
+		                					<rect fill="none" class="highcharts-plot-border" data-z-index="1" x="10" y="45" width="1125" height="114"></rect>
+		                					<g class="highcharts-axis highcharts-xaxis " data-z-index="2">
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 49.5 159 L 49.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 136.5 159 L 136.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 223.5 159 L 223.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 310.5 159 L 310.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 397.5 159 L 397.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 484.5 159 L 484.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 572.5 159 L 572.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 659.5 159 L 659.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 746.5 159 L 746.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 833.5 159 L 833.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 920.5 159 L 920.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 1007.5 159 L 1007.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-tick" stroke="rgba(0,0,0,0)" stroke-width="1" d="M 1094.5 159 L 1094.5 169" opacity="1"></path>
+		                						<path fill="none" class="highcharts-axis-line" stroke="rgba(0,0,0,0)" stroke-width="1" data-z-index="7" d="M 10 159.5 L 1135 159.5"></path>
+		                					</g>
+		                					<g class="highcharts-axis highcharts-yaxis " data-z-index="2">
+		                						<path fill="none" class="highcharts-axis-line" data-z-index="7" d="M 10 45 L 10 159"></path>
+		                					</g>
+		                					<g class="highcharts-series-group" data-z-index="3">
+		                					<g data-z-index="0.1" class="highcharts-series highcharts-series-0 highcharts-areaspline-series " transform="translate(10,45) scale(1 1)" clip-path="url(#highcharts-dtcyblh-5)">
+		                						<path fill="rgba(0,0,0,0)" d="M 40.178571428571 59.80327868852459 C 40.178571428571 59.80327868852459 92.4107142857124 59.80327868852459 127.23214285714 59.80327868852459 C 162.053571428568 59.80327868852459 179.46428571428197 39.03825136612022 214.28571428571 39.03825136612022 C 249.10714285714198 39.03825136612022 266.51785714285796 39.03825136612022 301.33928571429 39.03825136612022 C 336.160714285718 39.03825136612022 353.57142857143197 59.80327868852459 388.39285714286 59.80327868852459 C 423.21428571428794 59.80327868852459 440.625000000002 59.80327868852459 475.44642857143 59.80327868852459 C 510.26785714285796 59.80327868852459 527.678571428572 59.80327868852459 562.5 59.80327868852459 C 597.321428571428 59.80327868852459 614.732142857142 59.80327868852459 649.55357142857 59.80327868852459 C 684.374999999998 59.80327868852459 701.7857142857121 59.80327868852459 736.60714285714 59.80327868852459 C 771.4285714285681 59.80327868852459 788.839285714282 59.80327868852459 823.66071428571 59.80327868852459 C 858.482142857142 59.80327868852459 875.892857142858 59.80327868852459 910.71428571429 59.80327868852459 C 945.535714285718 59.80327868852459 962.9464285714319 59.80327868852459 997.76785714286 59.80327868852459 C 1032.589285714276 59.80327868852459 1084.8214285714 59.80327868852459 1084.8214285714 59.80327868852459 L 1084.8214285714 101.33333333333333 C 1084.8214285714 101.33333333333333 1032.589285714276 101.33333333333333 997.76785714286 101.33333333333333 C 962.9464285714319 101.33333333333333 945.535714285718 101.33333333333333 910.71428571429 101.33333333333333 C 875.892857142858 101.33333333333333 858.482142857142 101.33333333333333 823.66071428571 101.33333333333333 C 788.839285714282 101.33333333333333 771.4285714285681 101.33333333333333 736.60714285714 101.33333333333333 C 701.7857142857121 101.33333333333333 684.374999999998 101.33333333333333 649.55357142857 101.33333333333333 C 614.732142857142 101.33333333333333 597.321428571428 101.33333333333333 562.5 101.33333333333333 C 527.678571428572 101.33333333333333 510.26785714285796 101.33333333333333 475.44642857143 101.33333333333333 C 440.625000000002 101.33333333333333 423.21428571428794 101.33333333333333 388.39285714286 101.33333333333333 C 353.57142857143197 101.33333333333333 336.160714285718 101.33333333333333 301.33928571429 101.33333333333333 C 266.51785714285796 101.33333333333333 249.10714285714198 101.33333333333333 214.28571428571 101.33333333333333 C 179.46428571428197 101.33333333333333 162.053571428568 101.33333333333333 127.23214285714 101.33333333333333 C 92.4107142857124 101.33333333333333 40.178571428571 101.33333333333333 40.178571428571 101.33333333333333" class="highcharts-area" data-z-index="0"></path>
+		                						<path fill="none" d="M 40.178571428571 59.80327868852459 C 40.178571428571 59.80327868852459 92.4107142857124 59.80327868852459 127.23214285714 59.80327868852459 C 162.053571428568 59.80327868852459 179.46428571428197 39.03825136612022 214.28571428571 39.03825136612022 C 249.10714285714198 39.03825136612022 266.51785714285796 39.03825136612022 301.33928571429 39.03825136612022 C 336.160714285718 39.03825136612022 353.57142857143197 59.80327868852459 388.39285714286 59.80327868852459 C 423.21428571428794 59.80327868852459 440.625000000002 59.80327868852459 475.44642857143 59.80327868852459 C 510.26785714285796 59.80327868852459 527.678571428572 59.80327868852459 562.5 59.80327868852459 C 597.321428571428 59.80327868852459 614.732142857142 59.80327868852459 649.55357142857 59.80327868852459 C 684.374999999998 59.80327868852459 701.7857142857121 59.80327868852459 736.60714285714 59.80327868852459 C 771.4285714285681 59.80327868852459 788.839285714282 59.80327868852459 823.66071428571 59.80327868852459 C 858.482142857142 59.80327868852459 875.892857142858 59.80327868852459 910.71428571429 59.80327868852459 C 945.535714285718 59.80327868852459 962.9464285714319 59.80327868852459 997.76785714286 59.80327868852459 C 1032.589285714276 59.80327868852459 1084.8214285714 59.80327868852459 1084.8214285714 59.80327868852459" class="highcharts-graph" data-z-index="1" stroke="#4493dd" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+		                					</g>
+		                					<g data-z-index="0.1" class="highcharts-markers highcharts-series-0 highcharts-areaspline-series " transform="translate(10,45) scale(1 1)">
+		                						<path fill="white" d="M 44 60 A 4 4 0 1 1 43.99999800000017 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 131 60 A 4 4 0 1 1 130.99999800000018 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 218 39 A 4 4 0 1 1 217.99999800000018 38.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 305 39 A 4 4 0 1 1 304.9999980000002 38.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 392 60 A 4 4 0 1 1 391.9999980000002 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 479 60 A 4 4 0 1 1 478.9999980000002 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 566 60 A 4 4 0 1 1 565.9999980000001 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 653 60 A 4 4 0 1 1 652.9999980000001 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 740 60 A 4 4 0 1 1 739.9999980000001 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 827 60 A 4 4 0 1 1 826.9999980000001 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 914 60 A 4 4 0 1 1 913.9999980000001 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 1001 60 A 4 4 0 1 1 1000.9999980000001 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                						<path fill="white" d="M 1088 60 A 4 4 0 1 1 1087.9999980000002 59.99600000066666 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+		                					</g>
+		                					<g data-z-index="0.1" class="highcharts-series highcharts-series-1 highcharts-areaspline-series " transform="translate(10,45) scale(1 1)" clip-path="url(#highcharts-dtcyblh-5)">
+		                						<path fill="rgba(0,0,0,0)" d="M 40.178571428571 80.56830601092896 C 40.178571428571 80.56830601092896 92.4107142857124 80.56830601092896 127.23214285714 80.56830601092896 C 162.053571428568 80.56830601092896 179.46428571428197 80.56830601092896 214.28571428571 80.56830601092896 C 249.10714285714198 80.56830601092896 266.51785714285796 80.56830601092896 301.33928571429 80.56830601092896 C 336.160714285718 80.56830601092896 353.57142857143197 80.56830601092896 388.39285714286 80.56830601092896 C 423.21428571428794 80.56830601092896 440.625000000002 80.56830601092896 475.44642857143 80.56830601092896 C 510.26785714285796 80.56830601092896 527.678571428572 80.56830601092896 562.5 80.56830601092896 C 597.321428571428 80.56830601092896 614.732142857142 80.56830601092896 649.55357142857 80.56830601092896 C 684.374999999998 80.56830601092896 701.7857142857121 80.56830601092896 736.60714285714 80.56830601092896 C 771.4285714285681 80.56830601092896 788.839285714282 80.56830601092896 823.66071428571 80.56830601092896 C 858.482142857142 80.56830601092896 875.892857142858 80.56830601092896 910.71428571429 80.56830601092896 C 945.535714285718 80.56830601092896 962.9464285714319 80.56830601092896 997.76785714286 80.56830601092896 C 1032.589285714276 80.56830601092896 1084.8214285714 80.56830601092896 1084.8214285714 80.56830601092896 L 1084.8214285714 101.33333333333333 C 1084.8214285714 101.33333333333333 1032.589285714276 101.33333333333333 997.76785714286 101.33333333333333 C 962.9464285714319 101.33333333333333 945.535714285718 101.33333333333333 910.71428571429 101.33333333333333 C 875.892857142858 101.33333333333333 858.482142857142 101.33333333333333 823.66071428571 101.33333333333333 C 788.839285714282 101.33333333333333 771.4285714285681 101.33333333333333 736.60714285714 101.33333333333333 C 701.7857142857121 101.33333333333333 684.374999999998 101.33333333333333 649.55357142857 101.33333333333333 C 614.732142857142 101.33333333333333 597.321428571428 101.33333333333333 562.5 101.33333333333333 C 527.678571428572 101.33333333333333 510.26785714285796 101.33333333333333 475.44642857143 101.33333333333333 C 440.625000000002 101.33333333333333 423.21428571428794 101.33333333333333 388.39285714286 101.33333333333333 C 353.57142857143197 101.33333333333333 336.160714285718 101.33333333333333 301.33928571429 101.33333333333333 C 266.51785714285796 101.33333333333333 249.10714285714198 101.33333333333333 214.28571428571 101.33333333333333 C 179.46428571428197 101.33333333333333 162.053571428568 101.33333333333333 127.23214285714 101.33333333333333 C 92.4107142857124 101.33333333333333 40.178571428571 101.33333333333333 40.178571428571 101.33333333333333" class="highcharts-area" data-z-index="0"></path>
+		                						<path fill="none" d="M 40.178571428571 80.56830601092896 C 40.178571428571 80.56830601092896 92.4107142857124 80.56830601092896 127.23214285714 80.56830601092896 C 162.053571428568 80.56830601092896 179.46428571428197 80.56830601092896 214.28571428571 80.56830601092896 C 249.10714285714198 80.56830601092896 266.51785714285796 80.56830601092896 301.33928571429 80.56830601092896 C 336.160714285718 80.56830601092896 353.57142857143197 80.56830601092896 388.39285714286 80.56830601092896 C 423.21428571428794 80.56830601092896 440.625000000002 80.56830601092896 475.44642857143 80.56830601092896 C 510.26785714285796 80.56830601092896 527.678571428572 80.56830601092896 562.5 80.56830601092896 C 597.321428571428 80.56830601092896 614.732142857142 80.56830601092896 649.55357142857 80.56830601092896 C 684.374999999998 80.56830601092896 701.7857142857121 80.56830601092896 736.60714285714 80.56830601092896 C 771.4285714285681 80.56830601092896 788.839285714282 80.56830601092896 823.66071428571 80.56830601092896 C 858.482142857142 80.56830601092896 875.892857142858 80.56830601092896 910.71428571429 80.56830601092896 C 945.535714285718 80.56830601092896 962.9464285714319 80.56830601092896 997.76785714286 80.56830601092896 C 1032.589285714276 80.56830601092896 1084.8214285714 80.56830601092896 1084.8214285714 80.56830601092896" class="highcharts-graph" data-z-index="1" stroke="#4493dd" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+		                					</g>
+		                					<g data-z-index="0.1" class="highcharts-markers highcharts-series-1 highcharts-areaspline-series " transform="translate(10,45) scale(1 1)">
+			                					<path fill="white" d="M 44 81 A 4 4 0 1 1 43.99999800000017 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 131 81 A 4 4 0 1 1 130.99999800000018 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 218 81 A 4 4 0 1 1 217.99999800000018 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 305 81 A 4 4 0 1 1 304.9999980000002 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 392 81 A 4 4 0 1 1 391.9999980000002 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 479 81 A 4 4 0 1 1 478.9999980000002 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 566 81 A 4 4 0 1 1 565.9999980000001 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 653 81 A 4 4 0 1 1 652.9999980000001 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 740 81 A 4 4 0 1 1 739.9999980000001 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 827 81 A 4 4 0 1 1 826.9999980000001 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 914 81 A 4 4 0 1 1 913.9999980000001 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 1001 81 A 4 4 0 1 1 1000.9999980000001 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                					<path fill="white" d="M 1088 81 A 4 4 0 1 1 1087.9999980000002 80.99600000066667 Z" stroke="#4493dd" stroke-width="1" class="highcharts-point"></path>
+			                				</g>
+			                				<!-- </g> -->
+			                				<text x="573" text-anchor="middle" class="highcharts-title" data-z-index="4" style="color:#333333;font-size:18px;fill:#333333;" y="24"><tspan>Chart title</tspan></text>
+			                				<text x="573" text-anchor="middle" class="highcharts-subtitle" data-z-index="4" style="color:#666666;fill:#666666;" y="44"></text>
+			                				<g data-z-index="6" class="highcharts-data-labels highcharts-series-0 highcharts-areaspline-series " transform="translate(10,45) scale(1 1)" opacity="1">
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(26,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round" style="">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(113,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(200,14)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">3m</tspan><tspan x="5" y="18">3m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(287,14)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">3m</tspan><tspan x="5" y="18">3m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(374,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(461,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(548,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(635,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(722,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(809,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(896,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(983,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(1070,35)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">2m</tspan><tspan x="5" y="18">2m</tspan></text>
+				                				</g>
+				                			</g>
+				                			<g data-z-index="6" class="highcharts-data-labels highcharts-series-1 highcharts-areaspline-series " transform="translate(10,45) scale(1 1)" opacity="1">
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(26,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(113,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(200,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(287,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(374,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(461,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(548,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(635,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(722,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(809,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(896,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(983,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                				<g class="highcharts-label highcharts-data-label highcharts-data-label-color-undefined " data-z-index="1" transform="translate(1070,78)">
+				                					<text x="5" data-z-index="1" style="font-size:13px;font-weight:normal;color:#4493dd;fill:#4493dd;" y="18"><tspan x="5" y="18" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round">1m</tspan><tspan x="5" y="18">1m</tspan></text>
+				                				</g>
+				                			</g>
+			                				<g class="highcharts-legend" data-z-index="7" transform="translate(469,190)">
+			                					<rect fill="none" class="highcharts-legend-box" rx="0" ry="0" x="0" y="0" width="207" height="25" visibility="hidden"></rect>
+				                				<g data-z-index="1">
+				                					<g>
+				                						<g class="highcharts-legend-item highcharts-areaspline-series highcharts-color-undefined highcharts-series-0" data-z-index="1" transform="translate(8,3)">
+						                					<text x="21" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" data-z-index="2" y="15"><tspan>최대유의파고</tspan></text>
+						                					<rect x="2" y="4" width="12" height="12" fill="#4493dd" rx="6" ry="6" class="highcharts-point" data-z-index="3"></rect>
+						                				</g>
+						                				<g class="highcharts-legend-item highcharts-areaspline-series highcharts-color-undefined highcharts-series-1" data-z-index="1" transform="translate(113.7285385131836,3)">
+						                					<text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" data-z-index="2"><tspan>최저유의파고</tspan></text><rect x="2" y="4" width="12" height="12" fill="#4493dd" rx="6" ry="6" class="highcharts-point" data-z-index="3"></rect>
+						                				</g>
+				                					</g>
+				                				</g>
+				                			</g>
+				                			<g class="highcharts-axis-labels highcharts-xaxis-labels " data-z-index="7">
+				                				<text x="50.178571428571" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">1</text>
+				                				<text x="137.23214285714" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">2</text>
+				                				<text x="224.28571428571" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">3</text>
+				                				<text x="311.33928571429" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">4</text>
+				                				<text x="398.39285714286" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">5</text>
+				                				<text x="485.44642857143" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">6</text>
+				                				<text x="572.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">7</text>
+				                				<text x="659.55357142857" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">8</text>
+				                				<text x="746.60714285714" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">9</text>
+				                				<text x="833.66071428571" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">10</text>
+				                				<text x="920.71428571429" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">11</text>
+				                				<text x="1007.7678571429" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">12</text>
+				                				<text x="1094.8214285714" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="178" opacity="1">13</text>
+				                			</g>
+				                			<g class="highcharts-axis-labels highcharts-yaxis-labels " data-z-index="7">
+				                				<text x="-5" style="color:#fff;cursor:default;font-size:11px;fill:#fff;" text-anchor="end" transform="translate(0,0)" y="170" opacity="1"></text>
+				                				<text x="-5" style="color:#fff;cursor:default;font-size:11px;fill:#fff;" text-anchor="end" transform="translate(0,0)" y="157" opacity="1"></text>
+				                				<text x="-5" style="color:#fff;cursor:default;font-size:11px;fill:#fff;" text-anchor="end" transform="translate(0,0)" y="145" opacity="1"></text>
+				                				<text x="-5" style="color:#fff;cursor:default;font-size:11px;fill:#fff;" text-anchor="end" transform="translate(0,0)" y="132" opacity="1"></text>
+				                				<text x="-5" style="color:#fff;cursor:default;font-size:11px;fill:#fff;" text-anchor="end" transform="translate(0,0)" y="119" opacity="1"></text>
+				                				<text x="-5" style="color:#fff;cursor:default;font-size:11px;fill:#fff;" text-anchor="end" transform="translate(0,0)" y="107" opacity="1"></text>
+				                				<text x="-5" style="color:#fff;cursor:default;font-size:11px;fill:#fff;" text-anchor="end" transform="translate(0,0)" y="94" opacity="1"></text>
+				                				<text x="-5" style="color:#fff;cursor:default;font-size:11px;fill:#fff;" text-anchor="end" transform="translate(0,0)" y="81" opacity="1"></text>
+				                				<text x="-5" style="color:#fff;cursor:default;font-size:11px;fill:#fff;" text-anchor="end" transform="translate(0,0)" y="69" opacity="1"></text>
+				                				<text x="-5" style="color:#fff;cursor:default;font-size:11px;fill:#fff;" text-anchor="end" transform="translate(0,0)" y="56" opacity="1"></text>
+				                			</g>
+				                		</svg><!-- end.highcharts-root -->
+				                	</div><!-- end.highcharts-dtcyblh-4 -->
+				                </div><!-- end.sea-wave-chart -->
+			                </div><!-- end.sea-wave-chart-wrapper -->
+			            </div><!-- end.gf-03 -->
+			            
+			            <!-- <ul class="gf-04">
+			                <li>풍향</li>
+			                <li>북서-북 </li>
+			                <li>북-북동</li>
+			                <li>북-북동</li>
+			                <li>북-북동</li>
+			                <li>북-북동</li>
+			                <li>북-북동</li>
+			                <li>북-북동</li>
+			                <li>북-북동</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			            </ul>
+			            <ul class="gf-05">
+			                <li>풍속<br>(km/h)</li>
+			                <li>7-14</li>
+			                <li>22-34</li>
+			                <li>18-20</li>
+			                <li>7-14</li>
+			                <li>2-9</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			                <li>-</li>
+			            </ul> -->
+			        </div><!-- end.gf-cont -->
+			    </div><!-- end.over-scroll -->
+				<script>
+					// 업데이트 기준(발표일 갱신 스크립트.)
+				</script>
+				<script>
+				//<!--
+					var minValue = 999;
+					var maxValue = -999;
+					var minPadding = 1.0 / (waveMaxList.length * 2.0); 
+					var maxPadding = minPadding;
+					for(var i = 0 ; i < waveMaxList.length ; i++) {
+						var val = waveMaxList[i];
+						if(val > maxValue) maxValue = val;
+						if(val < minValue) minValue = val;
+					}
+					for(var i = 0 ; i < waveMinList.length ; i++) {
+						var val = waveMinList[i];
+						if(val > maxValue) maxValue = val;
+						if(val < minValue) minValue = val;
+					}
+					var delta = maxValue - minValue;
+					if(delta != 0) {
+						maxValue = maxValue + (delta * 0.7);
+						minValue = minValue - (delta * 0.7); 
+					} else {
+						maxValue = maxValue + maxValue*0.6;
+						minValue = minValue - minValue*0.6;
+					}
+					var chart = Highcharts.chart('sea-wave-chart', {
+						chart: { type: 'areaspline', backgroundColor: "rgba(0,0,0,0)", style: { fontFamily: "'ns', sans-serif" } },
+						credits: { enabled:false },
+						plotOptions: {
+							series: {
+								pointStart: 1
+							},
+							areaspline: { 
+								fillColor: "rgba(0,0,0,0)",
+								dataLabels: {
+									enabled: true, 
+									overflow: 'allow',
+									allowOverlap: true,
+									style: {
+										fontSize: '13px',
+										fontWeight: 'normal',
+									},
+									formatter: function () {
+										return this.y + 'm';
+									}
+								},	
+								enableMouseTracking: false
+							}
+						},
+						series: [
+						{
+							name: '최대유의파고',
+							dataLabels: {
+								style: {
+									color: '#4493dd',
+								},
+								enabled: true, 
+								overflow: 'allow',
+								allowOverlap: true,
+							},
+							color: '#4493dd',
+							data: waveMaxList,
+							marker:{fillColor:'white',lineWidth: 1,lineColor:'#4493dd', symbol: 'circle'},
+						},
+						{
+							name: '최저유의파고',
+							dataLabels: {
+								style: {
+									color: '#4493dd',
+								},
+								enabled: true, 
+								overflow: 'allow',
+								allowOverlap: true,
+								y: 22,
+							},	
+							color: '#4493dd',
+							data: waveMinList,			   
+							marker: {fillColor:'white',lineWidth: 1,lineColor:'#4493dd', symbol: 'circle'},
+						},],
+						yAxis: {
+							min: minValue, max: maxValue,
+							tickInterval: 0.01,
+							title: '',
+							labels: {
+								formatter: function() { 
+									 return ''; 
+								},
+								style: {
+									color: '#fff'
+								}
+							},gridLineColor: "rgba(0,0,0,0)"
+						},
+						xAxis: {
+							lineColor: "rgba(0,0,0,0)", 
+							tickColor: "rgba(0,0,0,0)",
+							minPadding: minPadding,
+							maxPadding: maxPadding,
+							padding:0, margin:0,
+						},
+					});
+				//-->
+				</script>
+			</div><!-- end.cont-box03 -->
+			<div class="cont-box05">
+				<div class="left-flid">
+					<div class="up-btn up-no-btn">업데이트 기준</div>
+				</div><!-- end.left-flid -->
+				<div class="right-flid">
+					<p class="txt">
+						<span><strong>날씨전망 </strong> : <span id="shortterm-tm-fc" style="display:inline">2023. 06. 22.(목) 11:00</span></span>
+						<span><strong>주간날씨</strong> : <span id="midterm-tm-fc" style="display:inline">2023.06.22(목) 06:00</span></span>
+					</p>
+				</div><!-- end.cont-box05 -->
+			</div><!-- end.cont-right-flid -->
+			<div class="cont-box06" id="sea-near-obs">
+						<h3 class="tit">주변 기상실황</h3>
+						<h4 class="s-tit">기상부이 <span>(2023.06.22(목) 11:30)</span></h4>
+						<div class="table-box">
+							<button class="lay-btn pop-open" data-pop-name="open-buoy-sub-pop01">부이 위치</button>
+							<div class="over-scroll">
+								<table class="table-col">
+									<caption>기상부이 정보 2023.06.22(목) 11:30 - 지점명, 풍향(km/h), 풍속(km/h), 순간최대풍속(km/h), 기압(hPa), 습도(%), 기온(℃), 수온(℃), 최대파고(m), 유의파고(m), 평균파고(m), 파주기(sec), 파향 </caption>
+									<colgroup>
+										<col style="width:7%;">
+										<col style="width:6%;">
+										<col style="width:6%;">
+										<col style="width:11%;">
+										<col style="width:7%;">
+										<col style="width:6%;">
+										<col style="width:7%;">
+										<col style="width:8%;">
+										<col style="width:8%;">
+										<col style="width:8%;">
+										<col style="width:7%;">
+										<col style="width:7%;">
+										<col style="width:11%;">
+									</colgroup>
+						            <thead>
+						                <tr>
+						                    <th scope="col">지점</th>
+						                    <th scope="col">풍향</th>
+						                    <th scope="col">풍속<br>(km/h)</th>
+						                    <th scope="col">순간최대풍속<br>(km/h)</th>
+						                    <th scope="col">기압<br>(hPa)</th>
+						                    <th scope="col">습도<br>(%)</th>
+						                    <th scope="col">기온<br>(℃)</th>
+						                    <th scope="col">수온<br>(℃)</th>
+						                    <th scope="col">최대파고<br>(m)</th>
+						                    <th scope="col">유의파고<br>(m)</th>
+						                    <th scope="col">평균파고<br>(m)</th>
+						                    <th scope="col">파주기<br>(sec)</th>
+						                    <th scope="col">파향</th>
+						                </tr>
+						            </thead>
+						            <tbody>
+							            	<tr>
+							                    <td>거제도</td>
+							                    <td>남서</td>
+							                    <td>5.8</td>
+							                    <td>9.4</td>
+							                    <td>1003.8</td>
+							                    <td>89</td>
+							                    <td>22.7</td>
+							                    <td>23.0</td>
+							                    <td>1.1</td>
+							                    <td>0.8</td>
+							                    <td>0.5</td>
+							                    <td>5.1</td>
+							                    <td>남남서</td>
+							                </tr>
+							            	<tr>
+							                    <td>통영</td>
+							                    <td>서</td>
+							                    <td>19.8</td>
+							                    <td>23.8</td>
+							                    <td>1004.1</td>
+							                    <td>87</td>
+							                    <td>21.9</td>
+							                    <td>20.9</td>
+							                    <td>1.5</td>
+							                    <td>0.9</td>
+							                    <td>0.6</td>
+							                    <td>4.3</td>
+							                    <td>남남서</td>
+							                </tr>
+						            </tbody>
+						        </table>
+						    </div><!-- end.over-scroll -->
+						</div><!-- end.table-box -->
+						
+						<h4 class="s-tit">파고부이 <span>(2023.06.22(목) 11:00)</span></h4>
+						<div class="table-box">
+						    <button class="lay-btn pop-open" data-pop-name="open-buoy-sub-pop02">파고부이 위치</button>
+						    <div class="over-scroll">
+						        <table class="table-col">
+						        	<caption>파고부이 2023.06.22(목) 11:00 - 지점, 최대파고(m), 유의파고(m), 평균파고(m), 파주기(sec), 수온(℃)</caption>
+						            <colgroup>
+						                <col style="width:10%;">
+										<col style="width:17%;">
+										<col style="width:20%;">
+										<col style="width:17%;">
+										<col style="width:18%;">
+										<col style="width:18%;">
+						            </colgroup>
+						            <thead>
+						                <tr>
+						                    <th scope="col">지점</th>
+						                    <th scope="col">최대파고<br>(m)</th>
+						                    <th scope="col">유의파고<br>(m)</th>
+						                    <th scope="col">평균파고<br>(m)</th>
+						                    <th scope="col">파주기<br>(sec)</th>
+						                    <th scope="col">수온(℃)</th>
+						                </tr>
+						            </thead>
+						            <tbody>
+					            		<tr>
+						            		<td>기장</td>
+						                    <td>1.2</td>
+						                    <td>1.0</td>
+						                    <td>0.6</td>
+						                    <td>5.3</td>
+						                    <td>21.6</td>
+						                </tr>
+					            		<tr>
+						            		<td>지심도</td>
+						                    <td></td>
+						                    <td></td>
+						                    <td></td>
+						                    <td></td>
+						                    <td></td>
+						                </tr>
+					            		<tr>
+						            		<td>이수도</td>
+						                    <td>0.4</td>
+						                    <td>0.3</td>
+						                    <td>0.2</td>
+						                    <td>5.2</td>
+						                    <td>21.4</td>
+						                </tr>
+					            		<tr>
+						            		<td>잠도</td>
+						                    <td></td>
+						                    <td></td>
+						                    <td></td>
+						                    <td></td>
+						                    <td></td>
+						                </tr>
+					            		<tr>
+						            		<td>소매물도</td>
+						                    <td>0.9</td>
+						                    <td>0.7</td>
+						                    <td>0.4</td>
+						                    <td>4.7</td>
+						                    <td>20.8</td>
+						                </tr>
+					            		<tr>
+						            		<td>오륙도</td>
+						                    <td>0.8</td>
+						                    <td>0.6</td>
+						                    <td>0.4</td>
+						                    <td>5.1</td>
+						                    <td>20.6</td>
+						                </tr>
+					            		<tr>
+						            		<td>장안</td>
+						                    <td>0.6</td>
+						                    <td>0.4</td>
+						                    <td>0.3</td>
+						                    <td>5.1</td>
+						                    <td>19.7</td>
+						                </tr>
+					            		<tr>
+						            		<td>남해</td>
+						                    <td>0.4</td>
+						                    <td>0.3</td>
+						                    <td>0.2</td>
+						                    <td>5.4</td>
+						                    <td>21.3</td>
+						                </tr>
+					            		<tr>
+						            		<td>해금강</td>
+						                    <td>0.7</td>
+						                    <td>0.5</td>
+						                    <td>0.3</td>
+						                    <td>5.1</td>
+						                    <td>18.7</td>
+						                </tr>
+					            		<tr>
+						            		<td>연화도</td>
+						                    <td>0.3</td>
+						                    <td>0.2</td>
+						                    <td>0.1</td>
+						                    <td>5.1</td>
+						                    <td>21.4</td>
+						                </tr>
+					            		<tr>
+						            		<td>두미도</td>
+						                    <td>0.6</td>
+						                    <td>0.4</td>
+						                    <td>0.3</td>
+						                    <td>6.7</td>
+						                    <td>22.3</td>
+						                </tr>
+					            		<tr>
+						            		<td>한산도</td>
+						                    <td>0.7</td>
+						                    <td>0.5</td>
+						                    <td>0.3</td>
+						                    <td>6.8</td>
+						                    <td>18.5</td>
+						                </tr>
+					            		<tr>
+						            		<td>사량도</td>
+						                    <td></td>
+						                    <td></td>
+						                    <td></td>
+						                    <td></td>
+						                    <td></td>
+						                </tr>
+					            		<tr>
+						            		<td>다대포</td>
+						                    <td>0.7</td>
+						                    <td>0.5</td>
+						                    <td>0.3</td>
+						                    <td>7.4</td>
+						                    <td>20.6</td>
+						                </tr>
+						            </tbody>
+						        </table>
+						    </div><!-- end.over-scroll-->
+						</div><!-- end.table-box -->
+					</div><!-- end.cont-box06 -->
+				</div><!-- end.cont-wrap -->
+            </div><!-- end.weather -->
+            <hr>
+            <div class="info">
+                	
+	    	</div><!-- end.info -->
+    	</div> <!-- end.contents -->
+	</div> <!-- end.container -->
+</body>
+</html>
